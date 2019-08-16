@@ -1,0 +1,1423 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AgendaONModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Acesso">
+          <Key>
+            <PropertyRef Name="Codigo_Acesso" />
+          </Key>
+          <Property Name="Codigo_Acesso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="45" />
+          <Property Name="Password" Type="varchar" MaxLength="30" />
+          <Property Name="Tipo" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Agenda">
+          <Key>
+            <PropertyRef Name="Codigo_Agenda" />
+          </Key>
+          <Property Name="Codigo_Agenda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_Medico" Type="int" />
+          <Property Name="Data_Agenda" Type="date" />
+          <Property Name="Hora_Agenda" Type="time" Precision="7" />
+          <Property Name="Duracao_Consulta" Type="float" />
+          <Property Name="Horario_Livre" Type="bit" />
+        </EntityType>
+        <EntityType Name="Agendado">
+          <Key>
+            <PropertyRef Name="Codigo_Agendado" />
+          </Key>
+          <Property Name="Codigo_Agendado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_Agenda" Type="int" />
+          <Property Name="Codigo_Pessoa" Type="int" />
+          <Property Name="Codigo_Medico" Type="int" />
+          <Property Name="Codigo_Local" Type="int" />
+          <Property Name="Codigo_Pre_Consulta" Type="int" />
+          <Property Name="Data_Consulta" Type="date" />
+          <Property Name="Hora_Consulta" Type="time" Precision="7" />
+          <Property Name="Consulta_Confirmada" Type="bit" />
+        </EntityType>
+        <EntityType Name="Cidade">
+          <Key>
+            <PropertyRef Name="Codigo_Cidade" />
+          </Key>
+          <Property Name="Codigo_Cidade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_Estado" Type="int" />
+          <Property Name="Cidade" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Consulta">
+          <Key>
+            <PropertyRef Name="Codigo_Consulta" />
+          </Key>
+          <Property Name="Codigo_Consulta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_Pessoa" Type="int" />
+          <Property Name="Codigo_Medico" Type="int" />
+          <Property Name="Codigo_Pre_Consulta" Type="int" />
+          <Property Name="Codigo_Local" Type="int" />
+          <Property Name="Data_Consulta" Type="date" />
+          <Property Name="Hora_Consulta" Type="time" Precision="7" />
+          <Property Name="Duracao_Consulta" Type="float" />
+        </EntityType>
+        <EntityType Name="Endereco">
+          <Key>
+            <PropertyRef Name="Codigo_Endereco" />
+          </Key>
+          <Property Name="Codigo_Endereco" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_Cidade" Type="int" />
+          <Property Name="Endereco" Type="varchar" MaxLength="70" />
+          <Property Name="Numero" Type="int" />
+          <Property Name="Complemento" Type="varchar" MaxLength="15" />
+          <Property Name="Bairro" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Especialidade">
+          <Key>
+            <PropertyRef Name="Codigo_Especialidade" />
+          </Key>
+          <Property Name="Codigo_Especialidade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_Medico" Type="int" />
+          <Property Name="Especialidade" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="Codigo_Estado" />
+          </Key>
+          <Property Name="Codigo_Estado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UF" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="Horario_Medico">
+          <Key>
+            <PropertyRef Name="Codigo_Horario_Medico" />
+          </Key>
+          <Property Name="Codigo_Horario_Medico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_Medico" Type="int" />
+          <Property Name="Codigo_Local" Type="int" />
+          <Property Name="Dia_Semana" Type="varchar" MaxLength="10" />
+          <Property Name="Hora_Entrada" Type="time" Precision="7" />
+          <Property Name="Hora_Saida" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="Local">
+          <Key>
+            <PropertyRef Name="Codigo_Local" />
+          </Key>
+          <Property Name="Codigo_Local" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_Endereco" Type="int" />
+          <Property Name="Nome" Type="varchar" MaxLength="30" />
+          <Property Name="Telefone" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Medico">
+          <Key>
+            <PropertyRef Name="Codigo_Medico" />
+          </Key>
+          <Property Name="Codigo_Medico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_Pessoa" Type="int" />
+          <Property Name="Codigo_Estado" Type="int" />
+          <Property Name="Data_Admissao" Type="date" />
+          <Property Name="CRM" Type="int" />
+        </EntityType>
+        <EntityType Name="Pessoa">
+          <Key>
+            <PropertyRef Name="Codigo_Pessoa" />
+          </Key>
+          <Property Name="Codigo_Pessoa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_Acesso" Type="int" />
+          <Property Name="Codigo_Endereco" Type="int" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" />
+          <Property Name="CPF" Type="varchar" MaxLength="11" />
+          <Property Name="RG" Type="varchar" MaxLength="15" />
+          <Property Name="Data_Nascimento" Type="date" />
+          <Property Name="Estado_Civil" Type="varchar" MaxLength="16" />
+          <Property Name="Telefone" Type="varchar" MaxLength="20" />
+          <Property Name="Celular" Type="varchar" MaxLength="21" />
+          <Property Name="Email" Type="varchar" MaxLength="45" />
+          <Property Name="Sexo" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="Pre_Consulta">
+          <Key>
+            <PropertyRef Name="Codigo_Pre_Consulta" />
+          </Key>
+          <Property Name="Codigo_Pre_Consulta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sintomas" Type="varchar" MaxLength="150" />
+          <Property Name="Remedios_Tomando" Type="varchar" MaxLength="50" />
+          <Property Name="Diagnostico_Anterior" Type="varchar" MaxLength="60" />
+          <Property Name="Observacao" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Sala_Espera">
+          <Key>
+            <PropertyRef Name="Codigo_Sala_Espera" />
+          </Key>
+          <Property Name="Codigo_Sala_Espera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_Pessoa" Type="int" />
+          <Property Name="Codigo_Medico" Type="int" />
+          <Property Name="Codigo_Pre_Consulta" Type="int" />
+          <Property Name="Duracao_Consulta" Type="float" />
+          <Property Name="Hora_Chegada_Paciente" Type="time" Precision="7" />
+          <Property Name="Inicio_Consulta" Type="time" Precision="7" />
+          <Property Name="Fim_Consulta" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="Secretaria">
+          <Key>
+            <PropertyRef Name="Codigo_Secretaria" />
+          </Key>
+          <Property Name="Codigo_Secretaria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_Pessoa" Type="int" />
+          <Property Name="Data_Admissao" Type="date" />
+          <Property Name="Hora_Entrada" Type="time" Precision="7" />
+          <Property Name="Hora_Saida" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Agenda">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="Codigo_Medico" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="Codigo_Medico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agendado">
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="0..1" />
+          <End Role="Agendado" Type="Self.Agendado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agenda">
+              <PropertyRef Name="Codigo_Agenda" />
+            </Principal>
+            <Dependent Role="Agendado">
+              <PropertyRef Name="Codigo_Agenda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agendado_1">
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="0..1" />
+          <End Role="Agendado" Type="Self.Agendado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pessoa">
+              <PropertyRef Name="Codigo_Pessoa" />
+            </Principal>
+            <Dependent Role="Agendado">
+              <PropertyRef Name="Codigo_Pessoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agendado_2">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+          <End Role="Agendado" Type="Self.Agendado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="Codigo_Medico" />
+            </Principal>
+            <Dependent Role="Agendado">
+              <PropertyRef Name="Codigo_Medico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agendado_3">
+          <End Role="Local" Type="Self.Local" Multiplicity="0..1" />
+          <End Role="Agendado" Type="Self.Agendado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="Codigo_Local" />
+            </Principal>
+            <Dependent Role="Agendado">
+              <PropertyRef Name="Codigo_Local" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agendado_5">
+          <End Role="Pre_Consulta" Type="Self.Pre_Consulta" Multiplicity="0..1" />
+          <End Role="Agendado" Type="Self.Agendado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pre_Consulta">
+              <PropertyRef Name="Codigo_Pre_Consulta" />
+            </Principal>
+            <Dependent Role="Agendado">
+              <PropertyRef Name="Codigo_Pre_Consulta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cidade">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
+          <End Role="Cidade" Type="Self.Cidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="Codigo_Estado" />
+            </Principal>
+            <Dependent Role="Cidade">
+              <PropertyRef Name="Codigo_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consulta">
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="0..1" />
+          <End Role="Consulta" Type="Self.Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pessoa">
+              <PropertyRef Name="Codigo_Pessoa" />
+            </Principal>
+            <Dependent Role="Consulta">
+              <PropertyRef Name="Codigo_Pessoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consulta_1">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+          <End Role="Consulta" Type="Self.Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="Codigo_Medico" />
+            </Principal>
+            <Dependent Role="Consulta">
+              <PropertyRef Name="Codigo_Medico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consulta_2">
+          <End Role="Pre_Consulta" Type="Self.Pre_Consulta" Multiplicity="0..1" />
+          <End Role="Consulta" Type="Self.Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pre_Consulta">
+              <PropertyRef Name="Codigo_Pre_Consulta" />
+            </Principal>
+            <Dependent Role="Consulta">
+              <PropertyRef Name="Codigo_Pre_Consulta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consulta_3">
+          <End Role="Local" Type="Self.Local" Multiplicity="0..1" />
+          <End Role="Consulta" Type="Self.Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="Codigo_Local" />
+            </Principal>
+            <Dependent Role="Consulta">
+              <PropertyRef Name="Codigo_Local" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Endereco">
+          <End Role="Cidade" Type="Self.Cidade" Multiplicity="0..1" />
+          <End Role="Endereco" Type="Self.Endereco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cidade">
+              <PropertyRef Name="Codigo_Cidade" />
+            </Principal>
+            <Dependent Role="Endereco">
+              <PropertyRef Name="Codigo_Cidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Especialidade">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+          <End Role="Especialidade" Type="Self.Especialidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="Codigo_Medico" />
+            </Principal>
+            <Dependent Role="Especialidade">
+              <PropertyRef Name="Codigo_Medico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horario_Medico">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+          <End Role="Horario_Medico" Type="Self.Horario_Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="Codigo_Medico" />
+            </Principal>
+            <Dependent Role="Horario_Medico">
+              <PropertyRef Name="Codigo_Medico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horario_Medico_1">
+          <End Role="Local" Type="Self.Local" Multiplicity="0..1" />
+          <End Role="Horario_Medico" Type="Self.Horario_Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="Codigo_Local" />
+            </Principal>
+            <Dependent Role="Horario_Medico">
+              <PropertyRef Name="Codigo_Local" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Local">
+          <End Role="Endereco" Type="Self.Endereco" Multiplicity="0..1" />
+          <End Role="Local" Type="Self.Local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Endereco">
+              <PropertyRef Name="Codigo_Endereco" />
+            </Principal>
+            <Dependent Role="Local">
+              <PropertyRef Name="Codigo_Endereco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medico">
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="0..1" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pessoa">
+              <PropertyRef Name="Codigo_Pessoa" />
+            </Principal>
+            <Dependent Role="Medico">
+              <PropertyRef Name="Codigo_Pessoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medico_1">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="Codigo_Estado" />
+            </Principal>
+            <Dependent Role="Medico">
+              <PropertyRef Name="Codigo_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pessoa">
+          <End Role="Acesso" Type="Self.Acesso" Multiplicity="0..1" />
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acesso">
+              <PropertyRef Name="Codigo_Acesso" />
+            </Principal>
+            <Dependent Role="Pessoa">
+              <PropertyRef Name="Codigo_Acesso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pessoa_1">
+          <End Role="Endereco" Type="Self.Endereco" Multiplicity="0..1" />
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Endereco">
+              <PropertyRef Name="Codigo_Endereco" />
+            </Principal>
+            <Dependent Role="Pessoa">
+              <PropertyRef Name="Codigo_Endereco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sala_Espera">
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="0..1" />
+          <End Role="Sala_Espera" Type="Self.Sala_Espera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pessoa">
+              <PropertyRef Name="Codigo_Pessoa" />
+            </Principal>
+            <Dependent Role="Sala_Espera">
+              <PropertyRef Name="Codigo_Pessoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sala_Espera_1">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+          <End Role="Sala_Espera" Type="Self.Sala_Espera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="Codigo_Medico" />
+            </Principal>
+            <Dependent Role="Sala_Espera">
+              <PropertyRef Name="Codigo_Medico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sala_Espera_2">
+          <End Role="Pre_Consulta" Type="Self.Pre_Consulta" Multiplicity="0..1" />
+          <End Role="Sala_Espera" Type="Self.Sala_Espera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pre_Consulta">
+              <PropertyRef Name="Codigo_Pre_Consulta" />
+            </Principal>
+            <Dependent Role="Sala_Espera">
+              <PropertyRef Name="Codigo_Pre_Consulta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Secretaria">
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="0..1" />
+          <End Role="Secretaria" Type="Self.Secretaria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pessoa">
+              <PropertyRef Name="Codigo_Pessoa" />
+            </Principal>
+            <Dependent Role="Secretaria">
+              <PropertyRef Name="Codigo_Pessoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AgendaONModelStoreContainer">
+          <EntitySet Name="Acesso" EntityType="Self.Acesso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Agenda" EntityType="Self.Agenda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Agendado" EntityType="Self.Agendado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cidade" EntityType="Self.Cidade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Consulta" EntityType="Self.Consulta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Endereco" EntityType="Self.Endereco" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Especialidade" EntityType="Self.Especialidade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Horario_Medico" EntityType="Self.Horario_Medico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Local" EntityType="Self.Local" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medico" EntityType="Self.Medico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pessoa" EntityType="Self.Pessoa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pre_Consulta" EntityType="Self.Pre_Consulta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sala_Espera" EntityType="Self.Sala_Espera" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Secretaria" EntityType="Self.Secretaria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Agenda" Association="Self.FK_Agenda">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agendado" Association="Self.FK_Agendado">
+            <End Role="Agenda" EntitySet="Agenda" />
+            <End Role="Agendado" EntitySet="Agendado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agendado_1" Association="Self.FK_Agendado_1">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="Agendado" EntitySet="Agendado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agendado_2" Association="Self.FK_Agendado_2">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Agendado" EntitySet="Agendado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agendado_3" Association="Self.FK_Agendado_3">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="Agendado" EntitySet="Agendado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agendado_5" Association="Self.FK_Agendado_5">
+            <End Role="Pre_Consulta" EntitySet="Pre_Consulta" />
+            <End Role="Agendado" EntitySet="Agendado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cidade" Association="Self.FK_Cidade">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Cidade" EntitySet="Cidade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consulta" Association="Self.FK_Consulta">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="Consulta" EntitySet="Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consulta_1" Association="Self.FK_Consulta_1">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Consulta" EntitySet="Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consulta_2" Association="Self.FK_Consulta_2">
+            <End Role="Pre_Consulta" EntitySet="Pre_Consulta" />
+            <End Role="Consulta" EntitySet="Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consulta_3" Association="Self.FK_Consulta_3">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="Consulta" EntitySet="Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Endereco" Association="Self.FK_Endereco">
+            <End Role="Cidade" EntitySet="Cidade" />
+            <End Role="Endereco" EntitySet="Endereco" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Especialidade" Association="Self.FK_Especialidade">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Especialidade" EntitySet="Especialidade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horario_Medico" Association="Self.FK_Horario_Medico">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Horario_Medico" EntitySet="Horario_Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horario_Medico_1" Association="Self.FK_Horario_Medico_1">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="Horario_Medico" EntitySet="Horario_Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Local" Association="Self.FK_Local">
+            <End Role="Endereco" EntitySet="Endereco" />
+            <End Role="Local" EntitySet="Local" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medico" Association="Self.FK_Medico">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="Medico" EntitySet="Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medico_1" Association="Self.FK_Medico_1">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Medico" EntitySet="Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pessoa" Association="Self.FK_Pessoa">
+            <End Role="Acesso" EntitySet="Acesso" />
+            <End Role="Pessoa" EntitySet="Pessoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pessoa_1" Association="Self.FK_Pessoa_1">
+            <End Role="Endereco" EntitySet="Endereco" />
+            <End Role="Pessoa" EntitySet="Pessoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sala_Espera" Association="Self.FK_Sala_Espera">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="Sala_Espera" EntitySet="Sala_Espera" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sala_Espera_1" Association="Self.FK_Sala_Espera_1">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Sala_Espera" EntitySet="Sala_Espera" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sala_Espera_2" Association="Self.FK_Sala_Espera_2">
+            <End Role="Pre_Consulta" EntitySet="Pre_Consulta" />
+            <End Role="Sala_Espera" EntitySet="Sala_Espera" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Secretaria" Association="Self.FK_Secretaria">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="Secretaria" EntitySet="Secretaria" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AgendaONModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Acesso">
+          <Key>
+            <PropertyRef Name="Codigo_Acesso" />
+          </Key>
+          <Property Name="Codigo_Acesso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pessoa" Relationship="Self.FK_Pessoa" FromRole="Acesso" ToRole="Pessoa" />
+        </EntityType>
+        <EntityType Name="Agenda">
+          <Key>
+            <PropertyRef Name="Codigo_Agenda" />
+          </Key>
+          <Property Name="Codigo_Agenda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo_Medico" Type="Int32" />
+          <Property Name="Data_Agenda" Type="DateTime" Precision="0" />
+          <Property Name="Hora_Agenda" Type="Time" Precision="7" />
+          <Property Name="Duracao_Consulta" Type="Double" />
+          <Property Name="Horario_Livre" Type="Boolean" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK_Agenda" FromRole="Agenda" ToRole="Medico" />
+          <NavigationProperty Name="Agendado" Relationship="Self.FK_Agendado" FromRole="Agenda" ToRole="Agendado" />
+        </EntityType>
+        <EntityType Name="Agendado">
+          <Key>
+            <PropertyRef Name="Codigo_Agendado" />
+          </Key>
+          <Property Name="Codigo_Agendado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo_Agenda" Type="Int32" />
+          <Property Name="Codigo_Pessoa" Type="Int32" />
+          <Property Name="Codigo_Medico" Type="Int32" />
+          <Property Name="Codigo_Local" Type="Int32" />
+          <Property Name="Codigo_Pre_Consulta" Type="Int32" />
+          <Property Name="Data_Consulta" Type="DateTime" Precision="0" />
+          <Property Name="Hora_Consulta" Type="Time" Precision="7" />
+          <Property Name="Consulta_Confirmada" Type="Boolean" />
+          <NavigationProperty Name="Agenda" Relationship="Self.FK_Agendado" FromRole="Agendado" ToRole="Agenda" />
+          <NavigationProperty Name="Pessoa" Relationship="Self.FK_Agendado_1" FromRole="Agendado" ToRole="Pessoa" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK_Agendado_2" FromRole="Agendado" ToRole="Medico" />
+          <NavigationProperty Name="Local" Relationship="Self.FK_Agendado_3" FromRole="Agendado" ToRole="Local" />
+          <NavigationProperty Name="Pre_Consulta" Relationship="Self.FK_Agendado_5" FromRole="Agendado" ToRole="Pre_Consulta" />
+        </EntityType>
+        <EntityType Name="Cidade">
+          <Key>
+            <PropertyRef Name="Codigo_Cidade" />
+          </Key>
+          <Property Name="Codigo_Cidade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo_Estado" Type="Int32" />
+          <Property Name="Cidade1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Estado" Relationship="Self.FK_Cidade" FromRole="Cidade" ToRole="Estado" />
+          <NavigationProperty Name="Endereco" Relationship="Self.FK_Endereco" FromRole="Cidade" ToRole="Endereco" />
+        </EntityType>
+        <EntityType Name="Consulta">
+          <Key>
+            <PropertyRef Name="Codigo_Consulta" />
+          </Key>
+          <Property Name="Codigo_Consulta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo_Pessoa" Type="Int32" />
+          <Property Name="Codigo_Medico" Type="Int32" />
+          <Property Name="Codigo_Pre_Consulta" Type="Int32" />
+          <Property Name="Codigo_Local" Type="Int32" />
+          <Property Name="Data_Consulta" Type="DateTime" Precision="0" />
+          <Property Name="Hora_Consulta" Type="Time" Precision="7" />
+          <Property Name="Duracao_Consulta" Type="Double" />
+          <NavigationProperty Name="Pessoa" Relationship="Self.FK_Consulta" FromRole="Consulta" ToRole="Pessoa" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK_Consulta_1" FromRole="Consulta" ToRole="Medico" />
+          <NavigationProperty Name="Pre_Consulta" Relationship="Self.FK_Consulta_2" FromRole="Consulta" ToRole="Pre_Consulta" />
+          <NavigationProperty Name="Local" Relationship="Self.FK_Consulta_3" FromRole="Consulta" ToRole="Local" />
+        </EntityType>
+        <EntityType Name="Endereco">
+          <Key>
+            <PropertyRef Name="Codigo_Endereco" />
+          </Key>
+          <Property Name="Codigo_Endereco" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo_Cidade" Type="Int32" />
+          <Property Name="Endereco1" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="Numero" Type="Int32" />
+          <Property Name="Complemento" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Bairro" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cidade" Relationship="Self.FK_Endereco" FromRole="Endereco" ToRole="Cidade" />
+          <NavigationProperty Name="Local" Relationship="Self.FK_Local" FromRole="Endereco" ToRole="Local" />
+          <NavigationProperty Name="Pessoa" Relationship="Self.FK_Pessoa_1" FromRole="Endereco" ToRole="Pessoa" />
+        </EntityType>
+        <EntityType Name="Especialidade">
+          <Key>
+            <PropertyRef Name="Codigo_Especialidade" />
+          </Key>
+          <Property Name="Codigo_Especialidade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo_Medico" Type="Int32" />
+          <Property Name="Especialidade1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK_Especialidade" FromRole="Especialidade" ToRole="Medico" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="Codigo_Estado" />
+          </Key>
+          <Property Name="Codigo_Estado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UF" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cidade" Relationship="Self.FK_Cidade" FromRole="Estado" ToRole="Cidade" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK_Medico_1" FromRole="Estado" ToRole="Medico" />
+        </EntityType>
+        <EntityType Name="Horario_Medico">
+          <Key>
+            <PropertyRef Name="Codigo_Horario_Medico" />
+          </Key>
+          <Property Name="Codigo_Horario_Medico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo_Medico" Type="Int32" />
+          <Property Name="Codigo_Local" Type="Int32" />
+          <Property Name="Dia_Semana" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Hora_Entrada" Type="Time" Precision="7" />
+          <Property Name="Hora_Saida" Type="Time" Precision="7" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK_Horario_Medico" FromRole="Horario_Medico" ToRole="Medico" />
+          <NavigationProperty Name="Local" Relationship="Self.FK_Horario_Medico_1" FromRole="Horario_Medico" ToRole="Local" />
+        </EntityType>
+        <EntityType Name="Local">
+          <Key>
+            <PropertyRef Name="Codigo_Local" />
+          </Key>
+          <Property Name="Codigo_Local" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo_Endereco" Type="Int32" />
+          <Property Name="Nome" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Agendado" Relationship="Self.FK_Agendado_3" FromRole="Local" ToRole="Agendado" />
+          <NavigationProperty Name="Consulta" Relationship="Self.FK_Consulta_3" FromRole="Local" ToRole="Consulta" />
+          <NavigationProperty Name="Endereco" Relationship="Self.FK_Local" FromRole="Local" ToRole="Endereco" />
+          <NavigationProperty Name="Horario_Medico" Relationship="Self.FK_Horario_Medico_1" FromRole="Local" ToRole="Horario_Medico" />
+        </EntityType>
+        <EntityType Name="Medico">
+          <Key>
+            <PropertyRef Name="Codigo_Medico" />
+          </Key>
+          <Property Name="Codigo_Medico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo_Pessoa" Type="Int32" />
+          <Property Name="Codigo_Estado" Type="Int32" />
+          <Property Name="Data_Admissao" Type="DateTime" Precision="0" />
+          <Property Name="CRM" Type="Int32" />
+          <NavigationProperty Name="Agenda" Relationship="Self.FK_Agenda" FromRole="Medico" ToRole="Agenda" />
+          <NavigationProperty Name="Agendado" Relationship="Self.FK_Agendado_2" FromRole="Medico" ToRole="Agendado" />
+          <NavigationProperty Name="Consulta" Relationship="Self.FK_Consulta_1" FromRole="Medico" ToRole="Consulta" />
+          <NavigationProperty Name="Especialidade" Relationship="Self.FK_Especialidade" FromRole="Medico" ToRole="Especialidade" />
+          <NavigationProperty Name="Estado" Relationship="Self.FK_Medico_1" FromRole="Medico" ToRole="Estado" />
+          <NavigationProperty Name="Horario_Medico" Relationship="Self.FK_Horario_Medico" FromRole="Medico" ToRole="Horario_Medico" />
+          <NavigationProperty Name="Pessoa" Relationship="Self.FK_Medico" FromRole="Medico" ToRole="Pessoa" />
+          <NavigationProperty Name="Sala_Espera" Relationship="Self.FK_Sala_Espera_1" FromRole="Medico" ToRole="Sala_Espera" />
+        </EntityType>
+        <EntityType Name="Pessoa">
+          <Key>
+            <PropertyRef Name="Codigo_Pessoa" />
+          </Key>
+          <Property Name="Codigo_Pessoa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo_Acesso" Type="Int32" />
+          <Property Name="Codigo_Endereco" Type="Int32" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CPF" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="RG" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Data_Nascimento" Type="DateTime" Precision="0" />
+          <Property Name="Estado_Civil" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="Telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Celular" Type="String" MaxLength="21" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Sexo" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Acesso" Relationship="Self.FK_Pessoa" FromRole="Pessoa" ToRole="Acesso" />
+          <NavigationProperty Name="Agendado" Relationship="Self.FK_Agendado_1" FromRole="Pessoa" ToRole="Agendado" />
+          <NavigationProperty Name="Consulta" Relationship="Self.FK_Consulta" FromRole="Pessoa" ToRole="Consulta" />
+          <NavigationProperty Name="Endereco" Relationship="Self.FK_Pessoa_1" FromRole="Pessoa" ToRole="Endereco" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK_Medico" FromRole="Pessoa" ToRole="Medico" />
+          <NavigationProperty Name="Sala_Espera" Relationship="Self.FK_Sala_Espera" FromRole="Pessoa" ToRole="Sala_Espera" />
+          <NavigationProperty Name="Secretaria" Relationship="Self.FK_Secretaria" FromRole="Pessoa" ToRole="Secretaria" />
+        </EntityType>
+        <EntityType Name="Pre_Consulta">
+          <Key>
+            <PropertyRef Name="Codigo_Pre_Consulta" />
+          </Key>
+          <Property Name="Codigo_Pre_Consulta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sintomas" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Remedios_Tomando" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Diagnostico_Anterior" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Observacao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Agendado" Relationship="Self.FK_Agendado_5" FromRole="Pre_Consulta" ToRole="Agendado" />
+          <NavigationProperty Name="Consulta" Relationship="Self.FK_Consulta_2" FromRole="Pre_Consulta" ToRole="Consulta" />
+          <NavigationProperty Name="Sala_Espera" Relationship="Self.FK_Sala_Espera_2" FromRole="Pre_Consulta" ToRole="Sala_Espera" />
+        </EntityType>
+        <EntityType Name="Sala_Espera">
+          <Key>
+            <PropertyRef Name="Codigo_Sala_Espera" />
+          </Key>
+          <Property Name="Codigo_Sala_Espera" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo_Pessoa" Type="Int32" />
+          <Property Name="Codigo_Medico" Type="Int32" />
+          <Property Name="Codigo_Pre_Consulta" Type="Int32" />
+          <Property Name="Duracao_Consulta" Type="Double" />
+          <Property Name="Hora_Chegada_Paciente" Type="Time" Precision="7" />
+          <Property Name="Inicio_Consulta" Type="Time" Precision="7" />
+          <Property Name="Fim_Consulta" Type="Time" Precision="7" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK_Sala_Espera_1" FromRole="Sala_Espera" ToRole="Medico" />
+          <NavigationProperty Name="Pessoa" Relationship="Self.FK_Sala_Espera" FromRole="Sala_Espera" ToRole="Pessoa" />
+          <NavigationProperty Name="Pre_Consulta" Relationship="Self.FK_Sala_Espera_2" FromRole="Sala_Espera" ToRole="Pre_Consulta" />
+        </EntityType>
+        <EntityType Name="Secretaria">
+          <Key>
+            <PropertyRef Name="Codigo_Secretaria" />
+          </Key>
+          <Property Name="Codigo_Secretaria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo_Pessoa" Type="Int32" />
+          <Property Name="Data_Admissao" Type="DateTime" Precision="0" />
+          <Property Name="Hora_Entrada" Type="Time" Precision="7" />
+          <Property Name="Hora_Saida" Type="Time" Precision="7" />
+          <NavigationProperty Name="Pessoa" Relationship="Self.FK_Secretaria" FromRole="Secretaria" ToRole="Pessoa" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Pessoa">
+          <End Role="Acesso" Type="Self.Acesso" Multiplicity="0..1" />
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Acesso">
+              <PropertyRef Name="Codigo_Acesso" />
+            </Principal>
+            <Dependent Role="Pessoa">
+              <PropertyRef Name="Codigo_Acesso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agenda">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="Codigo_Medico" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="Codigo_Medico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agendado">
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="0..1" />
+          <End Role="Agendado" Type="Self.Agendado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agenda">
+              <PropertyRef Name="Codigo_Agenda" />
+            </Principal>
+            <Dependent Role="Agendado">
+              <PropertyRef Name="Codigo_Agenda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agendado_1">
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="0..1" />
+          <End Role="Agendado" Type="Self.Agendado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pessoa">
+              <PropertyRef Name="Codigo_Pessoa" />
+            </Principal>
+            <Dependent Role="Agendado">
+              <PropertyRef Name="Codigo_Pessoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agendado_2">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+          <End Role="Agendado" Type="Self.Agendado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="Codigo_Medico" />
+            </Principal>
+            <Dependent Role="Agendado">
+              <PropertyRef Name="Codigo_Medico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agendado_3">
+          <End Role="Local" Type="Self.Local" Multiplicity="0..1" />
+          <End Role="Agendado" Type="Self.Agendado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="Codigo_Local" />
+            </Principal>
+            <Dependent Role="Agendado">
+              <PropertyRef Name="Codigo_Local" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agendado_5">
+          <End Role="Pre_Consulta" Type="Self.Pre_Consulta" Multiplicity="0..1" />
+          <End Role="Agendado" Type="Self.Agendado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pre_Consulta">
+              <PropertyRef Name="Codigo_Pre_Consulta" />
+            </Principal>
+            <Dependent Role="Agendado">
+              <PropertyRef Name="Codigo_Pre_Consulta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cidade">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
+          <End Role="Cidade" Type="Self.Cidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="Codigo_Estado" />
+            </Principal>
+            <Dependent Role="Cidade">
+              <PropertyRef Name="Codigo_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Endereco">
+          <End Role="Cidade" Type="Self.Cidade" Multiplicity="0..1" />
+          <End Role="Endereco" Type="Self.Endereco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cidade">
+              <PropertyRef Name="Codigo_Cidade" />
+            </Principal>
+            <Dependent Role="Endereco">
+              <PropertyRef Name="Codigo_Cidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consulta">
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="0..1" />
+          <End Role="Consulta" Type="Self.Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pessoa">
+              <PropertyRef Name="Codigo_Pessoa" />
+            </Principal>
+            <Dependent Role="Consulta">
+              <PropertyRef Name="Codigo_Pessoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consulta_1">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+          <End Role="Consulta" Type="Self.Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="Codigo_Medico" />
+            </Principal>
+            <Dependent Role="Consulta">
+              <PropertyRef Name="Codigo_Medico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consulta_2">
+          <End Role="Pre_Consulta" Type="Self.Pre_Consulta" Multiplicity="0..1" />
+          <End Role="Consulta" Type="Self.Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pre_Consulta">
+              <PropertyRef Name="Codigo_Pre_Consulta" />
+            </Principal>
+            <Dependent Role="Consulta">
+              <PropertyRef Name="Codigo_Pre_Consulta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consulta_3">
+          <End Role="Local" Type="Self.Local" Multiplicity="0..1" />
+          <End Role="Consulta" Type="Self.Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="Codigo_Local" />
+            </Principal>
+            <Dependent Role="Consulta">
+              <PropertyRef Name="Codigo_Local" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Local">
+          <End Role="Endereco" Type="Self.Endereco" Multiplicity="0..1" />
+          <End Role="Local" Type="Self.Local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Endereco">
+              <PropertyRef Name="Codigo_Endereco" />
+            </Principal>
+            <Dependent Role="Local">
+              <PropertyRef Name="Codigo_Endereco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pessoa_1">
+          <End Role="Endereco" Type="Self.Endereco" Multiplicity="0..1" />
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Endereco">
+              <PropertyRef Name="Codigo_Endereco" />
+            </Principal>
+            <Dependent Role="Pessoa">
+              <PropertyRef Name="Codigo_Endereco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Especialidade">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+          <End Role="Especialidade" Type="Self.Especialidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="Codigo_Medico" />
+            </Principal>
+            <Dependent Role="Especialidade">
+              <PropertyRef Name="Codigo_Medico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medico_1">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="0..1" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="Codigo_Estado" />
+            </Principal>
+            <Dependent Role="Medico">
+              <PropertyRef Name="Codigo_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horario_Medico">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+          <End Role="Horario_Medico" Type="Self.Horario_Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="Codigo_Medico" />
+            </Principal>
+            <Dependent Role="Horario_Medico">
+              <PropertyRef Name="Codigo_Medico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Horario_Medico_1">
+          <End Role="Local" Type="Self.Local" Multiplicity="0..1" />
+          <End Role="Horario_Medico" Type="Self.Horario_Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Local">
+              <PropertyRef Name="Codigo_Local" />
+            </Principal>
+            <Dependent Role="Horario_Medico">
+              <PropertyRef Name="Codigo_Local" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medico">
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="0..1" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pessoa">
+              <PropertyRef Name="Codigo_Pessoa" />
+            </Principal>
+            <Dependent Role="Medico">
+              <PropertyRef Name="Codigo_Pessoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sala_Espera_1">
+          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+          <End Role="Sala_Espera" Type="Self.Sala_Espera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medico">
+              <PropertyRef Name="Codigo_Medico" />
+            </Principal>
+            <Dependent Role="Sala_Espera">
+              <PropertyRef Name="Codigo_Medico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sala_Espera">
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="0..1" />
+          <End Role="Sala_Espera" Type="Self.Sala_Espera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pessoa">
+              <PropertyRef Name="Codigo_Pessoa" />
+            </Principal>
+            <Dependent Role="Sala_Espera">
+              <PropertyRef Name="Codigo_Pessoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Secretaria">
+          <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="0..1" />
+          <End Role="Secretaria" Type="Self.Secretaria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pessoa">
+              <PropertyRef Name="Codigo_Pessoa" />
+            </Principal>
+            <Dependent Role="Secretaria">
+              <PropertyRef Name="Codigo_Pessoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sala_Espera_2">
+          <End Role="Pre_Consulta" Type="Self.Pre_Consulta" Multiplicity="0..1" />
+          <End Role="Sala_Espera" Type="Self.Sala_Espera" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pre_Consulta">
+              <PropertyRef Name="Codigo_Pre_Consulta" />
+            </Principal>
+            <Dependent Role="Sala_Espera">
+              <PropertyRef Name="Codigo_Pre_Consulta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AgendaONEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Acesso" EntityType="Self.Acesso" />
+          <EntitySet Name="Agenda" EntityType="Self.Agenda" />
+          <EntitySet Name="Agendado" EntityType="Self.Agendado" />
+          <EntitySet Name="Cidade" EntityType="Self.Cidade" />
+          <EntitySet Name="Consulta" EntityType="Self.Consulta" />
+          <EntitySet Name="Endereco" EntityType="Self.Endereco" />
+          <EntitySet Name="Especialidade" EntityType="Self.Especialidade" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" />
+          <EntitySet Name="Horario_Medico" EntityType="Self.Horario_Medico" />
+          <EntitySet Name="Local" EntityType="Self.Local" />
+          <EntitySet Name="Medico" EntityType="Self.Medico" />
+          <EntitySet Name="Pessoa" EntityType="Self.Pessoa" />
+          <EntitySet Name="Pre_Consulta" EntityType="Self.Pre_Consulta" />
+          <EntitySet Name="Sala_Espera" EntityType="Self.Sala_Espera" />
+          <EntitySet Name="Secretaria" EntityType="Self.Secretaria" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_Pessoa" Association="Self.FK_Pessoa">
+            <End Role="Acesso" EntitySet="Acesso" />
+            <End Role="Pessoa" EntitySet="Pessoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agenda" Association="Self.FK_Agenda">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agendado" Association="Self.FK_Agendado">
+            <End Role="Agenda" EntitySet="Agenda" />
+            <End Role="Agendado" EntitySet="Agendado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agendado_1" Association="Self.FK_Agendado_1">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="Agendado" EntitySet="Agendado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agendado_2" Association="Self.FK_Agendado_2">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Agendado" EntitySet="Agendado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agendado_3" Association="Self.FK_Agendado_3">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="Agendado" EntitySet="Agendado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agendado_5" Association="Self.FK_Agendado_5">
+            <End Role="Pre_Consulta" EntitySet="Pre_Consulta" />
+            <End Role="Agendado" EntitySet="Agendado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cidade" Association="Self.FK_Cidade">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Cidade" EntitySet="Cidade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Endereco" Association="Self.FK_Endereco">
+            <End Role="Cidade" EntitySet="Cidade" />
+            <End Role="Endereco" EntitySet="Endereco" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consulta" Association="Self.FK_Consulta">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="Consulta" EntitySet="Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consulta_1" Association="Self.FK_Consulta_1">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Consulta" EntitySet="Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consulta_2" Association="Self.FK_Consulta_2">
+            <End Role="Pre_Consulta" EntitySet="Pre_Consulta" />
+            <End Role="Consulta" EntitySet="Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consulta_3" Association="Self.FK_Consulta_3">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="Consulta" EntitySet="Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Local" Association="Self.FK_Local">
+            <End Role="Endereco" EntitySet="Endereco" />
+            <End Role="Local" EntitySet="Local" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pessoa_1" Association="Self.FK_Pessoa_1">
+            <End Role="Endereco" EntitySet="Endereco" />
+            <End Role="Pessoa" EntitySet="Pessoa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Especialidade" Association="Self.FK_Especialidade">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Especialidade" EntitySet="Especialidade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medico_1" Association="Self.FK_Medico_1">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Medico" EntitySet="Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horario_Medico" Association="Self.FK_Horario_Medico">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Horario_Medico" EntitySet="Horario_Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Horario_Medico_1" Association="Self.FK_Horario_Medico_1">
+            <End Role="Local" EntitySet="Local" />
+            <End Role="Horario_Medico" EntitySet="Horario_Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medico" Association="Self.FK_Medico">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="Medico" EntitySet="Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sala_Espera_1" Association="Self.FK_Sala_Espera_1">
+            <End Role="Medico" EntitySet="Medico" />
+            <End Role="Sala_Espera" EntitySet="Sala_Espera" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sala_Espera" Association="Self.FK_Sala_Espera">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="Sala_Espera" EntitySet="Sala_Espera" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Secretaria" Association="Self.FK_Secretaria">
+            <End Role="Pessoa" EntitySet="Pessoa" />
+            <End Role="Secretaria" EntitySet="Secretaria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sala_Espera_2" Association="Self.FK_Sala_Espera_2">
+            <End Role="Pre_Consulta" EntitySet="Pre_Consulta" />
+            <End Role="Sala_Espera" EntitySet="Sala_Espera" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AgendaONModelStoreContainer" CdmEntityContainer="AgendaONEntities">
+          <EntitySetMapping Name="Acesso">
+            <EntityTypeMapping TypeName="AgendaONModel.Acesso">
+              <MappingFragment StoreEntitySet="Acesso">
+                <ScalarProperty Name="Codigo_Acesso" ColumnName="Codigo_Acesso" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agenda">
+            <EntityTypeMapping TypeName="AgendaONModel.Agenda">
+              <MappingFragment StoreEntitySet="Agenda">
+                <ScalarProperty Name="Codigo_Agenda" ColumnName="Codigo_Agenda" />
+                <ScalarProperty Name="Codigo_Medico" ColumnName="Codigo_Medico" />
+                <ScalarProperty Name="Data_Agenda" ColumnName="Data_Agenda" />
+                <ScalarProperty Name="Hora_Agenda" ColumnName="Hora_Agenda" />
+                <ScalarProperty Name="Duracao_Consulta" ColumnName="Duracao_Consulta" />
+                <ScalarProperty Name="Horario_Livre" ColumnName="Horario_Livre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agendado">
+            <EntityTypeMapping TypeName="AgendaONModel.Agendado">
+              <MappingFragment StoreEntitySet="Agendado">
+                <ScalarProperty Name="Codigo_Agendado" ColumnName="Codigo_Agendado" />
+                <ScalarProperty Name="Codigo_Agenda" ColumnName="Codigo_Agenda" />
+                <ScalarProperty Name="Codigo_Pessoa" ColumnName="Codigo_Pessoa" />
+                <ScalarProperty Name="Codigo_Medico" ColumnName="Codigo_Medico" />
+                <ScalarProperty Name="Codigo_Local" ColumnName="Codigo_Local" />
+                <ScalarProperty Name="Codigo_Pre_Consulta" ColumnName="Codigo_Pre_Consulta" />
+                <ScalarProperty Name="Data_Consulta" ColumnName="Data_Consulta" />
+                <ScalarProperty Name="Hora_Consulta" ColumnName="Hora_Consulta" />
+                <ScalarProperty Name="Consulta_Confirmada" ColumnName="Consulta_Confirmada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cidade">
+            <EntityTypeMapping TypeName="AgendaONModel.Cidade">
+              <MappingFragment StoreEntitySet="Cidade">
+                <ScalarProperty Name="Codigo_Cidade" ColumnName="Codigo_Cidade" />
+                <ScalarProperty Name="Codigo_Estado" ColumnName="Codigo_Estado" />
+                <ScalarProperty Name="Cidade1" ColumnName="Cidade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Consulta">
+            <EntityTypeMapping TypeName="AgendaONModel.Consulta">
+              <MappingFragment StoreEntitySet="Consulta">
+                <ScalarProperty Name="Codigo_Consulta" ColumnName="Codigo_Consulta" />
+                <ScalarProperty Name="Codigo_Pessoa" ColumnName="Codigo_Pessoa" />
+                <ScalarProperty Name="Codigo_Medico" ColumnName="Codigo_Medico" />
+                <ScalarProperty Name="Codigo_Pre_Consulta" ColumnName="Codigo_Pre_Consulta" />
+                <ScalarProperty Name="Codigo_Local" ColumnName="Codigo_Local" />
+                <ScalarProperty Name="Data_Consulta" ColumnName="Data_Consulta" />
+                <ScalarProperty Name="Hora_Consulta" ColumnName="Hora_Consulta" />
+                <ScalarProperty Name="Duracao_Consulta" ColumnName="Duracao_Consulta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Endereco">
+            <EntityTypeMapping TypeName="AgendaONModel.Endereco">
+              <MappingFragment StoreEntitySet="Endereco">
+                <ScalarProperty Name="Codigo_Endereco" ColumnName="Codigo_Endereco" />
+                <ScalarProperty Name="Codigo_Cidade" ColumnName="Codigo_Cidade" />
+                <ScalarProperty Name="Endereco1" ColumnName="Endereco" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Complemento" ColumnName="Complemento" />
+                <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Especialidade">
+            <EntityTypeMapping TypeName="AgendaONModel.Especialidade">
+              <MappingFragment StoreEntitySet="Especialidade">
+                <ScalarProperty Name="Codigo_Especialidade" ColumnName="Codigo_Especialidade" />
+                <ScalarProperty Name="Codigo_Medico" ColumnName="Codigo_Medico" />
+                <ScalarProperty Name="Especialidade1" ColumnName="Especialidade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estado">
+            <EntityTypeMapping TypeName="AgendaONModel.Estado">
+              <MappingFragment StoreEntitySet="Estado">
+                <ScalarProperty Name="Codigo_Estado" ColumnName="Codigo_Estado" />
+                <ScalarProperty Name="UF" ColumnName="UF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Horario_Medico">
+            <EntityTypeMapping TypeName="AgendaONModel.Horario_Medico">
+              <MappingFragment StoreEntitySet="Horario_Medico">
+                <ScalarProperty Name="Codigo_Horario_Medico" ColumnName="Codigo_Horario_Medico" />
+                <ScalarProperty Name="Codigo_Medico" ColumnName="Codigo_Medico" />
+                <ScalarProperty Name="Codigo_Local" ColumnName="Codigo_Local" />
+                <ScalarProperty Name="Dia_Semana" ColumnName="Dia_Semana" />
+                <ScalarProperty Name="Hora_Entrada" ColumnName="Hora_Entrada" />
+                <ScalarProperty Name="Hora_Saida" ColumnName="Hora_Saida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Local">
+            <EntityTypeMapping TypeName="AgendaONModel.Local">
+              <MappingFragment StoreEntitySet="Local">
+                <ScalarProperty Name="Codigo_Local" ColumnName="Codigo_Local" />
+                <ScalarProperty Name="Codigo_Endereco" ColumnName="Codigo_Endereco" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medico">
+            <EntityTypeMapping TypeName="AgendaONModel.Medico">
+              <MappingFragment StoreEntitySet="Medico">
+                <ScalarProperty Name="Codigo_Medico" ColumnName="Codigo_Medico" />
+                <ScalarProperty Name="Codigo_Pessoa" ColumnName="Codigo_Pessoa" />
+                <ScalarProperty Name="Codigo_Estado" ColumnName="Codigo_Estado" />
+                <ScalarProperty Name="Data_Admissao" ColumnName="Data_Admissao" />
+                <ScalarProperty Name="CRM" ColumnName="CRM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pessoa">
+            <EntityTypeMapping TypeName="AgendaONModel.Pessoa">
+              <MappingFragment StoreEntitySet="Pessoa">
+                <ScalarProperty Name="Codigo_Pessoa" ColumnName="Codigo_Pessoa" />
+                <ScalarProperty Name="Codigo_Acesso" ColumnName="Codigo_Acesso" />
+                <ScalarProperty Name="Codigo_Endereco" ColumnName="Codigo_Endereco" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="CPF" ColumnName="CPF" />
+                <ScalarProperty Name="RG" ColumnName="RG" />
+                <ScalarProperty Name="Data_Nascimento" ColumnName="Data_Nascimento" />
+                <ScalarProperty Name="Estado_Civil" ColumnName="Estado_Civil" />
+                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pre_Consulta">
+            <EntityTypeMapping TypeName="AgendaONModel.Pre_Consulta">
+              <MappingFragment StoreEntitySet="Pre_Consulta">
+                <ScalarProperty Name="Codigo_Pre_Consulta" ColumnName="Codigo_Pre_Consulta" />
+                <ScalarProperty Name="Sintomas" ColumnName="Sintomas" />
+                <ScalarProperty Name="Remedios_Tomando" ColumnName="Remedios_Tomando" />
+                <ScalarProperty Name="Diagnostico_Anterior" ColumnName="Diagnostico_Anterior" />
+                <ScalarProperty Name="Observacao" ColumnName="Observacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sala_Espera">
+            <EntityTypeMapping TypeName="AgendaONModel.Sala_Espera">
+              <MappingFragment StoreEntitySet="Sala_Espera">
+                <ScalarProperty Name="Codigo_Sala_Espera" ColumnName="Codigo_Sala_Espera" />
+                <ScalarProperty Name="Codigo_Pessoa" ColumnName="Codigo_Pessoa" />
+                <ScalarProperty Name="Codigo_Medico" ColumnName="Codigo_Medico" />
+                <ScalarProperty Name="Codigo_Pre_Consulta" ColumnName="Codigo_Pre_Consulta" />
+                <ScalarProperty Name="Duracao_Consulta" ColumnName="Duracao_Consulta" />
+                <ScalarProperty Name="Hora_Chegada_Paciente" ColumnName="Hora_Chegada_Paciente" />
+                <ScalarProperty Name="Inicio_Consulta" ColumnName="Inicio_Consulta" />
+                <ScalarProperty Name="Fim_Consulta" ColumnName="Fim_Consulta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Secretaria">
+            <EntityTypeMapping TypeName="AgendaONModel.Secretaria">
+              <MappingFragment StoreEntitySet="Secretaria">
+                <ScalarProperty Name="Codigo_Secretaria" ColumnName="Codigo_Secretaria" />
+                <ScalarProperty Name="Codigo_Pessoa" ColumnName="Codigo_Pessoa" />
+                <ScalarProperty Name="Data_Admissao" ColumnName="Data_Admissao" />
+                <ScalarProperty Name="Hora_Entrada" ColumnName="Hora_Entrada" />
+                <ScalarProperty Name="Hora_Saida" ColumnName="Hora_Saida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="AgendaONModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

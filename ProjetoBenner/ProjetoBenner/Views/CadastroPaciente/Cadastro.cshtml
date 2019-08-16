@@ -1,0 +1,226 @@
+﻿@model ProjetoBenner.Models.Pessoa
+@{
+    Layout = null;
+}
+
+<!DOCTYPE Html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.1">
+    <title>Cadastro de Paciente</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/CadastroPessoa.css">
+
+    <!-- Adicionando JQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+
+    <!-- Adicionando Javascript -->
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            function limpa_formulário_cep() {
+                // Limpa valores do formulário de cep.
+                $("#rua").val("");
+                $("#bairro").val("");
+                $("#cidade").val("");
+                $("#uf").val("");
+                $("#ibge").val("");
+            }
+
+            //Quando o campo cep perde o foco.
+            $("#cep").blur(function () {
+
+                //Nova variável "cep" somente com dígitos.
+                var cep = $(this).val().replace(/\D/g, '');
+
+                //Verifica se campo cep possui valor informado.
+                if (cep != "") {
+
+                    //Expressão regular para validar o CEP.
+                    var validacep = /^[0-9]{8}$/;
+
+                    //Valida o formato do CEP.
+                    if (validacep.test(cep)) {
+
+                        //Preenche os campos com "..." enquanto consulta webservice.
+                        $("#rua").val("...");
+                        $("#bairro").val("...");
+                        $("#cidade").val("...");
+                        $("#uf").val("...");
+                        $("#ibge").val("...");
+
+                        //Consulta o webservice viacep.com.br/
+                        $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
+
+                            if (!("erro" in dados)) {
+                                //Atualiza os campos com os valores da consulta.
+                                $("#rua").val(dados.logradouro);
+                                $("#bairro").val(dados.bairro);
+                                $("#cidade").val(dados.localidade);
+                                $("#uf").val(dados.uf);
+                            } //end if.
+                            else {
+                                //CEP pesquisado não foi encontrado.
+                                limpa_formulário_cep();
+                                alert("CEP não encontrado.");
+                            }
+                        });
+                    } //end if.
+                    else {
+                        //cep é inválido.
+                        limpa_formulário_cep();
+                        alert("Formato de CEP inválido.");
+                    }
+                } //end if.
+                else {
+                    //cep sem valor, limpa formulário.
+                    limpa_formulário_cep();
+                }
+            });
+        });
+
+    </script>
+
+</head>
+<body>
+    <div class="form-container">
+        <div class="page-header">
+            <h1>Cadastro de Paciente</h1>
+        </div>
+        @using (Html.BeginForm("CadastrarPaciente", "CadastroPaciente"))
+        {
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4>Preencha com suas informaçoes pessoais</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", placeholder = "Nome Completo" } })
+                            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class=" = row">
+                        <div class="form-group col-md-4">
+                            @Html.LabelFor(model => model.CPF, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @class = "form-control", placeholder = "CPF" } })
+                            @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-md-4">
+                            @Html.LabelFor(model => model.RG, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.RG, new { htmlAttributes = new { @class = "form-control", placeholder = "RG" } })
+                            @Html.ValidationMessageFor(model => model.RG, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-md-2">
+                            @Html.LabelFor(model => model.Data_Nascimento, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.Data_Nascimento, new { htmlAttributes = new { @class = "form-control", type = "date", placeholder = "___/___/____" } })
+                            @Html.ValidationMessageFor(model => model.Data_Nascimento, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for=" " class="control-label">Sexo</label>
+                            <div>
+                                <label class="radio-inline">
+                                    @Html.RadioButtonFor(model => model.Sexo, "M")
+                                    Masculino
+                                </label>
+                                <label class="radio-inline">
+                                    @Html.RadioButtonFor(model => model.Sexo, "F")
+                                    Femino
+                                </label>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Sexo, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-md-4">
+                            @Html.LabelFor(model => model.Estado_Civil, htmlAttributes: new { @class = "control-label" })
+                            @Html.DropDownListFor(model => model.Estado_Civil, (SelectList)ViewBag.EstadoCivil, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            @Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control", placeholder = "Telefone" } })
+                        </div>
+                        <div class="form-group col-md-4">
+                            @Html.LabelFor(model => model.Celular, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.Celular, new { htmlAttributes = new { @class = "form-control ", placeholder = "Celular" } })
+                            @Html.ValidationMessageFor(model => model.Celular, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", type = "email", placeholder = "email" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            @Html.LabelFor(model => model.Acesso.Password, htmlAttributes: new { @class = "control-label" })
+                            @Html.PasswordFor(model => model.Acesso.Password,  new { @class = "form-control", placeholder = "senha", type="password" })
+                        </div>
+                    </div>
+                    <h4><b>Endereço</b></h4>
+                        <hr />
+                        <form method="get" action=".">
+                            <div class="row">
+                                    <div class="form-group col-md-4">
+                                        @Html.Label("CEP", htmlAttributes: new { @class = "control-label" })
+                                        @Html.Editor("CEP", new { htmlAttributes = new { @class = "form-control", placeholder = "CEP", id = "cep" } })
+                                    </div>
+                                </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.Endereco.Endereco1, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Endereco.Endereco1, new { htmlAttributes = new { @class = "form-control", type = "adress", placeholder = "Endereço", id = "rua" } })
+                                    @Html.ValidationMessageFor(model => model.Endereco.Endereco1, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group col-md-3">
+                                    @Html.LabelFor(model => model.Endereco.Numero, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Endereco.Numero, new { htmlAttributes = new { @class = "form-control", placeholder = "Nº" } })
+                                </div>
+                                <div class="form-group col-md-3">
+                                    @Html.LabelFor(model => model.Endereco.Complemento, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Endereco.Complemento, new { htmlAttributes = new { @class = "form-control", placeholder = "Complemento" } })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-5">
+                                    @Html.LabelFor(model => model.Endereco.Bairro, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Endereco.Bairro, new { htmlAttributes = new { @class = "form-control", placeholder = "Bairro", id = "bairro" } })
+                                    @Html.ValidationMessageFor(model => model.Endereco.Bairro, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group col-md-5">
+                                    @Html.LabelFor(model => model.Endereco.Cidade.Cidade1, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Endereco.Cidade.Cidade1, new { htmlAttributes = new { @class = "form-control", placeholder = "Cidade", id = "cidade" } })
+                                    @Html.ValidationMessageFor(model => model.Endereco.Cidade.Cidade1, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group col-md-2">
+                                    @Html.LabelFor(model => model.Endereco.Cidade.Estado.UF, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.Endereco.Cidade.Estado.UF, new { htmlAttributes = new { @class = "form-control", placeholder = "uf", id = "uf" } })
+                                    @Html.ValidationMessageFor(model => model.Endereco.Cidade.Estado.UF, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </form>
+                </div>
+                <div class="panel-footer">
+                    <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                </div>
+            </div>
+        }
+    </div>
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/jquery.mask.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/validacao_ptbr.js"></script>
+    <script src="~/Scripts/mascaras.js"></script>
+
+</body>
+</html>

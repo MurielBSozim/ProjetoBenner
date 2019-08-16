@@ -1,0 +1,61 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="pt">
+<head>
+    <meta charset="utf-8" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="http://fonts.googleapis.com/css?family=Arimo:400" rel="stylesheet">
+    <title>AgendaON</title>
+    <link href="~/Content/Inicio/Estilo_pagina.css" rel="stylesheet" />
+    <link href="~/Content/Inicio/Estilo_Menu.css" rel="stylesheet" />
+    <link href="~/Content/Inicio/Estilo_Conteudo.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <section class="wrapper fixed-top">
+        <div class="overlays"></div> <!--Mascara da Imagem -->
+        <div class="container h-100">
+            <div class="menu">
+                <nav class="navigation">
+                    <ul style="margin-top:25px; padding-left:35%">
+                        <li>
+                            <a href="@Url.Action("Index", "Home")" class="elements">
+                                <span>Home</span>
+                            </a>
+                        </li>
+                        <li>
+
+                            <a href="@Url.Action("AboutUs", "Home")" class="elements">
+                                <span>Sobre Nos</span>
+                            </a>
+                        </li>
+                        <li class="last">
+                            <a href="@Url.Action("Contact", "Home")" class="elements">
+                                <span>Contato</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-12">
+                <div class="text-center">
+                    <h1 class="mt-5">AgendaON</h1>
+                    <p class="frase"> Nunca foi tão fácil marcar sua consulta!</p>
+                    <a href="@Url.Action("Index", "Login")">
+                        <button class="btn btn-success btn-outline  mt-5" style="color: #fff; background-color: #121312; border-color: #0c0c0c">Login</button>
+                    </a>
+                    <a href="@Url.Action("Cadastro", "CadastroPaciente")"><button class="btn btn-outline-primary  mt-5">Registrar</button></a>
+                </div>
+            </div>
+    </section>
+</body>
+</html>

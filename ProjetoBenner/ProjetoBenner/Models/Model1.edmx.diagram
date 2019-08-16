@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0e1cd782241941de9676bf91313b8070" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="AgendaONModel.Acesso" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgendaONModel.Agenda" Width="1.5" PointX="15" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgendaONModel.Agendado" Width="1.5" PointX="9.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgendaONModel.Cidade" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgendaONModel.Consulta" Width="1.5" PointX="12.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgendaONModel.Endereco" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgendaONModel.Especialidade" Width="1.5" PointX="15" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgendaONModel.Estado" Width="1.5" PointX="0.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgendaONModel.Horario_Medico" Width="1.5" PointX="9.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgendaONModel.Local" Width="1.5" PointX="7.5" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgendaONModel.Medico" Width="1.5" PointX="12.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgendaONModel.Pessoa" Width="1.5" PointX="7.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgendaONModel.Pre_Consulta" Width="1.5" PointX="15.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgendaONModel.Sala_Espera" Width="1.5" PointX="18" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgendaONModel.Secretaria" Width="1.5" PointX="9.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgendaONModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="AgendaONModel.FK_Pessoa" ManuallyRouted="false" />
+        <AssociationConnector Association="AgendaONModel.FK_Agenda" ManuallyRouted="false" />
+        <AssociationConnector Association="AgendaONModel.FK_Agendado" ManuallyRouted="false" />
+        <AssociationConnector Association="AgendaONModel.FK_Agendado_1" ManuallyRouted="false" />
+        <AssociationConnector Association="AgendaONModel.FK_Agendado_2" ManuallyRouted="false" />
+        <AssociationConnector Association="AgendaONModel.FK_Agendado_3" ManuallyRouted="false" />
+        <AssociationConnector Association="AgendaONModel.FK_Agendado_5" ManuallyRouted="false" />
+        <AssociationConnector Association="AgendaONModel.FK_Cidade" ManuallyRouted="false" />
+        <AssociationConnector Association="AgendaONModel.FK_Endereco" ManuallyRouted="false" />
+        <AssociationConnector Association="AgendaONModel.FK_Consulta" ManuallyRouted="false" />
+        <AssociationConnector Association="AgendaONModel.FK_Consulta_1" ManuallyRouted="false" />
+        <AssociationConnector Association="AgendaONModel.FK_Consulta_2" ManuallyRouted="false" />
+        <AssociationConnector Association="AgendaONModel.FK_Consulta_3" ManuallyRouted="false" />
+        <AssociationConnector Association="AgendaONModel.FK_Local" ManuallyRouted="false" />
+        <AssociationConnector Association="AgendaONModel.FK_Pessoa_1" ManuallyRouted="false" />
+        <AssociationConnector Association="AgendaONModel.FK_Especialidade" ManuallyRouted="false" />
+        <AssociationConnector Association="AgendaONModel.FK_Medico_1" ManuallyRouted="false" />
+        <AssociationConnector Association="AgendaONModel.FK_Horario_Medico" ManuallyRouted="false" />
+        <AssociationConnector Association="AgendaONModel.FK_Horario_Medico_1" ManuallyRouted="false" />
+        <AssociationConnector Association="AgendaONModel.FK_Medico" ManuallyRouted="false" />
+        <AssociationConnector Association="AgendaONModel.FK_Sala_Espera_1" ManuallyRouted="false" />
+        <AssociationConnector Association="AgendaONModel.FK_Sala_Espera" ManuallyRouted="false" />
+        <AssociationConnector Association="AgendaONModel.FK_Secretaria" ManuallyRouted="false" />
+        <AssociationConnector Association="AgendaONModel.FK_Sala_Espera_2" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

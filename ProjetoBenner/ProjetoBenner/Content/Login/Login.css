@@ -1,0 +1,160 @@
+﻿@charset "utf-8";
+
+
+
+div.main {
+    background: #0264d6; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, #0264d6 1%, #1c2b5a 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(1%,#0264d6), color-stop(100%,#1c2b5a)); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover, #0264d6 1%,#1c2b5a 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover, #0264d6 1%,#1c2b5a 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover, #0264d6 1%,#1c2b5a 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center, #0264d6 1%,#1c2b5a 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0264d6', endColorstr='#1c2b5a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    height: calc(100vh);
+    width: 100%;
+}
+
+[class*="fontawesome-"]:before {
+    font-family: 'FontAwesome', sans-serif;
+}
+
+
+
+* {
+    box-sizing: border-box;
+    margin: 0px auto;
+    &:before, &:after
+
+{
+    box-sizing: border-box;
+}
+
+}
+
+body {
+    color: #606468;
+    font: 87.5%/1.5em 'Open Sans', sans-serif;
+    margin: 0;
+}
+
+a {
+    color: #eee;
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+.middle {
+    display: flex;
+    width: 600px;
+}
+input {
+    border: none;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5em;
+    padding: 0;
+    -webkit-appearance: none;
+}
+
+p {
+    line-height: 1.5em;
+}
+
+#login {
+    padding: 0px 20px;
+
+    float: left;
+    
+}
+
+
+
+.logo {
+    border-left: 2px groove #fff;
+    padding-left: 10px;
+    color: #fff;
+    font-size: 50px;
+    line-height: 125px;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    float: right;
+}
+
+
+
+
+.texto {
+    text-align: center;
+    color: white;
+    font-size: 60px;
+    opacity: 0.45;
+    text-shadow: 10px 10px 15px rgba(0,0,0,0.5);
+    margin-bottom: 5px;
+}
+
+
+
+
+fieldset {
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+.field-validation-error {
+    color: red;
+}
+
+#email{
+    color:white;
+}
+
+#senha{
+   color:white;
+}
+
+.container{}
+
+.botao {
+    background: black;
+    color: white;
+    text-align: right;
+    display: inline-block;
+    border-color: black;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    font-weight: bold;
+    /* margin-bottom: 2em; */
+    text-transform: uppercase;
+    float: right;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    float: left;
+}
+
+.container {
+    width: 600px;
+    height: 300px;
+    left: 50%;
+    padding-right: 30px;
+    padding-left: 30px;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    margin-top: 25%;
+}
