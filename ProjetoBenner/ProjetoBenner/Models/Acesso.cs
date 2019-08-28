@@ -11,7 +11,6 @@ namespace ProjetoBenner.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
     public partial class Acesso
@@ -23,15 +22,10 @@ namespace ProjetoBenner.Models
         }
     
         public int Codigo_Acesso { get; set; }
-
-
-        //[Required(ErrorMessage = "Campo Necessário")]
         public string Email { get; set; }
 
-
-        //[Required(ErrorMessage = "Campo Necessário")]
-        //[Display(Name = "Senha")]
-        //[DataType(DataType.Password)]
+        [Display(Name = "Senha")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
         public string Tipo { get; set; }
     

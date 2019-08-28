@@ -11,11 +11,18 @@ namespace ProjetoBenner.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Especialidade
     {
+
+        [Display(Name = "Codigo Especialidade")]
         public int Codigo_Especialidade { get; set; }
+
+        [Display(Name = "Codigo Medico")]
         public Nullable<int> Codigo_Medico { get; set; }
+
+        [Display(Name = "Especialidade")]
         public string Especialidade1 { get; set; }
     
         public virtual Medico Medico { get; set; }

@@ -12,7 +12,6 @@ namespace ProjetoBenner.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-  
 
     public partial class Pessoa
     {
@@ -25,35 +24,29 @@ namespace ProjetoBenner.Models
             this.Sala_Espera = new HashSet<Sala_Espera>();
             this.Secretaria = new HashSet<Secretaria>();
         }
-    
+
+        [Display(Name = "Codigo Pessoa")]
         public int Codigo_Pessoa { get; set; }
+
+        [Display(Name = "Codigo Acesso")]
         public Nullable<int> Codigo_Acesso { get; set; }
+
+        [Display(Name = "Codigo Endereço")]
         public Nullable<int> Codigo_Endereco { get; set; }
 
-        
+        [Required(ErrorMessage = "Campo Necessário")]
         public string Nome { get; set; }
-
-        
         public string CPF { get; set; }
-
-        
         public string RG { get; set; }
 
         [Display(Name = "Data de Nascimento")]
-        
         public Nullable<System.DateTime> Data_Nascimento { get; set; }
 
         [Display(Name = "Estado Civil")]
         public string Estado_Civil { get; set; }
         public string Telefone { get; set; }
-
-        
         public string Celular { get; set; }
-
-       
         public string Email { get; set; }
-
-       
         public string Sexo { get; set; }
     
         public virtual Acesso Acesso { get; set; }

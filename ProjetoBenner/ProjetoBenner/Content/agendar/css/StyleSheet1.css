@@ -1,0 +1,253 @@
+﻿/*--reset--*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, dl, dt, dd, ol, nav ul, nav li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+ol, ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+    blockquote:before, blockquote:after, q:before, q:after {
+        content: '';
+        content: none;
+    }
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/*--start editing from here--*/
+a {
+    text-decoration: none;
+}
+
+.txt-rt {
+    text-align: right;
+}
+/* text align right */
+.txt-lt {
+    text-align: left;
+}
+/* text align left */
+.txt-center {
+    text-align: center;
+}
+/* text align center */
+.float-rt {
+    float: right;
+}
+/* float right */
+.float-lt {
+    float: left;
+}
+/* float left */
+.clear {
+    clear: both;
+}
+/* clear float */
+.pos-relative {
+    position: relative;
+}
+/* Position Relative */
+.pos-absolute {
+    position: absolute;
+}
+/* Position Absolute */
+.vertical-base {
+    vertical-align: baseline;
+}
+/* vertical align baseline */
+.vertical-top {
+    vertical-align: top;
+}
+/* vertical align top */
+nav.vertical ul li {
+    display: block;
+}
+/* vertical menu */
+nav.horizontal ul li {
+    display: inline-block;
+}
+/* horizontal menu */
+img {
+    max-width: 100%;
+}
+/*--end reset--*/
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 100%;
+    background: url(b1.jpg)no-repeat center top;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    min-height: 747px;
+    background-attachment: fixed;
+}
+
+h1 {
+    font-family: 'FontAwesome', sans-serif;
+    font-size: 43px;
+    color: #fff;
+    margin: 1.1em 0;
+    text-align: center;
+    text-shadow: 0 0 10px black;
+}
+
+.bg-agile {
+    width: 65%;
+    margin: 0 auto;
+}
+
+.book-appointment {
+    background: rgba(1, 38, 64, 0.68);
+    padding: 50px 30px;
+}
+
+    .book-appointment input[type="text"], .book-appointment input[type="date"], .book-appointment input[type="time"], .book-appointment input[type="email"], textarea {
+        width: 85%;
+        color: #fff;
+        outline: none;
+        font-size: 0.9em;
+        line-height: 25px;
+        padding: 5px 10px;
+        border: none;
+        border-bottom: 2px solid #0b6fb2;
+        -webkit-appearance: none;
+        margin: .3em 0em 1em;
+        font-family: 'Roboto', sans-serif;
+        background: rgba(127, 178, 212, 0.31);
+    }
+
+textarea {
+    resize: none;
+    height: 25px
+}
+
+.book-appointment select.form-control {
+    outline: none;
+    font-size: 0.9em;
+    padding: 7px 10px;
+    width: 89.5%;
+    margin: 5px 0px 16px;
+    border-radius: 0;
+    background: rgba(127, 178, 212, 0.31);
+    color: #fff;
+    border: none;
+    border-bottom: 2px solid #0b6fb2;
+    font-family: 'Roboto', sans-serif;
+}
+
+    .book-appointment select.form-control option {
+        background: #111;
+    }
+
+input[type=submit] {
+    display: block;
+    color: #fff;
+    margin: 0 auto;
+    margin-top: 2em;
+    padding: 9px 30px;
+    font-size: 1.04em;
+    cursor: pointer;
+    border: 2px solid #ff9900;
+    outline: none;
+    background: #ff9900;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    transition: 0.5s all ease;
+    -webkit-transition: 0.5s all ease;
+    -moz-transition: 0.5s all ease;
+    -o-transition: 0.5s all ease;
+    -ms-transition: 0.5s all ease;
+}
+
+    input[type=submit]:hover {
+        background: #023e99;
+        border-color: #023e99;
+        color: #fefefe;
+        transition: 0.5s all ease;
+        -webkit-transition: 0.5s all ease;
+        -moz-transition: 0.5s all ease;
+        -o-transition: 0.5s all ease;
+        -ms-transition: 0.5s all ease;
+    }
+
+.arrows-reserve {
+    position: relative;
+    color: #EFA52C;
+    font-size: 2em;
+}
+
+    .arrows-reserve:before {
+        content: '';
+        position: absolute;
+        bottom: 43%;
+        left: 35.5%;
+        background: #fff;
+        width: 11%;
+        height: 3px;
+    }
+
+    .arrows-reserve:after {
+        content: '';
+        position: absolute;
+        bottom: 43%;
+        right: 35.5%;
+        background: #fff;
+        width: 11%;
+        height: 3px;
+    }
+
+.left-agileits-w3layouts {
+    width: 49%;
+    float: left;
+}
+
+.right-agileinfo {
+    width: 49%;
+    float: left;
+}
+
+.book-appointment p {
+    color: #d6eefe;
+    font-size: 17px;
+    letter-spacing: .5px;
+    text-transform: capitalize;
+}
+
+.same {
+    padding: 0px 4px;
+}
+
+.gaps {
+    padding-left: 3em;
+}
+
+p.wickedpicker__title {
+    font-family: 'Roboto', sans-serif;
+    background: #0b6fb2;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+.wickedpicker__close {
+    color: #fefefe;
+}

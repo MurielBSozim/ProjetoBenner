@@ -21,10 +21,9 @@ namespace ProjetoBenner.Models
             this.Cidade = new HashSet<Cidade>();
             this.Medico = new HashSet<Medico>();
         }
-    
-        public int Codigo_Estado { get; set; }
 
-        
+        [Display(Name = "Codigo Estado")]
+        public int Codigo_Estado { get; set; }
         public string UF { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

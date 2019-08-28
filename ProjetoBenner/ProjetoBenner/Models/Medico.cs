@@ -11,7 +11,8 @@ namespace ProjetoBenner.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Medico
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,10 +25,17 @@ namespace ProjetoBenner.Models
             this.Horario_Medico = new HashSet<Horario_Medico>();
             this.Sala_Espera = new HashSet<Sala_Espera>();
         }
-    
+
+        [Display(Name = "Codigo Medico")]
         public int Codigo_Medico { get; set; }
+
+        [Display(Name = "Codigo Pessoa")]
         public Nullable<int> Codigo_Pessoa { get; set; }
+
+        [Display(Name = "Codigo Estado")]
         public Nullable<int> Codigo_Estado { get; set; }
+
+        [Display(Name = "Data de Admissão")]
         public Nullable<System.DateTime> Data_Admissao { get; set; }
         public Nullable<int> CRM { get; set; }
     

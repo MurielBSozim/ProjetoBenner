@@ -1,0 +1,91 @@
+﻿@model IEnumerable<ProjetoBenner.Models.Pessoa>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data_Nascimento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado_Civil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Celular)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Acesso.Email)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Endereco.Endereco1)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data_Nascimento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado_Civil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Celular)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sexo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Acesso.Email)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Endereco.Endereco1)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Codigo_Pessoa }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Codigo_Pessoa }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Codigo_Pessoa })
+        </td>
+    </tr>
+}
+
+</table>

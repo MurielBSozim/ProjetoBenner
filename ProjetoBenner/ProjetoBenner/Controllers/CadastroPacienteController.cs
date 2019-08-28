@@ -31,22 +31,18 @@ namespace ProjetoBenner.Controllers
 
         public ActionResult CadastrarPaciente(Pessoa pessoa)
         {
-            if (ModelState.IsValid)
-            {
-                pessoa.Acesso.Email = pessoa.Email;
-                pessoa.Acesso.Tipo = "Paciente";
-                db.Pessoa.Add(pessoa);
-                db.SaveChanges();
-                return View("Sucesso");
-            }
-            else
+            if (!ModelState.IsValid)
             {
                 ViewBag.EstadoCivil = new SelectList(estadocivil, "Sigla", "Nome");
                 return View("Cadastro", pessoa);
             }
+            pessoa.Acesso.Email = pessoa.Email;
+            pessoa.Acesso.Tipo = "Paciente";
+            db.Pessoa.Add(pessoa);
+            db.SaveChanges();
             
+            return View("Sucesso");
 
-            
         }
 
         public ActionResult Sucesso()

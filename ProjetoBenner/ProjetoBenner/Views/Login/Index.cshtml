@@ -31,41 +31,39 @@
 
                             @using (Html.BeginForm("Autherize", "Login", FormMethod.Post))
                             {
-                                <table>
-                                    <tr id="email">
-                                        <td>@Html.LabelFor(Model => Model.Email)</td>
-                                        <td>@Html.EditorFor(Model => Model.Email)</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>@Html.ValidationMessageFor(Model => Model.Email)</td>
-                                    </tr>
 
-                                    <tr id="senha">
-                                        <td>@Html.LabelFor(Model => Model.Password)</td>
-                                        <td>@Html.EditorFor(Model => Model.Password)</td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>@Html.ValidationMessageFor(Model => Model.Password)</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">
-                                            <label class="field-validation-error">@Html.DisplayFor(model => model.LoginErrorMessage)</label>
-                                        </td>
-                                    </tr>
 
-                                    <tr>
-                                        <td></td>
-                                        <td>
-                                    </tr>
+                            <div class="icon1">
+                                <span class="fa fa-user"></span>
+                                @Html.EditorFor(Model => Model.Email, new { @class = "form-control ", type = "email", placeholder = "Email Address", required = "" })
+                                
 
-                                </table>
+                            </div>
+
+                                <div>
+                                    @Html.ValidationMessageFor(Model => Model.Email)
+                                </div>
+
+                                <div class="icon1">
+                                    <span class="fa fa-lock"></span>
+                                    @Html.EditorFor(Model => Model.Password, new { @class = "form-control ", type = "password", placeholder = "Password", required = "" })
+                                    
+
+                                </div>
+
+                                <div>
+                                    @Html.ValidationMessageFor(Model => Model.Password)
+                                </div>
+
+                                <div colspan="2">
+                                    <label class="field-validation-error">@Html.DisplayFor(model => model.LoginErrorMessage)</label>
+                                </div>
+
                                 <input class="botao" type="submit" name="name" value="Login" />
                             }
                             <div>
                                 <span style="width:48%; text-align:left;  display: inline-block;">
-                                    <a class="small-text" href="#">
+                                    <a class="small-text" href="@Url.Action("ForgotPassword")">
                                         Esqueceu a Senha?
                                     </a>
 
@@ -94,3 +92,4 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>
+

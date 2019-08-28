@@ -20,7 +20,7 @@
         <EntityTypeShape EntityType="AgendaONModel.Pre_Consulta" Width="1.5" PointX="15.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AgendaONModel.Sala_Espera" Width="1.5" PointX="18" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="AgendaONModel.Secretaria" Width="1.5" PointX="9.75" PointY="16.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="AgendaONModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgendaONModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="AgendaONModel.FK_Pessoa" ManuallyRouted="false" />
         <AssociationConnector Association="AgendaONModel.FK_Agenda" ManuallyRouted="false" />
         <AssociationConnector Association="AgendaONModel.FK_Agendado" ManuallyRouted="false" />

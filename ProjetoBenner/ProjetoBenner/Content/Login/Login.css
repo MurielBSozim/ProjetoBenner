@@ -47,6 +47,7 @@ a {
         text-decoration: underline;
     }
 
+
 .middle {
     display: flex;
     width: 600px;
@@ -69,6 +70,12 @@ p {
 
     float: left;
     
+}
+
+.icon1 {
+    margin: 0 0 1em;
+    padding: .8em 1em;
+    background: rgba(255, 255, 255, 0.94);
 }
 
 
@@ -108,6 +115,49 @@ fieldset {
     color: red;
 }
 
+
+.icon1 {
+    margin: 0 0 1em;
+    padding: .8em 1em;
+    background: white;
+}
+
+    .icon1 span.fa {
+        color: #222;
+        width: 22px;
+    }
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.header-left-bottom input[type="email"] {
+    outline: none;
+    font-size: 15px;
+    color: #222;
+    border: none;
+    width: 90%;
+    display: inline-block;
+    background: transparent;
+    letter-spacing: 1px;
+}
+
+.header-left-bottom input[type="password"] {
+    outline: none;
+    font-size: 15px;
+    color: #222;
+    border: none;
+    width: 90%;
+    display: inline-block;
+    background: transparent;
+    letter-spacing: 1px;
+}
+
 #email{
     color:white;
 }
@@ -121,7 +171,9 @@ fieldset {
 .botao {
     background: black;
     color: white;
-    text-align: right;
+    width: 80px;
+    height: 30px;
+    text-align: center;
     display: inline-block;
     border-color: black;
     border-bottom-left-radius: 5px;
@@ -145,10 +197,10 @@ a {
 
 .container {
     width: 600px;
-    height: 300px;
+    height: 310px;
     left: 50%;
-    padding-right: 30px;
-    padding-left: 30px;
+    padding-right: 25px;
+    padding-left: 25px;
     position: fixed;
     transform: translate(-50%, -50%);
     border-top-left-radius: 10px;
@@ -156,5 +208,5 @@ a {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    margin-top: 25%;
+    margin-top: 23%;
 }

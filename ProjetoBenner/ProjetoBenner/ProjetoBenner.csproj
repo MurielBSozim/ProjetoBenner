@@ -1,4 +1,5 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -23,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.4</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -96,16 +98,125 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\agendar\css\b1.jpg" />
+    <Content Include="Content\agendar\css\c-arrows.png" />
+    <Content Include="Content\agendar\css\font-awesome.css" />
+    <Content Include="Content\agendar\css\jquery-ui.css" />
+    <Content Include="Content\agendar\css\style.css" />
+    <Content Include="Content\agendar\css\StyleSheet1.css" />
+    <Content Include="Content\agendar\css\wickedpicker.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CadastroPessoa.css" />
+    <Content Include="Content\calendario.css" />
+    <Content Include="Content\core\LICENSE.txt" />
+    <Content Include="Content\core\locales-all.js" />
+    <Content Include="Content\core\locales-all.min.js" />
+    <Content Include="Content\core\locales\af.js" />
+    <Content Include="Content\core\locales\ar-dz.js" />
+    <Content Include="Content\core\locales\ar-kw.js" />
+    <Content Include="Content\core\locales\ar-ly.js" />
+    <Content Include="Content\core\locales\ar-ma.js" />
+    <Content Include="Content\core\locales\ar-sa.js" />
+    <Content Include="Content\core\locales\ar-tn.js" />
+    <Content Include="Content\core\locales\ar.js" />
+    <Content Include="Content\core\locales\bg.js" />
+    <Content Include="Content\core\locales\bs.js" />
+    <Content Include="Content\core\locales\ca.js" />
+    <Content Include="Content\core\locales\cs.js" />
+    <Content Include="Content\core\locales\da.js" />
+    <Content Include="Content\core\locales\de.js" />
+    <Content Include="Content\core\locales\el.js" />
+    <Content Include="Content\core\locales\en-au.js" />
+    <Content Include="Content\core\locales\en-gb.js" />
+    <Content Include="Content\core\locales\en-nz.js" />
+    <Content Include="Content\core\locales\es-us.js" />
+    <Content Include="Content\core\locales\es.js" />
+    <Content Include="Content\core\locales\et.js" />
+    <Content Include="Content\core\locales\eu.js" />
+    <Content Include="Content\core\locales\fa.js" />
+    <Content Include="Content\core\locales\fi.js" />
+    <Content Include="Content\core\locales\fr-ca.js" />
+    <Content Include="Content\core\locales\fr-ch.js" />
+    <Content Include="Content\core\locales\fr.js" />
+    <Content Include="Content\core\locales\gl.js" />
+    <Content Include="Content\core\locales\he.js" />
+    <Content Include="Content\core\locales\hi.js" />
+    <Content Include="Content\core\locales\hr.js" />
+    <Content Include="Content\core\locales\hu.js" />
+    <Content Include="Content\core\locales\id.js" />
+    <Content Include="Content\core\locales\is.js" />
+    <Content Include="Content\core\locales\it.js" />
+    <Content Include="Content\core\locales\ja.js" />
+    <Content Include="Content\core\locales\ka.js" />
+    <Content Include="Content\core\locales\kk.js" />
+    <Content Include="Content\core\locales\ko.js" />
+    <Content Include="Content\core\locales\lb.js" />
+    <Content Include="Content\core\locales\lt.js" />
+    <Content Include="Content\core\locales\lv.js" />
+    <Content Include="Content\core\locales\mk.js" />
+    <Content Include="Content\core\locales\ms.js" />
+    <Content Include="Content\core\locales\nb.js" />
+    <Content Include="Content\core\locales\nl.js" />
+    <Content Include="Content\core\locales\nn.js" />
+    <Content Include="Content\core\locales\pl.js" />
+    <Content Include="Content\core\locales\pt-br.js" />
+    <Content Include="Content\core\locales\pt.js" />
+    <Content Include="Content\core\locales\ro.js" />
+    <Content Include="Content\core\locales\ru.js" />
+    <Content Include="Content\core\locales\sk.js" />
+    <Content Include="Content\core\locales\sl.js" />
+    <Content Include="Content\core\locales\sq.js" />
+    <Content Include="Content\core\locales\sr-cyrl.js" />
+    <Content Include="Content\core\locales\sr.js" />
+    <Content Include="Content\core\locales\sv.js" />
+    <Content Include="Content\core\locales\th.js" />
+    <Content Include="Content\core\locales\tr.js" />
+    <Content Include="Content\core\locales\uk.js" />
+    <Content Include="Content\core\locales\vi.js" />
+    <Content Include="Content\core\locales\zh-cn.js" />
+    <Content Include="Content\core\locales\zh-tw.js" />
+    <Content Include="Content\core\main.css" />
+    <Content Include="Content\core\main.esm.js" />
+    <Content Include="Content\core\main.js" />
+    <Content Include="Content\core\main.min.css" />
+    <Content Include="Content\core\main.min.js" />
+    <Content Include="Content\css\animate.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\graph.css" />
+    <Content Include="Content\css\icon-font.min.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\daygrid\LICENSE.txt" />
+    <Content Include="Content\daygrid\main.css" />
+    <Content Include="Content\daygrid\main.esm.js" />
+    <Content Include="Content\daygrid\main.js" />
+    <Content Include="Content\daygrid\main.min.css" />
+    <Content Include="Content\daygrid\main.min.js" />
+    <Content Include="Content\fullcalendar.css" />
+    <Content Include="Content\fullcalendar.print.css" />
     <Content Include="Content\Inicio\Estilo_Conteudo.css" />
     <Content Include="Content\Inicio\Estilo_Menu.css" />
     <Content Include="Content\Inicio\Estilo_pagina.css" />
+    <Content Include="Content\list\LICENSE.txt" />
+    <Content Include="Content\list\main.css" />
+    <Content Include="Content\list\main.esm.js" />
+    <Content Include="Content\list\main.js" />
+    <Content Include="Content\list\main.min.css" />
+    <Content Include="Content\list\main.min.js" />
+    <Content Include="Content\Login\ForgotPassword.css" />
     <Content Include="Content\Login\Login.css" />
+    <Content Include="Content\menu.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\teste.css" />
+    <Content Include="Content\timegrid\LICENSE.txt" />
+    <Content Include="Content\timegrid\main.css" />
+    <Content Include="Content\timegrid\main.esm.js" />
+    <Content Include="Content\timegrid\main.js" />
+    <Content Include="Content\timegrid\main.min.css" />
+    <Content Include="Content\timegrid\main.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -123,6 +234,14 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\core\package.json" />
+    <Content Include="Content\core\README.md" />
+    <Content Include="Content\daygrid\package.json" />
+    <Content Include="Content\daygrid\README.md" />
+    <Content Include="Content\timegrid\package.json" />
+    <Content Include="Content\timegrid\README.md" />
+    <Content Include="Content\list\package.json" />
+    <Content Include="Content\list\README.md" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -136,8 +255,11 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\fullcalendar.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -151,6 +273,7 @@
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-ui.custom.min.js" />
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.mask.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -158,10 +281,24 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\bootstrap.min.js" />
+    <Content Include="Scripts\js\Chart.js" />
+    <Content Include="Scripts\js\classie.js" />
+    <Content Include="Scripts\js\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\js\jquery.flexisel.js" />
+    <Content Include="Scripts\js\jquery.flot.min.js" />
+    <Content Include="Scripts\js\jquery.nicescroll.js" />
+    <Content Include="Scripts\js\scripts.js" />
+    <Content Include="Scripts\js\skycons.js" />
+    <Content Include="Scripts\js\uisearch.js" />
+    <Content Include="Scripts\js\wow.min.js" />
     <Content Include="Scripts\mascaras.js" />
+    <Content Include="Scripts\menu.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\validacao_ptbr.js" />
+    <Content Include="Scripts\wickedpicker.js" />
+    <Content Include="vendor\rrule.js" />
     <Content Include="Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -170,10 +307,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AcessoesController.cs" />
+    <Compile Include="Controllers\AgendarConsultaController.cs" />
+    <Compile Include="Controllers\CadastroLocalController.cs" />
+    <Compile Include="Controllers\CadastroMedicoController.cs" />
     <Compile Include="Controllers\CadastroPacienteController.cs" />
+    <Compile Include="Controllers\CadastroSecretariaController.cs" />
+    <Compile Include="Controllers\CidadesController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\EnderecoesController.cs" />
+    <Compile Include="Controllers\EstadoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PacienteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -252,6 +398,35 @@
     <Content Include="Views\Home\AboutUs.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Login\ForgotPassword.cshtml" />
+    <Content Include="Views\Paciente\Delete.cshtml" />
+    <Content Include="Views\Paciente\Details.cshtml" />
+    <Content Include="Views\Paciente\Edit.cshtml" />
+    <Content Include="Views\Paciente\Index.cshtml" />
+    <Content Include="Views\Enderecoes\Delete.cshtml" />
+    <Content Include="Views\Enderecoes\Edit.cshtml" />
+    <Content Include="Views\CadastroMedico\Index.cshtml" />
+    <Content Include="Views\CadastroMedico\Medico.cshtml" />
+    <Content Include="Views\Dashboard\ADM.cshtml" />
+    <Content Include="Views\Dashboard\Paciente.cshtml" />
+    <Content Include="Views\CadastroMedico\Sucesso.cshtml" />
+    <Content Include="Views\CadastroMedico\Especialidade.cshtml" />
+    <Content Include="Views\CadastroSecretaria\Index.cshtml" />
+    <Content Include="Views\CadastroSecretaria\Secretaria.cshtml" />
+    <Content Include="Views\Cidades\Delete.cshtml" />
+    <Content Include="Views\Cidades\Details.cshtml" />
+    <Content Include="Views\Cidades\Edit.cshtml" />
+    <Content Include="Views\Estadoes\Delete.cshtml" />
+    <Content Include="Views\Estadoes\Details.cshtml" />
+    <Content Include="Views\Estadoes\Edit.cshtml" />
+    <Content Include="Views\CadastroLocal\Index.cshtml" />
+    <Content Include="Views\CadastroLocal\Sucesso.cshtml" />
+    <Content Include="Views\Acessoes\Create.cshtml" />
+    <Content Include="Views\Acessoes\Delete.cshtml" />
+    <Content Include="Views\Acessoes\Details.cshtml" />
+    <Content Include="Views\Acessoes\Edit.cshtml" />
+    <Content Include="Views\Acessoes\Index.cshtml" />
+    <Content Include="Views\AgendarConsulta\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -261,15 +436,24 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\RoleProvider\" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Content\core\main.d.ts" />
+    <TypeScriptCompile Include="Content\daygrid\main.d.ts" />
+    <TypeScriptCompile Include="Content\list\main.d.ts" />
+    <TypeScriptCompile Include="Content\timegrid\main.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>

@@ -11,7 +11,8 @@ namespace ProjetoBenner.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Local
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,8 +22,11 @@ namespace ProjetoBenner.Models
             this.Consulta = new HashSet<Consulta>();
             this.Horario_Medico = new HashSet<Horario_Medico>();
         }
-    
+
+        [Display(Name = "Codigo Local")]
         public int Codigo_Local { get; set; }
+
+        [Display(Name = "Codigo Endereço")]
         public Nullable<int> Codigo_Endereco { get; set; }
         public string Nome { get; set; }
         public string Telefone { get; set; }

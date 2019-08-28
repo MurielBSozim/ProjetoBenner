@@ -11,13 +11,23 @@ namespace ProjetoBenner.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Secretaria
     {
+        [Display(Name = "Codigo Secretaria")]
         public int Codigo_Secretaria { get; set; }
+
+        [Display(Name = "Codigo Pessoa")]
         public Nullable<int> Codigo_Pessoa { get; set; }
+
+        [Display(Name = "Data de Admissão")]
         public Nullable<System.DateTime> Data_Admissao { get; set; }
+
+        [Display(Name = "Hora de Entrada")]
         public Nullable<System.TimeSpan> Hora_Entrada { get; set; }
+
+        [Display(Name = "Hora de Saída")]
         public Nullable<System.TimeSpan> Hora_Saida { get; set; }
     
         public virtual Pessoa Pessoa { get; set; }
