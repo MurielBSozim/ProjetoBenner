@@ -21,17 +21,19 @@ namespace ProjetoBenner.Models
             this.Local = new HashSet<Local>();
             this.Pessoa = new HashSet<Pessoa>();
         }
-
-        [Display(Name = "Codigo Endereço")]
+    
         public int Codigo_Endereco { get; set; }
-
-        [Display(Name = "Codigo Cidade")]
         public Nullable<int> Codigo_Cidade { get; set; }
+
+        [Required(ErrorMessage = "Campo Necessário.")]
 
         [Display(Name = "Logradouro")]
         public string Endereco1 { get; set; }
+
         public Nullable<int> Numero { get; set; }
         public string Complemento { get; set; }
+
+        [Required(ErrorMessage = "Campo Necessário.")]
         public string Bairro { get; set; }
     
         public virtual Cidade Cidade { get; set; }

@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AgendaONModelStoreContainer" CdmEntityContainer="AgendaONEntities3">
+    <EntitySetMapping Name="Acesso">
+      <EntityTypeMapping TypeName="AgendaONModel.Acesso">
+        <MappingFragment StoreEntitySet="Acesso">
+          <ScalarProperty Name="Codigo_Acesso" ColumnName="Codigo_Acesso" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Agenda">
+      <EntityTypeMapping TypeName="AgendaONModel.Agenda">
+        <MappingFragment StoreEntitySet="Agenda">
+          <ScalarProperty Name="Codigo_Agenda" ColumnName="Codigo_Agenda" />
+          <ScalarProperty Name="Codigo_Medico" ColumnName="Codigo_Medico" />
+          <ScalarProperty Name="Data_Agenda" ColumnName="Data_Agenda" />
+          <ScalarProperty Name="Hora_Agenda" ColumnName="Hora_Agenda" />
+          <ScalarProperty Name="Duracao_Consulta" ColumnName="Duracao_Consulta" />
+          <ScalarProperty Name="Horario_Livre" ColumnName="Horario_Livre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Agendado">
+      <EntityTypeMapping TypeName="AgendaONModel.Agendado">
+        <MappingFragment StoreEntitySet="Agendado">
+          <ScalarProperty Name="Codigo_Agendado" ColumnName="Codigo_Agendado" />
+          <ScalarProperty Name="Codigo_Agenda" ColumnName="Codigo_Agenda" />
+          <ScalarProperty Name="Codigo_Pessoa" ColumnName="Codigo_Pessoa" />
+          <ScalarProperty Name="Codigo_Medico" ColumnName="Codigo_Medico" />
+          <ScalarProperty Name="Codigo_Local" ColumnName="Codigo_Local" />
+          <ScalarProperty Name="Codigo_Pre_Consulta" ColumnName="Codigo_Pre_Consulta" />
+          <ScalarProperty Name="Data_Consulta" ColumnName="Data_Consulta" />
+          <ScalarProperty Name="Hora_Consulta" ColumnName="Hora_Consulta" />
+          <ScalarProperty Name="Consulta_Confirmada" ColumnName="Consulta_Confirmada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cidade">
+      <EntityTypeMapping TypeName="AgendaONModel.Cidade">
+        <MappingFragment StoreEntitySet="Cidade">
+          <ScalarProperty Name="Codigo_Cidade" ColumnName="Codigo_Cidade" />
+          <ScalarProperty Name="Codigo_Estado" ColumnName="Codigo_Estado" />
+          <ScalarProperty Name="Cidade1" ColumnName="Cidade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Consulta">
+      <EntityTypeMapping TypeName="AgendaONModel.Consulta">
+        <MappingFragment StoreEntitySet="Consulta">
+          <ScalarProperty Name="Codigo_Consulta" ColumnName="Codigo_Consulta" />
+          <ScalarProperty Name="Codigo_Pessoa" ColumnName="Codigo_Pessoa" />
+          <ScalarProperty Name="Codigo_Medico" ColumnName="Codigo_Medico" />
+          <ScalarProperty Name="Codigo_Pre_Consulta" ColumnName="Codigo_Pre_Consulta" />
+          <ScalarProperty Name="Codigo_Local" ColumnName="Codigo_Local" />
+          <ScalarProperty Name="Data_Consulta" ColumnName="Data_Consulta" />
+          <ScalarProperty Name="Hora_Consulta" ColumnName="Hora_Consulta" />
+          <ScalarProperty Name="Duracao_Consulta" ColumnName="Duracao_Consulta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Descricao_Especialidade">
+      <EntityTypeMapping TypeName="AgendaONModel.Descricao_Especialidade">
+        <MappingFragment StoreEntitySet="Descricao_Especialidade">
+          <ScalarProperty Name="Codigo_Especialidade" ColumnName="Codigo_Especialidade" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Endereco">
+      <EntityTypeMapping TypeName="AgendaONModel.Endereco">
+        <MappingFragment StoreEntitySet="Endereco">
+          <ScalarProperty Name="Codigo_Endereco" ColumnName="Codigo_Endereco" />
+          <ScalarProperty Name="Codigo_Cidade" ColumnName="Codigo_Cidade" />
+          <ScalarProperty Name="Endereco1" ColumnName="Endereco" />
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="Complemento" ColumnName="Complemento" />
+          <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estado">
+      <EntityTypeMapping TypeName="AgendaONModel.Estado">
+        <MappingFragment StoreEntitySet="Estado">
+          <ScalarProperty Name="Codigo_Estado" ColumnName="Codigo_Estado" />
+          <ScalarProperty Name="UF" ColumnName="UF" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Horario_Medico">
+      <EntityTypeMapping TypeName="AgendaONModel.Horario_Medico">
+        <MappingFragment StoreEntitySet="Horario_Medico">
+          <ScalarProperty Name="Codigo_Horario_Medico" ColumnName="Codigo_Horario_Medico" />
+          <ScalarProperty Name="Codigo_Medico" ColumnName="Codigo_Medico" />
+          <ScalarProperty Name="Codigo_Local" ColumnName="Codigo_Local" />
+          <ScalarProperty Name="Dia_Semana" ColumnName="Dia_Semana" />
+          <ScalarProperty Name="Hora_Entrada" ColumnName="Hora_Entrada" />
+          <ScalarProperty Name="Hora_Saida" ColumnName="Hora_Saida" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Local">
+      <EntityTypeMapping TypeName="AgendaONModel.Local">
+        <MappingFragment StoreEntitySet="Local">
+          <ScalarProperty Name="Codigo_Local" ColumnName="Codigo_Local" />
+          <ScalarProperty Name="Codigo_Endereco" ColumnName="Codigo_Endereco" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medico">
+      <EntityTypeMapping TypeName="AgendaONModel.Medico">
+        <MappingFragment StoreEntitySet="Medico">
+          <ScalarProperty Name="Codigo_Medico" ColumnName="Codigo_Medico" />
+          <ScalarProperty Name="Codigo_Pessoa" ColumnName="Codigo_Pessoa" />
+          <ScalarProperty Name="Codigo_Estado" ColumnName="Codigo_Estado" />
+          <ScalarProperty Name="Data_Admissao" ColumnName="Data_Admissao" />
+          <ScalarProperty Name="CRM" ColumnName="CRM" />
+          <ScalarProperty Name="Codigo_Especialidade" ColumnName="Codigo_Especialidade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pessoa">
+      <EntityTypeMapping TypeName="AgendaONModel.Pessoa">
+        <MappingFragment StoreEntitySet="Pessoa">
+          <ScalarProperty Name="Codigo_Pessoa" ColumnName="Codigo_Pessoa" />
+          <ScalarProperty Name="Codigo_Acesso" ColumnName="Codigo_Acesso" />
+          <ScalarProperty Name="Codigo_Endereco" ColumnName="Codigo_Endereco" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="CPF" ColumnName="CPF" />
+          <ScalarProperty Name="RG" ColumnName="RG" />
+          <ScalarProperty Name="Data_Nascimento" ColumnName="Data_Nascimento" />
+          <ScalarProperty Name="Estado_Civil" ColumnName="Estado_Civil" />
+          <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+          <ScalarProperty Name="Celular" ColumnName="Celular" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pre_Consulta">
+      <EntityTypeMapping TypeName="AgendaONModel.Pre_Consulta">
+        <MappingFragment StoreEntitySet="Pre_Consulta">
+          <ScalarProperty Name="Codigo_Pre_Consulta" ColumnName="Codigo_Pre_Consulta" />
+          <ScalarProperty Name="Sintomas" ColumnName="Sintomas" />
+          <ScalarProperty Name="Remedios_Tomando" ColumnName="Remedios_Tomando" />
+          <ScalarProperty Name="Diagnostico_Anterior" ColumnName="Diagnostico_Anterior" />
+          <ScalarProperty Name="Observacao" ColumnName="Observacao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sala_Espera">
+      <EntityTypeMapping TypeName="AgendaONModel.Sala_Espera">
+        <MappingFragment StoreEntitySet="Sala_Espera">
+          <ScalarProperty Name="Codigo_Sala_Espera" ColumnName="Codigo_Sala_Espera" />
+          <ScalarProperty Name="Codigo_Pessoa" ColumnName="Codigo_Pessoa" />
+          <ScalarProperty Name="Codigo_Medico" ColumnName="Codigo_Medico" />
+          <ScalarProperty Name="Codigo_Pre_Consulta" ColumnName="Codigo_Pre_Consulta" />
+          <ScalarProperty Name="Duracao_Consulta" ColumnName="Duracao_Consulta" />
+          <ScalarProperty Name="Hora_Chegada_Paciente" ColumnName="Hora_Chegada_Paciente" />
+          <ScalarProperty Name="Inicio_Consulta" ColumnName="Inicio_Consulta" />
+          <ScalarProperty Name="Fim_Consulta" ColumnName="Fim_Consulta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Secretaria">
+      <EntityTypeMapping TypeName="AgendaONModel.Secretaria">
+        <MappingFragment StoreEntitySet="Secretaria">
+          <ScalarProperty Name="Codigo_Secretaria" ColumnName="Codigo_Secretaria" />
+          <ScalarProperty Name="Codigo_Pessoa" ColumnName="Codigo_Pessoa" />
+          <ScalarProperty Name="Data_Admissao" ColumnName="Data_Admissao" />
+          <ScalarProperty Name="Hora_Entrada" ColumnName="Hora_Entrada" />
+          <ScalarProperty Name="Hora_Saida" ColumnName="Hora_Saida" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="AgendaONModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

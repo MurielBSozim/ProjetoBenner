@@ -6,6 +6,7 @@
 
 <h2>Index</h2>
 
+<p style="color:red; font-size:20px">*Pessoas com Consulta Agendada NÃO PODE SER DELETADA</p>
 
 <table class="table">
     <tr>
@@ -46,46 +47,46 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CPF)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RG)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Data_Nascimento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado_Civil)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Telefone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Celular)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sexo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Acesso.Email)
-        </td>
-        @*<td>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nome)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CPF)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RG)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Data_Nascimento)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Estado_Civil)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Telefone)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Celular)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Sexo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Acesso.Email)
+    </td>
+    @*<td>
             @Html.DisplayFor(modelItem => item.Endereco.Endereco1)
         </td>*@
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Codigo_Pessoa }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Codigo_Pessoa }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Codigo_Pessoa })
-        </td>
-    </tr>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Codigo_Pessoa }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Codigo_Pessoa }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Codigo_Pessoa })
+    </td>
+</tr>
 }
-
+    <a href="@Url.Action("ADM", "Dashboard")" >Home</a>
 </table>

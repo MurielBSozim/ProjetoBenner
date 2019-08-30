@@ -2,10 +2,18 @@
 
 @{
     ViewBag.Title = "Create";
-     if(Session["Tipo"].ToString() != "ADM")
+     if(Session["Codigo_Acesso"] == null)
     {
-         Response.Redirect("~/Login/Index");
+        Response.Redirect("~/Login/Index");
     }
+    if (Session["Codigo_Acesso"] != null)
+    {
+        if (Session["Tipo"].ToString() != "ADM")
+        {
+            Response.Redirect("~/Login/Index");
+        }
+    }
+
 }
 
 <h2>Create</h2>

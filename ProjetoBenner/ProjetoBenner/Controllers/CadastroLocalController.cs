@@ -9,7 +9,7 @@ namespace ProjetoBenner.Controllers
 {
     public class CadastroLocalController : Controller
     {
-        public AgendaONEntities db = new AgendaONEntities();
+        public AgendaONEntities3 db = new AgendaONEntities3();
         // GET: CadastroLocal
         public ActionResult Index()
         {

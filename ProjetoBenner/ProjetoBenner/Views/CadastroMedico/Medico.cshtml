@@ -1,10 +1,18 @@
 ﻿@model ProjetoBenner.Models.Medico
 @{
     Layout = null;
-     if(Session["Tipo"].ToString() != "ADM")
-    {
-         Response.Redirect("~/Login/Index");
-    }
+    //if(Session["Codigo_Acesso"] == null)
+    //{
+    //    Response.Redirect("~/Login/Index");
+    //}
+    //if (Session["Codigo_Acesso"] != null)
+    //{
+    //    if (Session["Tipo"].ToString() != "ADM")
+    //    {
+    //        Response.Redirect("~/Login/Index");
+    //    }
+    //}
+
 }
 <!DOCTYPE Html>
 <html>
@@ -33,6 +41,12 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="form-group col-md-6">
+                            
+                            @Html.DropDownListFor(model => model.Codigo_Pessoa, ViewBag.Pessoa as SelectList, "--Selecione a Pessoa--", new { @class = "form-control"})
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
                             @Html.LabelFor(model => model.CRM, htmlAttributes: new { @class = "control-label" })
                             @Html.EditorFor(model => model.CRM, new { htmlAttributes = new { @class = "form-control", placeholder = "CRM" } })
                             @*@Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })*@
@@ -49,11 +63,15 @@
                                 @Html.EditorFor(model => model.Data_Admissao, new { htmlAttributes = new { @class = "form-control", id = "datefield", type = "date" } })
                             </div>
                         </div>
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.Codigo_Especialidade, htmlAttributes: new { @class = "control-label"})
+                            @Html.DropDownListFor(model => model.Codigo_Especialidade, ViewBag.Especialidade as SelectList, "--Selecione a Especialidade--", new { @class = "form-control"})
+                        </div>
                     </div>
-                    
+
                     </div>
                     <div class="panel-footer">
-                        <input type="submit" value="Próximo" class="btn btn-primary" style="margin-left:1200px;"  />
+                        <input type="submit" value="Próximo" class="btn btn-primary"   />
                     </div>
                 </div>
         }

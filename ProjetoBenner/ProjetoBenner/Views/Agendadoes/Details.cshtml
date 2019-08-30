@@ -1,0 +1,86 @@
+﻿@model ProjetoBenner.Models.Agendado
+
+@{
+    ViewBag.Title = "Details";
+    if(Session["Codigo_Acesso"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Agendado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_Consulta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_Consulta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hora_Consulta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hora_Consulta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Consulta_Confirmada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Consulta_Confirmada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Agenda.Codigo_Agenda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Agenda.Codigo_Agenda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Medico.Codigo_Medico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Medico.Codigo_Medico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Local.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Local.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pre_Consulta.Sintomas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pre_Consulta.Sintomas)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Codigo_Agendado }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

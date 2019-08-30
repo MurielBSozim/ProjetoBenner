@@ -21,7 +21,10 @@ namespace ProjetoBenner.Controllers
             return View();
         }
 
-
+        public ActionResult Funcionario()
+        {
+            return View();
+        }
 
         public ActionResult ADM()
         {

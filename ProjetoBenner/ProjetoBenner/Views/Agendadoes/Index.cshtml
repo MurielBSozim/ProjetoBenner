@@ -1,0 +1,79 @@
+﻿@model IEnumerable<ProjetoBenner.Models.Agendado>
+
+@{
+    ViewBag.Title = "Index";
+    if(Session["Codigo_Acesso"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Data_Consulta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hora_Consulta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Consulta_Confirmada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Agenda.Codigo_Agenda)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pessoa.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Medico.Codigo_Medico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Local.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pre_Consulta.Sintomas)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data_Consulta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hora_Consulta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Consulta_Confirmada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Agenda.Codigo_Agenda)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pessoa.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Medico.Codigo_Medico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Local.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pre_Consulta.Sintomas)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Codigo_Agendado }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Codigo_Agendado }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Codigo_Agendado })
+        </td>
+    </tr>
+}
+
+</table>

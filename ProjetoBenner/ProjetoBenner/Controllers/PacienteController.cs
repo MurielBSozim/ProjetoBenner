@@ -12,7 +12,7 @@ namespace ProjetoBenner.Controllers
 {
     public class PacienteController : Controller
     {
-        private AgendaONEntities db = new AgendaONEntities();
+        private AgendaONEntities3 db = new AgendaONEntities3();
 
         // GET: Paciente
         public ActionResult Index()
@@ -99,10 +99,10 @@ namespace ProjetoBenner.Controllers
         {
             Pessoa pessoa = db.Pessoa.Find(id);
             Acesso acesso = db.Acesso.Find(pessoa.Codigo_Acesso);
-            Endereco endereco = db.Endereco.Find(pessoa.Codigo_Endereco);
+            //Endereco endereco = db.Endereco.Find(pessoa.Codigo_Endereco);
             db.Pessoa.Remove(pessoa);
             db.Acesso.Remove(acesso);
-            db.Endereco.Remove(endereco);
+            //db.Endereco.Remove(endereco);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

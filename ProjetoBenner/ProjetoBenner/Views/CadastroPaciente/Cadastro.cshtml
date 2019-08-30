@@ -1,6 +1,7 @@
 ﻿@model ProjetoBenner.Models.Pessoa
 @{
     Layout = null;
+
 }
 
 <!DOCTYPE Html>
@@ -106,7 +107,7 @@
                     <div class=" = row">
                         <div class="form-group col-md-4">
                             @Html.LabelFor(model => model.CPF, htmlAttributes: new { @class = "control-label" })
-                            @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @class = "form-control", placeholder = "CPF" } })
+                            @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @class = "form-control",  placeholder = "000.000.000-00" , data_tipo = "cpf" } })
                             @*@Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })*@
                         </div>
                         <div class="form-group col-md-4">

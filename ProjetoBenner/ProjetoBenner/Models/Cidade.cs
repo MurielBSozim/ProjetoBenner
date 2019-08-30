@@ -20,13 +20,10 @@ namespace ProjetoBenner.Models
         {
             this.Endereco = new HashSet<Endereco>();
         }
-
-        [Display(Name = "Codigo Cidade")]
+    
         public int Codigo_Cidade { get; set; }
-
-        [Display(Name = "Codigo Estado")]
         public Nullable<int> Codigo_Estado { get; set; }
-
+        [Required(ErrorMessage = "Campo Necessário.")]
         [Display(Name = "Cidade")]
         public string Cidade1 { get; set; }
     

@@ -1,11 +1,11 @@
-﻿@model ProjetoBenner.Models.Acesso
+﻿@model ProjetoBenner.Models.Pessoa
 @{
     Layout = null;
     if (Session["Codigo_Acesso"] == null)
-    {
-
-        Response.Redirect("~/Login/Index");
-    }
+        {
+                Response.Redirect("~/Login/Index");
+            
+        }
 }
 
 <!DOCTYPE html>
@@ -48,19 +48,19 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Consulta <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Agendar Consulta</a></li>
+                                    <li><a href="@Url.Action("Index", "AgendarConsulta")">Agendar Consulta</a></li>
                                     <li><a href="#">Lista de Consulta</a></li>
                                     <li><a href="#">Confirmar</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            @*<li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Perfil <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">Ver informações</a></li>
-                                    <li><a href="#">Alterar Dados</a></li>
-                                    <li><a href="#">Alterar Senha</a></li>
+                                    <li><a href="@Html.ActionLink("Edit", "Paciente", new { id = Session["Cd})">Alterar Dados</a></li>
+                                    <li><a href="@Url.Action("Edit", "Acessoes")">Alterar Senha</a></li>
                                 </ul>
-                            </li>
+                            </li>*@
                         </ul>
 
                         <ul class="nav navbar-nav navbar-right">

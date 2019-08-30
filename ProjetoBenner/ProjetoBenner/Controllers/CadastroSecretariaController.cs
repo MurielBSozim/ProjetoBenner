@@ -10,7 +10,7 @@ namespace ProjetoBenner.Controllers
     public class CadastroSecretariaController : Controller
     {
 
-        public AgendaONEntities db = new AgendaONEntities();
+        public AgendaONEntities3 db = new AgendaONEntities3();
 
         private List<object> estadocivil = new List<object>
         {
@@ -32,7 +32,7 @@ namespace ProjetoBenner.Controllers
         {
             if (!ModelState.IsValid)
             {
-                
+                ViewBag.Pessoa = new SelectList(db.Pessoa, "Codigo_Pessoa", "Nome");
                 ViewBag.EstadoCivil = new SelectList(estadocivil, "Sigla", "Nome");
                 return View("Index", pessoa);
             }
@@ -41,7 +41,8 @@ namespace ProjetoBenner.Controllers
             pessoa.Acesso.Tipo = "Secretaria";
             db.Pessoa.Add(pessoa);
             db.SaveChanges();
-           
+
+            ViewBag.Pessoa = new SelectList(db.Pessoa, "Codigo_Pessoa", "Nome");
             ViewBag.EstadoCivil = new SelectList(estadocivil, "Sigla", "Nome");
             return View("Secretaria");
         }
@@ -50,15 +51,20 @@ namespace ProjetoBenner.Controllers
         {
             if (!ModelState.IsValid)
             {
-                              
+                ViewBag.Pessoa = new SelectList(db.Pessoa, "Codigo_Pessoa", "Nome");
                 return View("Secretaria", secretaria);
             }
-            Pessoa pessoa = db.Pessoa.Find(secretaria.Codigo_Secretaria);
-            secretaria.Codigo_Pessoa = pessoa.Codigo_Pessoa;
+            ViewBag.Pessoa = new SelectList(db.Pessoa, "Codigo_Pessoa", "Nome");
+           
             db.Secretaria.Add(secretaria);
             db.SaveChanges();
            
-            return View("Sucesso", "CadastroMedico");
+            return View("Sucesso");
+        }
+
+        public ActionResult Sucesso()
+        {
+            return View();
         }
     }
 }

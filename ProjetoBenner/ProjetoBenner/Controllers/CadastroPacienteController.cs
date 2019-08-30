@@ -9,7 +9,7 @@ namespace ProjetoBenner.Controllers
 {
     public class CadastroPacienteController : Controller
     {
-        public AgendaONEntities db = new AgendaONEntities();
+        public AgendaONEntities3 db = new AgendaONEntities3();
 
         private List<object> estadocivil = new List<object>
         {
@@ -44,6 +44,13 @@ namespace ProjetoBenner.Controllers
             return View("Sucesso");
 
         }
+
+        public JsonResult ValidarCPF(string cpf)
+        {
+            var pessoa = db.Pessoa.Find(cpf);
+            return Json(pessoa == null, JsonRequestBehavior.AllowGet);
+        }
+
 
         public ActionResult Sucesso()
         {

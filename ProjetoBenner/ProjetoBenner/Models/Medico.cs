@@ -21,23 +21,21 @@ namespace ProjetoBenner.Models
             this.Agenda = new HashSet<Agenda>();
             this.Agendado = new HashSet<Agendado>();
             this.Consulta = new HashSet<Consulta>();
-            this.Especialidade = new HashSet<Especialidade>();
             this.Horario_Medico = new HashSet<Horario_Medico>();
             this.Sala_Espera = new HashSet<Sala_Espera>();
         }
-
-        [Display(Name = "Codigo Medico")]
+    
         public int Codigo_Medico { get; set; }
-
-        [Display(Name = "Codigo Pessoa")]
         public Nullable<int> Codigo_Pessoa { get; set; }
-
-        [Display(Name = "Codigo Estado")]
         public Nullable<int> Codigo_Estado { get; set; }
+        [Required(ErrorMessage = "Campo Necessário.")]
 
         [Display(Name = "Data de Admissão")]
         public Nullable<System.DateTime> Data_Admissao { get; set; }
+        [Required(ErrorMessage = "Campo Necessário.")]
         public Nullable<int> CRM { get; set; }
+        [Required(ErrorMessage = "Campo Necessário.")]
+        public Nullable<int> Codigo_Especialidade { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Agenda> Agenda { get; set; }
@@ -45,8 +43,7 @@ namespace ProjetoBenner.Models
         public virtual ICollection<Agendado> Agendado { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Consulta> Consulta { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Especialidade> Especialidade { get; set; }
+        public virtual Descricao_Especialidade Descricao_Especialidade { get; set; }
         public virtual Estado Estado { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Horario_Medico> Horario_Medico { get; set; }

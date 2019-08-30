@@ -25,7 +25,7 @@ namespace ProjetoBenner.Controllers
         [HttpPost]
         public ActionResult Autherize(ProjetoBenner.Models.Acesso acesso)
         {
-            using (AgendaONEntities db = new AgendaONEntities())
+            using (AgendaONEntities3 db = new AgendaONEntities3())
             {
                 var acessoDetails = db.Acesso.Where(x => x.Email == acesso.Email && x.Password == acesso.Password).FirstOrDefault();
                 if (acessoDetails == null)

@@ -15,19 +15,16 @@ namespace ProjetoBenner.Models
 
     public partial class Secretaria
     {
-        [Display(Name = "Codigo Secretaria")]
         public int Codigo_Secretaria { get; set; }
-
-        [Display(Name = "Codigo Pessoa")]
         public Nullable<int> Codigo_Pessoa { get; set; }
-
+        [Required(ErrorMessage = "Campo Necessário.")]
         [Display(Name = "Data de Admissão")]
         public Nullable<System.DateTime> Data_Admissao { get; set; }
 
         [Display(Name = "Hora de Entrada")]
         public Nullable<System.TimeSpan> Hora_Entrada { get; set; }
 
-        [Display(Name = "Hora de Saída")]
+        [Display(Name = "Hora de Saida")]
         public Nullable<System.TimeSpan> Hora_Saida { get; set; }
     
         public virtual Pessoa Pessoa { get; set; }

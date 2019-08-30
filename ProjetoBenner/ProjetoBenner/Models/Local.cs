@@ -22,13 +22,14 @@ namespace ProjetoBenner.Models
             this.Consulta = new HashSet<Consulta>();
             this.Horario_Medico = new HashSet<Horario_Medico>();
         }
-
-        [Display(Name = "Codigo Local")]
+    
         public int Codigo_Local { get; set; }
-
-        [Display(Name = "Codigo Endereço")]
         public Nullable<int> Codigo_Endereco { get; set; }
+
+        [Required(ErrorMessage = "Campo Necessário.")]
         public string Nome { get; set; }
+
+        [Required(ErrorMessage = "Campo Necessário.")]
         public string Telefone { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

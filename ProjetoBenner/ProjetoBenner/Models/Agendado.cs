@@ -11,16 +11,23 @@ namespace ProjetoBenner.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
+
     public partial class Agendado
     {
         public int Codigo_Agendado { get; set; }
         public Nullable<int> Codigo_Agenda { get; set; }
+        [Required(ErrorMessage = "Campo Necessário.")]
         public Nullable<int> Codigo_Pessoa { get; set; }
+        [Required(ErrorMessage = "Campo Necessário.")]
         public Nullable<int> Codigo_Medico { get; set; }
         public Nullable<int> Codigo_Local { get; set; }
         public Nullable<int> Codigo_Pre_Consulta { get; set; }
+        [Required(ErrorMessage = "Campo Necessário.")]
+       
         public Nullable<System.DateTime> Data_Consulta { get; set; }
+        [Required(ErrorMessage = "Campo Necessário.")]
         public Nullable<System.TimeSpan> Hora_Consulta { get; set; }
         public Nullable<bool> Consulta_Confirmada { get; set; }
     

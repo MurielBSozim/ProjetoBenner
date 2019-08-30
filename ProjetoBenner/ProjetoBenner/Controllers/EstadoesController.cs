@@ -12,7 +12,7 @@ namespace ProjetoBenner.Controllers
 {
     public class EstadoesController : Controller
     {
-        private AgendaONEntities db = new AgendaONEntities();
+        private AgendaONEntities3 db = new AgendaONEntities3();
 
         // GET: Estadoes
         public ActionResult Index()

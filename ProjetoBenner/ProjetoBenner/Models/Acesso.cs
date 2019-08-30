@@ -24,8 +24,8 @@ namespace ProjetoBenner.Models
         public int Codigo_Acesso { get; set; }
         public string Email { get; set; }
 
-        [Display(Name = "Senha")]
         [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Campo Necessário.")]
         public string Password { get; set; }
         public string Tipo { get; set; }
     

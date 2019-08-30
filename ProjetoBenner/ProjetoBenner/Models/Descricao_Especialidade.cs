@@ -13,18 +13,20 @@ namespace ProjetoBenner.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public partial class Especialidade
+    public partial class Descricao_Especialidade
     {
-
-        [Display(Name = "Codigo Especialidade")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Descricao_Especialidade()
+        {
+            this.Medico = new HashSet<Medico>();
+        }
+    
         public int Codigo_Especialidade { get; set; }
 
-        [Display(Name = "Codigo Medico")]
-        public Nullable<int> Codigo_Medico { get; set; }
-
         [Display(Name = "Especialidade")]
-        public string Especialidade1 { get; set; }
+        public string Nome { get; set; }
     
-        public virtual Medico Medico { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Medico> Medico { get; set; }
     }
 }

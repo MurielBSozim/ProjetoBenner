@@ -13,10 +13,10 @@ namespace ProjetoBenner.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AgendaONEntities : DbContext
+    public partial class AgendaONEntities3 : DbContext
     {
-        public AgendaONEntities()
-            : base("name=AgendaONEntities")
+        public AgendaONEntities3()
+            : base("name=AgendaONEntities3")
         {
         }
     
@@ -30,8 +30,8 @@ namespace ProjetoBenner.Models
         public virtual DbSet<Agendado> Agendado { get; set; }
         public virtual DbSet<Cidade> Cidade { get; set; }
         public virtual DbSet<Consulta> Consulta { get; set; }
+        public virtual DbSet<Descricao_Especialidade> Descricao_Especialidade { get; set; }
         public virtual DbSet<Endereco> Endereco { get; set; }
-        public virtual DbSet<Especialidade> Especialidade { get; set; }
         public virtual DbSet<Estado> Estado { get; set; }
         public virtual DbSet<Horario_Medico> Horario_Medico { get; set; }
         public virtual DbSet<Local> Local { get; set; }

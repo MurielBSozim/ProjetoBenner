@@ -60,6 +60,13 @@
           <Property Name="Hora_Consulta" Type="time" Precision="7" />
           <Property Name="Duracao_Consulta" Type="float" />
         </EntityType>
+        <EntityType Name="Descricao_Especialidade">
+          <Key>
+            <PropertyRef Name="Codigo_Especialidade" />
+          </Key>
+          <Property Name="Codigo_Especialidade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Endereco">
           <Key>
             <PropertyRef Name="Codigo_Endereco" />
@@ -70,14 +77,6 @@
           <Property Name="Numero" Type="int" />
           <Property Name="Complemento" Type="varchar" MaxLength="15" />
           <Property Name="Bairro" Type="varchar" MaxLength="45" />
-        </EntityType>
-        <EntityType Name="Especialidade">
-          <Key>
-            <PropertyRef Name="Codigo_Especialidade" />
-          </Key>
-          <Property Name="Codigo_Especialidade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Codigo_Medico" Type="int" />
-          <Property Name="Especialidade" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Estado">
           <Key>
@@ -115,6 +114,7 @@
           <Property Name="Codigo_Estado" Type="int" />
           <Property Name="Data_Admissao" Type="date" />
           <Property Name="CRM" Type="int" />
+          <Property Name="Codigo_Especialidade" Type="int" />
         </EntityType>
         <EntityType Name="Pessoa">
           <Key>
@@ -320,18 +320,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Especialidade">
-          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
-          <End Role="Especialidade" Type="Self.Especialidade" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Medico">
-              <PropertyRef Name="Codigo_Medico" />
-            </Principal>
-            <Dependent Role="Especialidade">
-              <PropertyRef Name="Codigo_Medico" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Horario_Medico">
           <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
           <End Role="Horario_Medico" Type="Self.Horario_Medico" Multiplicity="*" />
@@ -389,6 +377,18 @@
             </Principal>
             <Dependent Role="Medico">
               <PropertyRef Name="Codigo_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medico_2">
+          <End Role="Descricao_Especialidade" Type="Self.Descricao_Especialidade" Multiplicity="0..1" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Descricao_Especialidade">
+              <PropertyRef Name="Codigo_Especialidade" />
+            </Principal>
+            <Dependent Role="Medico">
+              <PropertyRef Name="Codigo_Especialidade" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -470,8 +470,8 @@
           <EntitySet Name="Agendado" EntityType="Self.Agendado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cidade" EntityType="Self.Cidade" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Consulta" EntityType="Self.Consulta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Descricao_Especialidade" EntityType="Self.Descricao_Especialidade" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Endereco" EntityType="Self.Endereco" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Especialidade" EntityType="Self.Especialidade" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Horario_Medico" EntityType="Self.Horario_Medico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Local" EntityType="Self.Local" Schema="dbo" store:Type="Tables" />
@@ -529,10 +529,6 @@
             <End Role="Cidade" EntitySet="Cidade" />
             <End Role="Endereco" EntitySet="Endereco" />
           </AssociationSet>
-          <AssociationSet Name="FK_Especialidade" Association="Self.FK_Especialidade">
-            <End Role="Medico" EntitySet="Medico" />
-            <End Role="Especialidade" EntitySet="Especialidade" />
-          </AssociationSet>
           <AssociationSet Name="FK_Horario_Medico" Association="Self.FK_Horario_Medico">
             <End Role="Medico" EntitySet="Medico" />
             <End Role="Horario_Medico" EntitySet="Horario_Medico" />
@@ -551,6 +547,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Medico_1" Association="Self.FK_Medico_1">
             <End Role="Estado" EntitySet="Estado" />
+            <End Role="Medico" EntitySet="Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medico_2" Association="Self.FK_Medico_2">
+            <End Role="Descricao_Especialidade" EntitySet="Descricao_Especialidade" />
             <End Role="Medico" EntitySet="Medico" />
           </AssociationSet>
           <AssociationSet Name="FK_Pessoa" Association="Self.FK_Pessoa">
@@ -652,6 +652,14 @@
           <NavigationProperty Name="Pre_Consulta" Relationship="Self.FK_Consulta_2" FromRole="Consulta" ToRole="Pre_Consulta" />
           <NavigationProperty Name="Local" Relationship="Self.FK_Consulta_3" FromRole="Consulta" ToRole="Local" />
         </EntityType>
+        <EntityType Name="Descricao_Especialidade">
+          <Key>
+            <PropertyRef Name="Codigo_Especialidade" />
+          </Key>
+          <Property Name="Codigo_Especialidade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Medico" Relationship="Self.FK_Medico_2" FromRole="Descricao_Especialidade" ToRole="Medico" />
+        </EntityType>
         <EntityType Name="Endereco">
           <Key>
             <PropertyRef Name="Codigo_Endereco" />
@@ -665,15 +673,6 @@
           <NavigationProperty Name="Cidade" Relationship="Self.FK_Endereco" FromRole="Endereco" ToRole="Cidade" />
           <NavigationProperty Name="Local" Relationship="Self.FK_Local" FromRole="Endereco" ToRole="Local" />
           <NavigationProperty Name="Pessoa" Relationship="Self.FK_Pessoa_1" FromRole="Endereco" ToRole="Pessoa" />
-        </EntityType>
-        <EntityType Name="Especialidade">
-          <Key>
-            <PropertyRef Name="Codigo_Especialidade" />
-          </Key>
-          <Property Name="Codigo_Especialidade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Codigo_Medico" Type="Int32" />
-          <Property Name="Especialidade1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Medico" Relationship="Self.FK_Especialidade" FromRole="Especialidade" ToRole="Medico" />
         </EntityType>
         <EntityType Name="Estado">
           <Key>
@@ -719,10 +718,11 @@
           <Property Name="Codigo_Estado" Type="Int32" />
           <Property Name="Data_Admissao" Type="DateTime" Precision="0" />
           <Property Name="CRM" Type="Int32" />
+          <Property Name="Codigo_Especialidade" Type="Int32" />
           <NavigationProperty Name="Agenda" Relationship="Self.FK_Agenda" FromRole="Medico" ToRole="Agenda" />
           <NavigationProperty Name="Agendado" Relationship="Self.FK_Agendado_2" FromRole="Medico" ToRole="Agendado" />
           <NavigationProperty Name="Consulta" Relationship="Self.FK_Consulta_1" FromRole="Medico" ToRole="Consulta" />
-          <NavigationProperty Name="Especialidade" Relationship="Self.FK_Especialidade" FromRole="Medico" ToRole="Especialidade" />
+          <NavigationProperty Name="Descricao_Especialidade" Relationship="Self.FK_Medico_2" FromRole="Medico" ToRole="Descricao_Especialidade" />
           <NavigationProperty Name="Estado" Relationship="Self.FK_Medico_1" FromRole="Medico" ToRole="Estado" />
           <NavigationProperty Name="Horario_Medico" Relationship="Self.FK_Horario_Medico" FromRole="Medico" ToRole="Horario_Medico" />
           <NavigationProperty Name="Pessoa" Relationship="Self.FK_Medico" FromRole="Medico" ToRole="Pessoa" />
@@ -958,6 +958,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Medico_2">
+          <End Role="Descricao_Especialidade" Type="Self.Descricao_Especialidade" Multiplicity="0..1" />
+          <End Role="Medico" Type="Self.Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Descricao_Especialidade">
+              <PropertyRef Name="Codigo_Especialidade" />
+            </Principal>
+            <Dependent Role="Medico">
+              <PropertyRef Name="Codigo_Especialidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Local">
           <End Role="Endereco" Type="Self.Endereco" Multiplicity="0..1" />
           <End Role="Local" Type="Self.Local" Multiplicity="*" />
@@ -979,18 +991,6 @@
             </Principal>
             <Dependent Role="Pessoa">
               <PropertyRef Name="Codigo_Endereco" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Especialidade">
-          <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
-          <End Role="Especialidade" Type="Self.Especialidade" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Medico">
-              <PropertyRef Name="Codigo_Medico" />
-            </Principal>
-            <Dependent Role="Especialidade">
-              <PropertyRef Name="Codigo_Medico" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1090,14 +1090,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="AgendaONEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AgendaONEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Acesso" EntityType="Self.Acesso" />
           <EntitySet Name="Agenda" EntityType="Self.Agenda" />
           <EntitySet Name="Agendado" EntityType="Self.Agendado" />
           <EntitySet Name="Cidade" EntityType="Self.Cidade" />
           <EntitySet Name="Consulta" EntityType="Self.Consulta" />
+          <EntitySet Name="Descricao_Especialidade" EntityType="Self.Descricao_Especialidade" />
           <EntitySet Name="Endereco" EntityType="Self.Endereco" />
-          <EntitySet Name="Especialidade" EntityType="Self.Especialidade" />
           <EntitySet Name="Estado" EntityType="Self.Estado" />
           <EntitySet Name="Horario_Medico" EntityType="Self.Horario_Medico" />
           <EntitySet Name="Local" EntityType="Self.Local" />
@@ -1159,6 +1159,10 @@
             <End Role="Local" EntitySet="Local" />
             <End Role="Consulta" EntitySet="Consulta" />
           </AssociationSet>
+          <AssociationSet Name="FK_Medico_2" Association="Self.FK_Medico_2">
+            <End Role="Descricao_Especialidade" EntitySet="Descricao_Especialidade" />
+            <End Role="Medico" EntitySet="Medico" />
+          </AssociationSet>
           <AssociationSet Name="FK_Local" Association="Self.FK_Local">
             <End Role="Endereco" EntitySet="Endereco" />
             <End Role="Local" EntitySet="Local" />
@@ -1166,10 +1170,6 @@
           <AssociationSet Name="FK_Pessoa_1" Association="Self.FK_Pessoa_1">
             <End Role="Endereco" EntitySet="Endereco" />
             <End Role="Pessoa" EntitySet="Pessoa" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Especialidade" Association="Self.FK_Especialidade">
-            <End Role="Medico" EntitySet="Medico" />
-            <End Role="Especialidade" EntitySet="Especialidade" />
           </AssociationSet>
           <AssociationSet Name="FK_Medico_1" Association="Self.FK_Medico_1">
             <End Role="Estado" EntitySet="Estado" />
@@ -1209,7 +1209,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AgendaONModelStoreContainer" CdmEntityContainer="AgendaONEntities">
+        <EntityContainerMapping StorageEntityContainer="AgendaONModelStoreContainer" CdmEntityContainer="AgendaONEntities3">
           <EntitySetMapping Name="Acesso">
             <EntityTypeMapping TypeName="AgendaONModel.Acesso">
               <MappingFragment StoreEntitySet="Acesso">
@@ -1270,6 +1270,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Descricao_Especialidade">
+            <EntityTypeMapping TypeName="AgendaONModel.Descricao_Especialidade">
+              <MappingFragment StoreEntitySet="Descricao_Especialidade">
+                <ScalarProperty Name="Codigo_Especialidade" ColumnName="Codigo_Especialidade" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Endereco">
             <EntityTypeMapping TypeName="AgendaONModel.Endereco">
               <MappingFragment StoreEntitySet="Endereco">
@@ -1279,15 +1287,6 @@
                 <ScalarProperty Name="Numero" ColumnName="Numero" />
                 <ScalarProperty Name="Complemento" ColumnName="Complemento" />
                 <ScalarProperty Name="Bairro" ColumnName="Bairro" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Especialidade">
-            <EntityTypeMapping TypeName="AgendaONModel.Especialidade">
-              <MappingFragment StoreEntitySet="Especialidade">
-                <ScalarProperty Name="Codigo_Especialidade" ColumnName="Codigo_Especialidade" />
-                <ScalarProperty Name="Codigo_Medico" ColumnName="Codigo_Medico" />
-                <ScalarProperty Name="Especialidade1" ColumnName="Especialidade" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1329,6 +1328,7 @@
                 <ScalarProperty Name="Codigo_Estado" ColumnName="Codigo_Estado" />
                 <ScalarProperty Name="Data_Admissao" ColumnName="Data_Admissao" />
                 <ScalarProperty Name="CRM" ColumnName="CRM" />
+                <ScalarProperty Name="Codigo_Especialidade" ColumnName="Codigo_Especialidade" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

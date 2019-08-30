@@ -3,13 +3,18 @@
     Layout = null;
     if (Session["Codigo_Acesso"] == null)
     {
-
         Response.Redirect("~/Login/Index");
     }
-    if(Session["Tipo"].ToString() != "ADM")
-    {
-         Response.Redirect("~/Login/Index");
-    }
+  
+        if (Session["Codigo_Acesso"] != null)
+        {
+            if (Session["Tipo"].ToString() != "ADM")
+            {
+                Response.Redirect("~/Login/Index");
+            }
+        }
+    
+
 }
 
 <!DOCTYPE html>
@@ -67,7 +72,7 @@
                                     <li><a href="@Url.Action("Index","CadastroSecretaria")">Cadastrar Secretária</a></li>
                                     <li><a href="@Url.Action("Create","Acessoes")">Cadastrar Administrador</a></li>
                                     <li><a href="@Url.Action("Index","CadastroLocal")">Cadastrar Local</a></li>
-                                    <li><a href="#">Cadastrar Plantão Médico</a></li>
+                                    @*<li><a href="#">Cadastrar Plantão Médico</a></li>*@
                                 </ul>
                             </li>
                         </ul>

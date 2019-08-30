@@ -1,10 +1,18 @@
 ﻿@model ProjetoBenner.Models.Pessoa
 @{
     Layout = null;
-    if (Session["Tipo"].ToString() != "ADM")
+    if(Session["Codigo_Acesso"] == null)
     {
         Response.Redirect("~/Login/Index");
     }
+    if (Session["Codigo_Acesso"] != null)
+    {
+        if (Session["Tipo"].ToString() != "ADM")
+        {
+            Response.Redirect("~/Login/Index");
+        }
+    }
+
 
 }
 
@@ -103,26 +111,27 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="form-group col-md-12">
+                            
                             @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label" })
                             @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", placeholder = "Nome Completo" } })
-                            @*@Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })*@
+                            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class=" = row">
                         <div class="form-group col-md-4">
                             @Html.LabelFor(model => model.CPF, htmlAttributes: new { @class = "control-label" })
                             @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @class = "form-control", placeholder = "CPF" } })
-                            @*@Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })*@
+                            @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group col-md-4">
                             @Html.LabelFor(model => model.RG, htmlAttributes: new { @class = "control-label" })
                             @Html.EditorFor(model => model.RG, new { htmlAttributes = new { @class = "form-control", placeholder = "RG" } })
-                            @*@Html.ValidationMessageFor(model => model.RG, "", new { @class = "text-danger" })*@
+                            @Html.ValidationMessageFor(model => model.RG, "", new { @class = "text-danger" })
                         </div>
-                        <div class="form-group col-md-2">
+                        <div class="form-group col-md-4">
                             @Html.LabelFor(model => model.Data_Nascimento, htmlAttributes: new { @class = "control-label" })
                             @Html.EditorFor(model => model.Data_Nascimento, new { htmlAttributes = new { @class = "form-control", id = "datefield", type = "date" } })
-                            @*@Html.ValidationMessageFor(model => model.Data_Nascimento, "", new { @class = "text-danger" })*@
+                            @Html.ValidationMessageFor(model => model.Data_Nascimento, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="row">
@@ -143,6 +152,7 @@
                         <div class="form-group col-md-4">
                             @Html.LabelFor(model => model.Estado_Civil, htmlAttributes: new { @class = "control-label" })
                             @Html.DropDownListFor(model => model.Estado_Civil, (SelectList)ViewBag.EstadoCivil, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Estado_Civil, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="row">
@@ -153,6 +163,7 @@
                         <div class="form-group col-md-4">
                             @Html.LabelFor(model => model.Celular, htmlAttributes: new { @class = "control-label" })
                             @Html.EditorFor(model => model.Celular, new { htmlAttributes = new { @class = "form-control ", placeholder = "Celular" } })
+                            @Html.ValidationMessageFor(model => model.Celular, "", new { @class = "text-danger" })
 
                         </div>
                     </div>
@@ -160,6 +171,7 @@
                         <div class="form-group col-md-6">
                             @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
                             @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", type = "email", placeholder = "email" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
 
                         </div>
                     </div>
@@ -167,6 +179,7 @@
                         <div class="form-group col-md-3">
                             @Html.LabelFor(model => model.Acesso.Password, htmlAttributes: new { @class = "control-label" })
                             @Html.PasswordFor(model => model.Acesso.Password, new { @class = "form-control", placeholder = "senha", type = "password" })
+                            @Html.ValidationMessageFor(model => model.Acesso.Password, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <h4><b>Endereço</b></h4>
@@ -214,7 +227,7 @@
                     </form>
                 </div>
                 <div class="panel-footer">
-                    <input type="submit" value="Próximo" class="btn btn-primary" style="margin-left:1200px;" />
+                    <input type="submit" value="Próximo" class="btn btn-primary" style="position:center;";" />
                 </div>
             </div>
         }
@@ -231,7 +244,7 @@
             mm = '0' + mm
         }
 
-        today = yyyy + '-' + mm + '-' + dd;
+        today = '2010-02-10';
         document.getElementById("datefield").setAttribute("max", today);
     </script>
     <script src="~/Scripts/jquery-3.1.1.min.js"></script>

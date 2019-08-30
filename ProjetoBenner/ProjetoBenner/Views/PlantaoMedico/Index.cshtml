@@ -1,0 +1,62 @@
+﻿@model ProjetoBenner.Models.Horario_Medico
+@{
+    Layout = null;
+}
+<!DOCTYPE Html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.1">
+    <title>Cadastrar Plantão Médico</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/CadastroPessoa.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+
+</head>
+<body>
+    <div class="form-container">
+        <div class="page-header">
+            <h1>Cadastro de Plantão Médico</h1>
+        </div>
+        @using (Html.BeginForm("Index", "PlantaoMedico"))
+        {
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4>Preencha com as informações</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            @Html.DropDownListFor(model => model.Codigo_Medico, new SelectList(" "), "--SELECIONE O MÉDICO--", new { @class = "form-control", id = "MedicoList" })
+                        </div>
+                    </div>
+                                       
+
+                </div>
+                <div class="panel-footer">
+                    <input type="submit" value="Salvar" class="btn btn-primary" />
+                </div>
+            </div>
+        }
+    </div>
+    <script>
+        
+        $.get("PlataoMedico/GetMedico").done(function (data) {
+            $("#MedicoList").html("");
+            $.each(data, function (index, row) {
+                $("MedicoList").empty();
+                $("#MedicoList").append("<option value='" + Object.values(row)[0] + "'>" + Object.values(row)[1] + "</option>");
+
+            })
+        });
+        
+    </script>
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/jquery.mask.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/validacao_ptbr.js"></script>
+    <script src="~/Scripts/mascaras.js"></script>
+</body>
+</html>

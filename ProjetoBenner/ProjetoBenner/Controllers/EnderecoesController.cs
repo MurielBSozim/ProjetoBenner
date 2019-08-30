@@ -12,7 +12,7 @@ namespace ProjetoBenner.Controllers
 {
     public class EnderecoesController : Controller
     {
-        private AgendaONEntities db = new AgendaONEntities();
+        private AgendaONEntities3 db = new AgendaONEntities3();
 
         // GET: Enderecoes
         public ActionResult Index()
@@ -77,8 +77,8 @@ namespace ProjetoBenner.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Endereco endereco = db.Endereco.Find(id);
-            Cidade cidade = db.Cidade.Find(endereco.Codigo_Cidade);
-            db.Cidade.Remove(cidade);
+            //Cidade cidade = db.Cidade.Find(endereco.Codigo_Cidade);
+            //db.Cidade.Remove(cidade);
             db.Endereco.Remove(endereco);
             db.SaveChanges();
             return RedirectToAction("Index", "Paciente");
