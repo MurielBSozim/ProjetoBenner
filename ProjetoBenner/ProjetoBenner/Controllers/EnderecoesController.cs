@@ -77,11 +77,18 @@ namespace ProjetoBenner.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Endereco endereco = db.Endereco.Find(id);
-            //Cidade cidade = db.Cidade.Find(endereco.Codigo_Cidade);
+            Cidade cidade = db.Cidade.Find(endereco.Codigo_Cidade);
+            ViewBag.MensagemErro = db.Local.Any(a => a.Codigo_Endereco == id);
+            if (ViewBag.MensagemErro)
+            {
+
+                return RedirectToAction("Delete", "Enderecoes", new { Id = id });
+            }
+
             //db.Cidade.Remove(cidade);
             db.Endereco.Remove(endereco);
             db.SaveChanges();
-            return RedirectToAction("Index", "Paciente");
+            return RedirectToAction("Delete", "Cidades", new { id = (cidade.Codigo_Cidade) });
         }
 
         protected override void Dispose(bool disposing)

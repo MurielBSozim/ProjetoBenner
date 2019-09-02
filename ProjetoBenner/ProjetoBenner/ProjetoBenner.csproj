@@ -210,6 +210,7 @@
     <Content Include="Content\Login\Login.css" />
     <Content Include="Content\menu.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\StyleSheet1.css" />
     <Content Include="Content\teste.css" />
     <Content Include="Content\timegrid\LICENSE.txt" />
     <Content Include="Content\timegrid\main.css" />
@@ -309,6 +310,7 @@
     <Compile Include="Controllers\AcessoesController.cs" />
     <Compile Include="Controllers\AgendadoesController.cs" />
     <Compile Include="Controllers\AgendarConsultaController.cs" />
+    <Compile Include="Controllers\AgendarConsultaSController.cs" />
     <Compile Include="Controllers\CadastroLocalController.cs" />
     <Compile Include="Controllers\CadastroMedicoController.cs" />
     <Compile Include="Controllers\CadastroPacienteController.cs" />
@@ -318,9 +320,11 @@
     <Compile Include="Controllers\EnderecoesController.cs" />
     <Compile Include="Controllers\EstadoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocalsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PacienteController.cs" />
     <Compile Include="Controllers\PlantaoMedicoController.cs" />
+    <Compile Include="Controllers\ValidaCPF.cs" />
     <Compile Include="dto\MedicoDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -358,7 +362,6 @@
     <Compile Include="Models\Descricao_Especialidade.cs">
       <DependentUpon>AgendaON.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DispayAttribute.cs" />
     <Compile Include="Models\Endereco.cs">
       <DependentUpon>AgendaON.tt</DependentUpon>
     </Compile>
@@ -416,10 +419,8 @@
     <Content Include="Views\CadastroSecretaria\Index.cshtml" />
     <Content Include="Views\CadastroSecretaria\Secretaria.cshtml" />
     <Content Include="Views\Cidades\Delete.cshtml" />
-    <Content Include="Views\Cidades\Details.cshtml" />
     <Content Include="Views\Cidades\Edit.cshtml" />
     <Content Include="Views\Estadoes\Delete.cshtml" />
-    <Content Include="Views\Estadoes\Details.cshtml" />
     <Content Include="Views\Estadoes\Edit.cshtml" />
     <Content Include="Views\CadastroLocal\Index.cshtml" />
     <Content Include="Views\CadastroLocal\Sucesso.cshtml" />
@@ -431,12 +432,18 @@
     <Content Include="Views\AgendarConsulta\Index.cshtml" />
     <Content Include="Views\PlantaoMedico\Index.cshtml" />
     <Content Include="Views\Dashboard\Funcionario.cshtml" />
+    <Content Include="Views\AgendarConsulta\Sucesso.cshtml" />
+    <Content Include="Views\CadastroSecretaria\Sucesso.cshtml" />
     <Content Include="Views\Agendadoes\Delete.cshtml" />
     <Content Include="Views\Agendadoes\Details.cshtml" />
     <Content Include="Views\Agendadoes\Edit.cshtml" />
     <Content Include="Views\Agendadoes\Index.cshtml" />
-    <Content Include="Views\AgendarConsulta\Sucesso.cshtml" />
-    <Content Include="Views\CadastroSecretaria\Sucesso.cshtml" />
+    <Content Include="Views\AgendarConsultaS\Index.cshtml" />
+    <Content Include="Views\AgendarConsultaS\Sucesso.cshtml" />
+    <Content Include="Views\Locals\Delete.cshtml" />
+    <Content Include="Views\Locals\Details.cshtml" />
+    <Content Include="Views\Locals\Edit.cshtml" />
+    <Content Include="Views\Locals\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

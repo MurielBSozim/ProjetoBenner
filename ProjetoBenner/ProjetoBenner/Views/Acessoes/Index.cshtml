@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ProjetoBenner.Models.Acesso>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "";
      if(Session["Codigo_Acesso"] == null)
     {
         Response.Redirect("~/Login/Index");
@@ -16,10 +16,9 @@
 
 }
 
-<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Cadastrar Novo Administrador", "Create")
 </p>
 <table class="table">
     <tr>
@@ -47,9 +46,9 @@
             @Html.DisplayFor(modelItem => item.Tipo)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Codigo_Acesso }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Codigo_Acesso }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Codigo_Acesso })
+            @Html.ActionLink("Editar", "Edit", new { id=item.Codigo_Acesso }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.Codigo_Acesso }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.Codigo_Acesso })
         </td>
     </tr>
 }

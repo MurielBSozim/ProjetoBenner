@@ -5,25 +5,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
 
 namespace ProjetoBenner.Controllers
 {
-    public class AgendarConsultaController : Controller
+    public class AgendarConsultaSController : Controller
     {
         public AgendaONEntities3 db = new AgendaONEntities3();
-        // GET: AgendarConsulta
+        // GET: AgendarConsultaS
         public ActionResult Index()
         {
             List<Descricao_Especialidade> EspecialidadeList = db.Descricao_Especialidade.ToList();
             ViewBag.EspecialidadeList = new SelectList(EspecialidadeList, "Codigo_Especialidade", "Nome");
             if (!ModelState.IsValid)
             {
-                ViewBag.Pessoa = new SelectList(db.Pessoa, "Codigo_Pessoa", "Nome");
+                ViewBag.Pessoa = new SelectList(db.Pessoa, "Codigo_Pessoa", "CPF");
                 ViewBag.EspecialidadeList = new SelectList(EspecialidadeList, "Codigo_Especialidade", "Nome");
                 return View();
             }
-            ViewBag.Pessoa = new SelectList(db.Pessoa, "Codigo_Pessoa", "Nome");
+            ViewBag.Pessoa = new SelectList(db.Pessoa, "Codigo_Pessoa", "CPF");
             return View();
         }
 
@@ -51,13 +50,12 @@ namespace ProjetoBenner.Controllers
             if (!ModelState.IsValid || ViewBag.MensagemErro)
             {
                 ViewBag.EspecialidadeList = new SelectList(EspecialidadeList, "Codigo_Especialidade", "Nome");
-                ViewBag.Pessoa = new SelectList(db.Pessoa, "Codigo_Pessoa", "Nome");
+                ViewBag.Pessoa = new SelectList(db.Pessoa, "Codigo_Pessoa", "CPF");
                 return View("Index", agendamento);
             }
 
-           
-            //ViewBag.Pessoa = new SelectList(db.Pessoa, "Codigo_Pessoa", "Nome");
-            agendamento.Codigo_Pessoa = (int)Session["Codigo_Pessoa"];
+
+            ViewBag.Pessoa = new SelectList(db.Pessoa, "Codigo_Pessoa", "CPF");
             db.Agendado.Add(agendamento);
             db.SaveChanges();
             return View("Sucesso");
@@ -69,8 +67,6 @@ namespace ProjetoBenner.Controllers
             return View();
         }
 
-        
 
     }
-
 }

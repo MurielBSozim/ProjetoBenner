@@ -10,109 +10,102 @@ using ProjetoBenner.Models;
 
 namespace ProjetoBenner.Controllers
 {
-    public class AcessoesController : Controller
+    public class LocalsController : Controller
     {
         private AgendaONEntities3 db = new AgendaONEntities3();
 
-        // GET: Acessoes
+        // GET: Locals
         public ActionResult Index()
         {
-            return View(db.Acesso.ToList());
+            var local = db.Local.Include(l => l.Endereco);
+            return View(local.ToList());
         }
 
-        // GET: Acessoes/Details/5
+        // GET: Locals/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Acesso acesso = db.Acesso.Find(id);
-            if (acesso == null)
+            Local local = db.Local.Find(id);
+            if (local == null)
             {
                 return HttpNotFound();
             }
-            return View(acesso);
+            return View(local);
         }
 
-        // GET: Acessoes/Create
+        // GET: Locals/Create
         public ActionResult Create()
         {
+            ViewBag.Codigo_Endereco = new SelectList(db.Endereco, "Codigo_Endereco", "Endereco1");
             return View();
         }
 
-        // POST: Acessoes/Create
-        // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
-        // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Codigo_Acesso,Email,Password,Tipo")] Acesso acesso)
-        {
-            if (ModelState.IsValid)
-            {
-                acesso.Tipo = "ADM";
-                db.Acesso.Add(acesso);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(acesso);
-        }
-
-        // GET: Acessoes/Edit/5
+        
+        // GET: Locals/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            Acesso acesso = db.Acesso.Find(id);
-            if (acesso == null)
+            Local local = db.Local.Find(id);
+            if (local == null)
             {
                 return HttpNotFound();
             }
-            return View(acesso);
+            ViewBag.Codigo_Endereco = new SelectList(db.Endereco, "Codigo_Endereco", "Endereco1", local.Codigo_Endereco);
+            return View(local);
         }
 
-        // POST: Acessoes/Edit/5
+        // POST: Locals/Edit/5
         // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Codigo_Acesso,Email,Password,Tipo")] Acesso acesso)
+        public ActionResult Edit([Bind(Include = "Codigo_Local,Codigo_Endereco,Nome,Telefone")] Local local)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(acesso).State = EntityState.Modified;
+                db.Entry(local).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(acesso);
+            ViewBag.Codigo_Endereco = new SelectList(db.Endereco, "Codigo_Endereco", "Endereco1", local.Codigo_Endereco);
+            return View(local);
         }
 
-        // GET: Acessoes/Delete/5
+        // GET: Locals/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Acesso acesso = db.Acesso.Find(id);
-            if (acesso == null)
+            Local local = db.Local.Find(id);
+            if (local == null)
             {
                 return HttpNotFound();
             }
-            return View(acesso);
+            return View(local);
         }
 
-        // POST: Acessoes/Delete/5
+        // POST: Locals/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Acesso acesso = db.Acesso.Find(id);
-            db.Acesso.Remove(acesso);
+            
+            Local local = db.Local.Find(id);
+            ViewBag.MensagemErro = db.Horario_Medico.Any(a => a.Codigo_Local == id);
+            if (ViewBag.MensagemErro)
+            {
+                
+                return RedirectToAction("Delete", "Locals", new { Id = id});
+            }
+            db.Local.Remove(local);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

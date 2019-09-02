@@ -115,9 +115,10 @@ namespace ProjetoBenner.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Cidade cidade = db.Cidade.Find(id);
+            Estado estado = db.Estado.Find(cidade.Codigo_Estado);
             db.Cidade.Remove(cidade);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Delete", "Estadoes", new { id = (estado.Codigo_Estado) });
         }
 
         protected override void Dispose(bool disposing)

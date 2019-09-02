@@ -1,5 +1,5 @@
 ﻿@{ Layout = null;
-    if(Session["Codigo_Acesso"] == null)
+    if (Session["Codigo_Acesso"] == null)
     {
         Response.Redirect("~/Login/Index");
     }}
@@ -18,7 +18,7 @@
             <h1>Obrigado!</h1>
             <p>Sua Consulta foi Agendada com Sucesso.</p>
             <p>Não se esqueça de Confirmar sua Consulta.</p>
-            <p><a class="btn btn-primary btn-lg" href="@Url.Action("Paciente","Dashboard")" role="button">Clique aqui para voltar</a></p>
+            <p><a class="btn btn-primary btn-lg" href="@Url.Action("Funcionario","Dashboard")" role="button">Clique aqui para voltar</a></p>
         </div>
     </div>
 </body>

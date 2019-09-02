@@ -1,0 +1,54 @@
+﻿@model ProjetoBenner.Models.Local
+
+@{
+    ViewBag.Title = "Deletar";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<h3>Você tem certeza que deseja excluir?</h3>
+<div>
+    <h4>Local</h4>
+    <hr />
+    @if (ViewBag.MensagemErro ?? false)
+    {
+        <div class="row col-md-12">
+            <p class="alert alert-danger">Local com Horario de Medico Cadastrado</p>
+        </div>
+    }
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco.Endereco1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.Endereco1)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Deletar" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar", "Index")
+        </div>
+    }
+</div>

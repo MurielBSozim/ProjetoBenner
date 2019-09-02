@@ -33,7 +33,6 @@ namespace ProjetoBenner.Models
         [Required(ErrorMessage = "Campo Necessário.")]
         public string Nome { get; set; }
         [Required(ErrorMessage = "Campo Necessário.")]
-        [Remote("ValidarCPF", "CadastroPaciente", ErrorMessage = "Esse CPF já foi cadastrado.")]
         public string CPF { get; set; }
         [Required(ErrorMessage = "Campo Necessário.")]
         public string RG { get; set; }
@@ -65,5 +64,7 @@ namespace ProjetoBenner.Models
         public virtual ICollection<Sala_Espera> Sala_Espera { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Secretaria> Secretaria { get; set; }
+
+        public string CPFErrorMessage { get; set; }
     }
 }

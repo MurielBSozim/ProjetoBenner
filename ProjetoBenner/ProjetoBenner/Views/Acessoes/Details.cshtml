@@ -1,7 +1,7 @@
 ﻿@model ProjetoBenner.Models.Acesso
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes";
       if(Session["Codigo_Acesso"] == null)
     {
         Response.Redirect("~/Login/Index");
@@ -15,8 +15,6 @@
     }
 
 }
-
-<h2>Details</h2>
 
 <div>
     <h4>Acesso</h4>
@@ -49,6 +47,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Codigo_Acesso }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Codigo_Acesso }) |
+    @Html.ActionLink("Voltar", "Index")
 </p>

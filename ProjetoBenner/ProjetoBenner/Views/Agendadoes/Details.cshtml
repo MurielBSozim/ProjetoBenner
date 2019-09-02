@@ -1,14 +1,9 @@
 ﻿@model ProjetoBenner.Models.Agendado
 
 @{
-    ViewBag.Title = "Details";
-    if(Session["Codigo_Acesso"] == null)
-    {
-        Response.Redirect("~/Login/Index");
-    }
+    ViewBag.Title = "Detalhes";
 }
 
-<h2>Details</h2>
 
 <div>
     <h4>Agendado</h4>
@@ -81,6 +76,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Codigo_Agendado }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Codigo_Agendado }) |
+    @Html.ActionLink("Salvar", "Index")
 </p>

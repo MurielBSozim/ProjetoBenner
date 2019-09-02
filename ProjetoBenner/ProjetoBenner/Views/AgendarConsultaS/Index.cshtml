@@ -1,11 +1,11 @@
 ﻿@model ProjetoBenner.Models.Agendado
 @{
     Layout = null;
-    if(Session["Codigo_Acesso"] == null)
+    if (Session["Codigo_Acesso"] == null)
     {
         Response.Redirect("~/Login/Index");
     }
-   
+
 }
 <!DOCTYPE HTML>
 <html>
@@ -40,7 +40,7 @@
             </div>
         }
         <div class="book-appointment">
-            @using (Html.BeginForm("agendar", "AgendarConsulta"))
+            @using (Html.BeginForm("agendar", "AgendarConsultaS"))
             {
                 <div class="left-agileits-w3layouts same">
                     <div class="gaps">
@@ -61,10 +61,10 @@
                         <p>Hora da Consulta</p>
                         @Html.EditorFor(model => model.Hora_Consulta, new { htmlAttributes = new { @class = "form-control", type = "time", placeholder = "hh:mm" } })
                     </div>
-                    @*<div class="gaps">
-                        <p>Paciente</p>
-                        @Html.DropDownListFor(model => model.Codigo_Pessoa, ViewBag.Pessoa as SelectList, "--SELECTIONE O PACIENTE--", new { @class = "form-control" })
-                    </div>*@
+                   <div class="gaps">
+                            <p>Paciente</p>
+                            @Html.DropDownListFor(model => model.Codigo_Pessoa, ViewBag.Pessoa as SelectList, "--SELECTIONE O PACIENTE--", new { @class = "form-control" })
+                        </div>
                 </div>
                 <div class="right-agileinfo same">
                     <div class="gaps">
@@ -72,18 +72,18 @@
                         @Html.EditorFor(model => model.Pre_Consulta.Sintomas, "--Motivos da Consulta--", new { htmlAttributes = new { @class = "form-control", type = "text" } })
                     </div>
                     <div class="gaps">
-                            <p>Remedios que está tomando</p>
-                            @Html.EditorFor(model => model.Pre_Consulta.Remedios_Tomando, new { htmlAttributes = new { @class = "form-control", type = "text" } })
-                        </div>
-                    <div class="gaps">
-                            <p>Diagnósticos Anteriores</p>
-                            @Html.EditorFor(model => model.Pre_Consulta.Diagnostico_Anterior, new { htmlAttributes = new { @class = "form-control", type = "text" } })
-                        </div>
-                    <div class="gaps">
-                            <p>Observação</p>
-                            @Html.EditorFor(model => model.Pre_Consulta.Observacao, new { htmlAttributes = new { @class = "form-control", type = "text" } })
-                        </div>
+                        <p>Remedios que está tomando</p>
+                        @Html.EditorFor(model => model.Pre_Consulta.Remedios_Tomando, new { htmlAttributes = new { @class = "form-control", type = "text" } })
                     </div>
+                    <div class="gaps">
+                        <p>Diagnósticos Anteriores</p>
+                        @Html.EditorFor(model => model.Pre_Consulta.Diagnostico_Anterior, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+                    </div>
+                    <div class="gaps">
+                        <p>Observação</p>
+                        @Html.EditorFor(model => model.Pre_Consulta.Observacao, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+                    </div>
+                </div>
                 <div class="clear"></div>
                 <input type="submit" value="Marcar Consulta">
             }

@@ -1,18 +1,9 @@
 ﻿@model IEnumerable<ProjetoBenner.Models.Agendado>
 
 @{
-    ViewBag.Title = "Index";
-    if(Session["Codigo_Acesso"] == null)
-    {
-        Response.Redirect("~/Login/Index");
-    }
+    ViewBag.Title = "Consultas";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -42,38 +33,46 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Data_Consulta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hora_Consulta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Consulta_Confirmada)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Agenda.Codigo_Agenda)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pessoa.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Medico.Codigo_Medico)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Local.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pre_Consulta.Sintomas)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Codigo_Agendado }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Codigo_Agendado }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Codigo_Agendado })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data_Consulta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hora_Consulta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Consulta_Confirmada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Agenda.Codigo_Agenda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pessoa.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medico.Codigo_Medico)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Local.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pre_Consulta.Sintomas)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Codigo_Agendado }) |
+                @Html.ActionLink("Detalhes", "Details", new { id = item.Codigo_Agendado }) |
+                @Html.ActionLink("Deletar", "Delete", new { id = item.Codigo_Agendado })
+            </td>
+        </tr>
+    }
+    @if (Session["Tipo"].ToString() == "Secretaria" || Session["Tipo"].ToString() == "Medico")
+    {
+        <a href="@Url.Action("Funcionario", "Dashboard")">Voltar</a>
+    }
+    @if (Session["Tipo"].ToString() == "ADM")
+    {
+        <a href="@Url.Action("ADM", "Dashboard")">Voltar</a>
+    }
 </table>

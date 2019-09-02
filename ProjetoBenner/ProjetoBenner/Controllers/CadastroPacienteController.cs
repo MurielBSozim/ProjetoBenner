@@ -31,18 +31,29 @@ namespace ProjetoBenner.Controllers
 
         public ActionResult CadastrarPaciente(Pessoa pessoa)
         {
-            if (!ModelState.IsValid)
+            if (pessoa.CPF != null)
             {
-                ViewBag.EstadoCivil = new SelectList(estadocivil, "Sigla", "Nome");
-                return View("Cadastro", pessoa);
+                if (!ValidaCPF.Validar(pessoa.CPF))
+                {
+                    pessoa.CPFErrorMessage = "Numero de cpf inválido";
+                    ViewBag.EstadoCivil = new SelectList(estadocivil, "Sigla", "Nome");
+                    return View("Cadastro", pessoa);
+                }
             }
-            pessoa.Acesso.Email = pessoa.Email;
-            pessoa.Acesso.Tipo = "Paciente";
-            db.Pessoa.Add(pessoa);
-            db.SaveChanges();
             
-            return View("Sucesso");
+                if (!ModelState.IsValid)
+                {
+                    ViewBag.EstadoCivil = new SelectList(estadocivil, "Sigla", "Nome");
+                    return View("Cadastro", pessoa);
+                }
+                pessoa.Acesso.Email = pessoa.Email;
+                pessoa.Acesso.Tipo = "Paciente";
+                db.Pessoa.Add(pessoa);
+                db.SaveChanges();
 
+                return View("Sucesso");
+
+            
         }
 
         public JsonResult ValidarCPF(string cpf)

@@ -69,6 +69,18 @@ namespace ProjetoBenner.Controllers
 
         public ActionResult CadastrarMedico(Pessoa pessoa)
         {
+            if (pessoa.CPF != null)
+            {
+                if (!ValidaCPF.Validar(pessoa.CPF))
+                {
+                    pessoa.CPFErrorMessage = "Numero de cpf inválido";
+                    ViewBag.Especialidade = new SelectList(db.Descricao_Especialidade, "Codigo_Especialidade", "Nome");
+                    ViewBag.Pessoa = new SelectList(db.Pessoa, "Codigo_Pessoa", "Nome");
+                    ViewBag.Estado = new SelectList(estado, "Sigla", "Nome");
+                    ViewBag.EstadoCivil = new SelectList(estadocivil, "Sigla", "Nome");
+                    return View("Cadastro", pessoa);
+                }
+            }
             if (!ModelState.IsValid)
             {
                 ViewBag.Especialidade = new SelectList(db.Descricao_Especialidade, "Codigo_Especialidade", "Nome");

@@ -99,12 +99,19 @@ namespace ProjetoBenner.Controllers
         {
             Pessoa pessoa = db.Pessoa.Find(id);
             Acesso acesso = db.Acesso.Find(pessoa.Codigo_Acesso);
-            //Endereco endereco = db.Endereco.Find(pessoa.Codigo_Endereco);
+            Endereco endereco = db.Endereco.Find(pessoa.Codigo_Endereco);
+
+            ViewBag.MensagemErro = db.Agendado.Any(a => a.Codigo_Pessoa == id);
+            if (ViewBag.MensagemErro)
+            {
+
+                return RedirectToAction("Delete", "Paciente", new { Id = id });
+            }
+
             db.Pessoa.Remove(pessoa);
             db.Acesso.Remove(acesso);
-            //db.Endereco.Remove(endereco);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Delete", "Enderecoes", new { id = (endereco.Codigo_Endereco) });
         }
 
         protected override void Dispose(bool disposing)

@@ -112,7 +112,7 @@ namespace ProjetoBenner.Controllers
             Estado estado = db.Estado.Find(id);
             db.Estado.Remove(estado);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Paciente");
         }
 
         protected override void Dispose(bool disposing)

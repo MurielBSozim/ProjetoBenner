@@ -10,6 +10,16 @@ body {
     background-color: #DADFE1;
 }
 
+fieldset {
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+.field-validation-error {
+    color: red;
+}
+
 .form-container {
     margin: 0 auto;
     width: 70%;
@@ -29,3 +39,4 @@ body {
             margin-bottom: 0px;
         }
 }
+

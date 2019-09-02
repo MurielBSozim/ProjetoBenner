@@ -22,6 +22,15 @@ namespace ProjetoBenner.Controllers
             return View();
         }
 
+        public ActionResult LogOut()
+        {
+            
+            Session.Clear();
+            Session.Abandon();
+            Response.ClearHeaders();
+            return RedirectToAction("Index", "Home");
+        }
+
         [HttpPost]
         public ActionResult Autherize(ProjetoBenner.Models.Acesso acesso)
         {
@@ -30,7 +39,7 @@ namespace ProjetoBenner.Controllers
                 var acessoDetails = db.Acesso.Where(x => x.Email == acesso.Email && x.Password == acesso.Password).FirstOrDefault();
                 if (acessoDetails == null)
                 {
-                    acesso.LoginErrorMessage = "wrong user email or password";
+                    acesso.LoginErrorMessage = "E-mail ou senha incorreta";
                     return View("Index", acesso);
                 }
                 else
@@ -38,13 +47,24 @@ namespace ProjetoBenner.Controllers
                     Session["Codigo_Acesso"] = acessoDetails.Codigo_Acesso;
                     Session["Email"] = acessoDetails.Email;
                     Session["Tipo"] = acessoDetails.Tipo;
+                    var pessoa = db.Pessoa.Where(x => x.Codigo_Acesso == acessoDetails.Codigo_Acesso).FirstOrDefault();
+                    
+                   
                     if (Session["Tipo"].ToString() == "ADM")
                     {
                         return RedirectToAction("ADM", "Dashboard");
                     }
                     if (Session["Tipo"].ToString() == "Paciente")
                     {
+                        Session["Codigo_Pessoa"] = pessoa.Codigo_Pessoa;
+                        Session["Nome"] = pessoa.Nome;
                         return RedirectToAction("Paciente", "Dashboard");
+                    }
+                    if (Session["Tipo"].ToString() == "Secretaria" || Session["Tipo"].ToString() == "Medico")
+                    {
+                        Session["Codigo_Pessoa"] = pessoa.Codigo_Pessoa;
+                        Session["Nome"] = pessoa.Nome;
+                        return RedirectToAction("Funcionario", "Dashboard");
                     }
                     else
                     {
@@ -67,14 +87,7 @@ namespace ProjetoBenner.Controllers
                
         }
 
-        public ActionResult LogOut()
-        {
-            int userId = (int)Session["Codigo_Acesso"];
-            Session.Abandon();
-            Session.Clear();
-            Session.Remove(userId.ToString());
-            return RedirectToAction("Index", "Home");
-        }
+       
 
     }
 }

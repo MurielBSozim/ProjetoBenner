@@ -18,7 +18,7 @@ namespace ProjetoBenner.Models
     {
         public int Codigo_Agendado { get; set; }
         public Nullable<int> Codigo_Agenda { get; set; }
-        [Required(ErrorMessage = "Campo Necessário.")]
+        //[Required(ErrorMessage = "Campo Necessário.")]
         public Nullable<int> Codigo_Pessoa { get; set; }
         [Required(ErrorMessage = "Campo Necessário.")]
         public Nullable<int> Codigo_Medico { get; set; }

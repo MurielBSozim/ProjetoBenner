@@ -1,17 +1,15 @@
 ﻿@model ProjetoBenner.Models.Acesso
 @{
     Layout = null;
-    if(Session["Codigo_Acesso"] == null)
+    if (Session["Codigo_Acesso"] == null)
     {
         Response.Redirect("~/Login/Index");
     }
-    if(Session["Codigo_Acesso"] != null)
+    if(Session["Tipo"].ToString() == "Paciente")
     {
-        if(Session["Tipo"] == 'Paciente')
-        {
-            Response.Redirect("~/Login/Index");
-        }
+        Response.Redirect("~/Login/Index");
     }
+
 }
 
 <!DOCTYPE html>
@@ -23,12 +21,12 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
     <link href="~/Content/menu.css" rel="stylesheet" />
-    <link href='Content/fullcalendar.css' rel='stylesheet' />
-    <link href='Contente/fullcalendar.print.css' rel='stylesheet' media='print' />
-    <script src='Scripts/jquery-1.10.2.js' type="text/javascript"></script>
-    <script src='Scripts/jquery-ui.custom.min.js' type="text/javascript"></script>
-    <script src='Scripts/fullcalendar.js' type="text/javascript"></script>
-    <link href="~/Content/calendario.css" rel="stylesheet" />
+    <link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+    <script type="text/javascript">
+        jQuery(window).load(function ($) {
+            atualizaRelogio();
+        });
+    </script>
 </head>
 
 <body>
@@ -50,20 +48,20 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Home</a></li>
+                            <li class="active"><a href="@Url.Action("Funcionario", "Dashboard")">Home</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Consulta <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="@Url.Action("Index", "AgendarConsulta")">Agendar Consulta</a></li>
+                                    <li><a href="@Url.Action("Index", "AgendarConsultaS")">Agendar Consulta</a></li>
                                     <li><a href="@Url.Action("Index","Agendadoes")">Lista de Consulta</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Perfil <b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configurações<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="@Url.Action("Index","Paciente")">Ver informações</a></li>
-                                    <li><a href="#">Alterar Dados</a></li>
-                                    <li><a href="#">Alterar Senha</a></li>
+                                    <li><a href="@Url.Action("Index","Paciente")">Perficies Cadastrados</a></li>
+                                    <li><a href="@Url.Action("Edit" , "Acessoes",new { Id = (int)Session["Codigo_Acesso"]})">Alterar Senha Conta Atual</a></li>
+                                    <li><a href="@Url.Action("Edit", "Paciente", new { Id = (int)Session["Codigo_Pessoa"] })">Alerar Dados da Conta Atual</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -79,14 +77,53 @@
         </div>
     </div>
     <div class="main">
-        <div id='wrap'>
+        <div class="container" style="background-color: black; opacity:0.5; margin-top: 6%; width: 650px;">
+            <div class="header-intro">
+                <div class="header-left">
+                    <h2 class="header2" style="color:white; text-align:center; font-size:42px"> Bem Vindo @Session["Nome"].ToString() ao AgendaON!</h2>
+                    <hr />
+                    <br />
+                    <h3 class="header2" style="color:white; text-align:center; font-size:30px">Que você tenha um excelente dia de trabalho</h3>
+                    <br />
+                    <br />
+                    <div style="color:white; font-size: 20px; text-align: center">
+                        <output id="data"></output>
+                        <output id="hora"></output>
 
-            <div id='calendar'></div>
+                    </div>
 
-            <div style='clear:both'></div>
+                </div>
+
+            </div>
         </div>
-
     </div>
+    <script>
+        function atualizaRelogio() {
+            var momentoAtual = new Date();
+
+            var vhora = momentoAtual.getHours();
+            var vminuto = momentoAtual.getMinutes();
+            var vsegundo = momentoAtual.getSeconds();
+
+            var vdia = momentoAtual.getDate();
+            var vmes = momentoAtual.getMonth() + 1;
+            var vano = momentoAtual.getFullYear();
+
+            if (vdia < 10) { vdia = "0" + vdia; }
+            if (vmes < 10) { vmes = "0" + vmes; }
+            if (vhora < 10) { vhora = "0" + vhora; }
+            if (vminuto < 10) { vminuto = "0" + vminuto; }
+            if (vsegundo < 10) { vsegundo = "0" + vsegundo; }
+
+            dataFormat = vdia + " / " + vmes + " / " + vano;
+            horaFormat = vhora + " : " + vminuto + " : " + vsegundo;
+
+            document.getElementById("data").innerHTML = dataFormat;
+            document.getElementById("hora").innerHTML = horaFormat;
+
+            setTimeout("atualizaRelogio()", 1000);
+        }
+    </script>
     <script>
         $('ul.nav li.dropdown').hover(function () {
             $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
@@ -94,6 +131,7 @@
             $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
         });
     </script>
+
 
 </body>
 </html>

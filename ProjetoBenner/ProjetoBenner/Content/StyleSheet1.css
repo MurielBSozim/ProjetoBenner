@@ -1,0 +1,13 @@
+﻿body {
+    background-image: url(agendar/css/b1.jpg)
+}
+
+.header2{
+   margin-top: 3%;
+   text-align: center;
+   color: white;
+}
+
+hr{
+    width: 300px;
+}
