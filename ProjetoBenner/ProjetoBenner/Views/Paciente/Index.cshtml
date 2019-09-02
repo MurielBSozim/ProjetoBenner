@@ -2,6 +2,11 @@
 
 @{
     ViewBag.Title = "";
+    if(Session["Codigo_Acesso"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+ 
 }
 
 <p style="color:red; font-size:20px">*Pessoas com Consulta Agendada NÃO PODE SER DELETADA</p>

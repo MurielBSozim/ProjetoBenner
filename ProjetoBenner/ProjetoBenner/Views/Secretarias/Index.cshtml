@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ProjetoBenner.Models.Secretaria>
+
+@{
+    ViewBag.Title = "Index";
+    if(Session["Codigo_Acesso"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+    if (Session["Codigo_Acesso"] != null)
+    {
+        if (Session["Tipo"].ToString() != "ADM")
+        {
+            Response.Redirect("~/Login/Index");
+        }
+    }
+}
+
+<p>
+    @Html.ActionLink("Voltar", "ADM", "Dashboard")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Data_Admissao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hora_Entrada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hora_Saida)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pessoa.Nome)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data_Admissao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hora_Entrada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hora_Saida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pessoa.Nome)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Codigo_Secretaria }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.Codigo_Secretaria }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.Codigo_Secretaria })
+        </td>
+    </tr>
+}
+
+</table>

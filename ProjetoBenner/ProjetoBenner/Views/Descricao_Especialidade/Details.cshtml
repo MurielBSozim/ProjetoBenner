@@ -1,4 +1,4 @@
-﻿@model ProjetoBenner.Models.Local
+﻿@model ProjetoBenner.Models.Descricao_Especialidade
 
 @{
     ViewBag.Title = "Detalhes";
@@ -15,8 +15,9 @@
     }
 }
 
+
 <div>
-    <h4>Local</h4>
+    <h4>Especialidade</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -27,25 +28,9 @@
             @Html.DisplayFor(model => model.Nome)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Telefone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Endereco.Endereco1)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Endereco.Endereco1)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Codigo_Local }) |
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Codigo_Especialidade }) |
     @Html.ActionLink("Voltar", "Index")
 </p>

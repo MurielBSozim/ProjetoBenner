@@ -10,28 +10,32 @@ using System.Drawing;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using System.Web.Routing;
 
 namespace ProjetoBenner.Controllers
 {
     public class LoginController : Controller
     {
-        
-        // GET: Login
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public ActionResult LogOut()
         {
-            
+
             Session.Clear();
             Session.Abandon();
             Response.ClearHeaders();
             return RedirectToAction("Index", "Home");
         }
 
+        // GET: Login
+        public ActionResult Index()
+        {
+                return View();
+  
+        }
+
+        
+
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Autherize(ProjetoBenner.Models.Acesso acesso)
         {
             using (AgendaONEntities3 db = new AgendaONEntities3())

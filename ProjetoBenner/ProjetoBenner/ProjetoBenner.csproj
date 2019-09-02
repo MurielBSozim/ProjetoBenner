@@ -317,13 +317,16 @@
     <Compile Include="Controllers\CadastroSecretariaController.cs" />
     <Compile Include="Controllers\CidadesController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\Descricao_EspecialidadeController.cs" />
     <Compile Include="Controllers\EnderecoesController.cs" />
     <Compile Include="Controllers\EstadoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocalsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MedicosController.cs" />
     <Compile Include="Controllers\PacienteController.cs" />
     <Compile Include="Controllers\PlantaoMedicoController.cs" />
+    <Compile Include="Controllers\SecretariasController.cs" />
     <Compile Include="Controllers\ValidaCPF.cs" />
     <Compile Include="dto\MedicoDto.cs" />
     <Compile Include="Global.asax.cs">
@@ -444,6 +447,19 @@
     <Content Include="Views\Locals\Details.cshtml" />
     <Content Include="Views\Locals\Edit.cshtml" />
     <Content Include="Views\Locals\Index.cshtml" />
+    <Content Include="Views\Descricao_Especialidade\Create.cshtml" />
+    <Content Include="Views\Descricao_Especialidade\Delete.cshtml" />
+    <Content Include="Views\Descricao_Especialidade\Details.cshtml" />
+    <Content Include="Views\Descricao_Especialidade\Edit.cshtml" />
+    <Content Include="Views\Descricao_Especialidade\Index.cshtml" />
+    <Content Include="Views\Medicos\Delete.cshtml" />
+    <Content Include="Views\Medicos\Details.cshtml" />
+    <Content Include="Views\Medicos\Edit.cshtml" />
+    <Content Include="Views\Medicos\Index.cshtml" />
+    <Content Include="Views\Secretarias\Delete.cshtml" />
+    <Content Include="Views\Secretarias\Details.cshtml" />
+    <Content Include="Views\Secretarias\Edit.cshtml" />
+    <Content Include="Views\Secretarias\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

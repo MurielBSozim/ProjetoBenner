@@ -1,6 +1,17 @@
 ﻿@model ProjetoBenner.Models.Horario_Medico
 @{
     Layout = null;
+    if(Session["Codigo_Acesso"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+    if (Session["Codigo_Acesso"] != null)
+    {
+        if (Session["Tipo"].ToString() != "ADM")
+        {
+            Response.Redirect("~/Login/Index");
+        }
+    }
 }
 <!DOCTYPE Html>
 <html>

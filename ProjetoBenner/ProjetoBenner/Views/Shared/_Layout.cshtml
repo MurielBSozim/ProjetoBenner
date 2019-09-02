@@ -1,10 +1,19 @@
-﻿<!DOCTYPE html>
+﻿
+@{ 
+    if(Session["Codigo_Acesso"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - AgendaON</title>
     @*<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />*@
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
@@ -17,18 +26,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @if (Session["Tipo"].ToString() == "ADM")
+               @if (Session["Codigo_Acesso"] != null)
+               {
+                if (Session["Tipo"].ToString() == "ADM")
                 {
                     @Html.ActionLink("AgendaON", "ADM", "Dashboard", new { area = "" }, new { @class = "navbar-brand" })
                 }
-                @if (Session["Tipo"].ToString() == "Paciente")
+                if (Session["Tipo"].ToString() == "Paciente")
                 {
                     @Html.ActionLink("AgendaON", "Paciente", "Dashboard", new { area = "" }, new { @class = "navbar-brand" })
                 }
-                @if (Session["Tipo"].ToString() == "Medico" || Session["Tipo"].ToString() == "Secretaria")
+                if (Session["Tipo"].ToString() == "Medico" || Session["Tipo"].ToString() == "Secretaria")
                 {
                     @Html.ActionLink("AgendaON", "Funcionario", "Dashboard", new { area = "" }, new { @class = "navbar-brand" })
                 }
+               }
+
 
             </div>
             <div class="navbar-collapse collapse">

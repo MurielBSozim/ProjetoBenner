@@ -2,6 +2,17 @@
 
 @{
     ViewBag.Title = "Deletar";
+    if(Session["Codigo_Acesso"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+    if (Session["Codigo_Acesso"] != null)
+    {
+        if (Session["Tipo"].ToString() == "Paciente")
+        {
+            Response.Redirect("~/Login/Index");
+        }
+    }
 }
 
 

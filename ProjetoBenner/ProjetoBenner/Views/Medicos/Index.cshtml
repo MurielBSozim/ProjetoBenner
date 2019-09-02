@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ProjetoBenner.Models.Medico>
+
+@{
+    ViewBag.Title = "Index";
+    if(Session["Codigo_Acesso"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+    if (Session["Codigo_Acesso"] != null)
+    {
+        if (Session["Tipo"].ToString() != "ADM")
+        {
+            Response.Redirect("~/Login/Index");
+        }
+    }
+}
+
+<p>
+    @Html.ActionLink("Voltar", "ADM", "Dashboard" )
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Data_Admissao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CRM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao_Especialidade.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado.UF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pessoa.Nome)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data_Admissao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CRM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao_Especialidade.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado.UF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pessoa.Nome)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Codigo_Medico }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.Codigo_Medico }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.Codigo_Medico })
+        </td>
+    </tr>
+}
+
+</table>

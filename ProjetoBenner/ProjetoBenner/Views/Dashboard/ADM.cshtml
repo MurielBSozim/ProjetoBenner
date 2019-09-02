@@ -60,13 +60,7 @@
                         <ul class="nav navbar-nav">
                             <li class="active"><a href="@Url.Action("ADM", "Dashboard")">Home</a></li>
 
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Perfil <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="@Url.Action("Index", "Paciente")">Ver</a></li>
-                                    <li><a href="@Url.Action("Index","Paciente")">Alterar Dados</a></li>
-                                </ul>
-                            </li>
+                           
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastrar <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
@@ -74,6 +68,19 @@
                                     <li><a href="@Url.Action("Index","CadastroSecretaria")">Cadastrar Secretária</a></li>
                                     <li><a href="@Url.Action("Create","Acessoes")">Cadastrar Administrador</a></li>
                                     <li><a href="@Url.Action("Index","CadastroLocal")">Cadastrar Local</a></li>
+                                    <li><a href="@Url.Action("Index","Descricao_Especialidade")">Cadastrar Nova Especialidade</a></li>
+                                    @*<li><a href="#">Cadastrar Plantão Médico</a></li>*@
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configurações <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="@Url.Action("Index", "Paciente")">Pessoas Cadastradas</a></li>
+                                    <li><a href="@Url.Action("Edit","Acessoes", new { id = (int)Session["Codigo_Acesso"]})">Alterar Dados conta atual</a></li>
+                                    <li><a href="@Url.Action("Index","Medicos")">Alterar Medico</a></li>
+                                    <li><a href="@Url.Action("Index","Secretarias")">Alterar Secretária</a></li>
+                                    <li><a href="@Url.Action("Index","CadastroLocal")">Alterar Local</a></li>
+                                    <li><a href="@Url.Action("Index","Descricao_Especialidade")">Alterar Especialidade</a></li>
                                     @*<li><a href="#">Cadastrar Plantão Médico</a></li>*@
                                 </ul>
                             </li>

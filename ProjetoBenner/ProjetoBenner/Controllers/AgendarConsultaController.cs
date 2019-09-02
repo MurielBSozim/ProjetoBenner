@@ -12,15 +12,43 @@ namespace ProjetoBenner.Controllers
     public class AgendarConsultaController : Controller
     {
         public AgendaONEntities3 db = new AgendaONEntities3();
+
+        private List<object> horario = new List<object>
+        {
+            new {Sigla = "", Nome = ""},
+            new {Sigla = "08:00" ,Nome = "08:00"},
+            new {Sigla = "08:30" ,Nome = "08:30"},
+            new {Sigla = "09:00" ,Nome = "09:00"},
+            new {Sigla = "09:30" ,Nome = "09:30"},
+            new {Sigla = "10:00" ,Nome = "10:00"},
+            new {Sigla = "10:30" ,Nome = "10:30"},
+            new {Sigla = "11:00" ,Nome = "11:00"},
+            new {Sigla = "11:30" ,Nome = "11:30"},
+            
+            new {Sigla = "13:00" ,Nome = "13:00"},
+            new {Sigla = "13:30" ,Nome = "13:30"},
+            new {Sigla = "14:00" ,Nome = "14:00"},
+            new {Sigla = "14:30" ,Nome = "14:30"},
+            new {Sigla = "15:00" ,Nome = "15:00"},
+            new {Sigla = "15:30" ,Nome = "15:30"},
+            new {Sigla = "16:00" ,Nome = "16:00"},
+            new {Sigla = "16:30" ,Nome = "16:30"},
+            new {Sigla = "17:00" ,Nome = "17:00"},
+            new {Sigla = "17:30" ,Nome = "17:30"},
+            new {Sigla = "18:00" ,Nome = "18:00"}
+        };
+
         // GET: AgendarConsulta
         public ActionResult Index()
         {
             List<Descricao_Especialidade> EspecialidadeList = db.Descricao_Especialidade.ToList();
             ViewBag.EspecialidadeList = new SelectList(EspecialidadeList, "Codigo_Especialidade", "Nome");
+            ViewBag.Horario = new SelectList(horario, "Sigla", "Nome");
             if (!ModelState.IsValid)
             {
                 ViewBag.Pessoa = new SelectList(db.Pessoa, "Codigo_Pessoa", "Nome");
                 ViewBag.EspecialidadeList = new SelectList(EspecialidadeList, "Codigo_Especialidade", "Nome");
+                ViewBag.Horario = new SelectList(horario, "Sigla", "Nome");
                 return View();
             }
             ViewBag.Pessoa = new SelectList(db.Pessoa, "Codigo_Pessoa", "Nome");
@@ -52,6 +80,7 @@ namespace ProjetoBenner.Controllers
             {
                 ViewBag.EspecialidadeList = new SelectList(EspecialidadeList, "Codigo_Especialidade", "Nome");
                 ViewBag.Pessoa = new SelectList(db.Pessoa, "Codigo_Pessoa", "Nome");
+                ViewBag.Horario = new SelectList(horario, "Sigla", "Nome");
                 return View("Index", agendamento);
             }
 

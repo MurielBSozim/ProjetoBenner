@@ -1,0 +1,59 @@
+﻿@model ProjetoBenner.Models.Secretaria
+
+@{
+    ViewBag.Title = "Detalhes";
+    if(Session["Codigo_Acesso"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+    if (Session["Codigo_Acesso"] != null)
+    {
+        if (Session["Tipo"].ToString() != "ADM")
+        {
+            Response.Redirect("~/Login/Index");
+        }
+    }
+}
+
+<div>
+    <h4>Secretaria</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_Admissao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_Admissao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hora_Entrada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hora_Entrada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hora_Saida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hora_Saida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pessoa.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pessoa.Nome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Codigo_Secretaria }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>
