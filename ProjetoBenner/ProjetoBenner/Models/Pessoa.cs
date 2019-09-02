@@ -27,7 +27,9 @@ namespace ProjetoBenner.Models
         }
     
         public int Codigo_Pessoa { get; set; }
+        [Display(Name = "Usuário")]
         public Nullable<int> Codigo_Acesso { get; set; }
+        [Display(Name = "Endereço")]
         public Nullable<int> Codigo_Endereco { get; set; }
 
         [Required(ErrorMessage = "Campo Necessário.")]

@@ -20,12 +20,13 @@ namespace ProjetoBenner.Models
         {
             this.Pessoa = new HashSet<Pessoa>();
         }
-    
+        [Display(Name = "Usuário")]   
         public int Codigo_Acesso { get; set; }
         public string Email { get; set; }
 
         [DataType(DataType.Password)]
         [Required(ErrorMessage = "Campo Necessário.")]
+        [Display(Name = "Senha")]
         public string Password { get; set; }
         public string Tipo { get; set; }
     

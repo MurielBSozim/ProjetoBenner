@@ -21,7 +21,7 @@ namespace ProjetoBenner.Models
             this.Local = new HashSet<Local>();
             this.Pessoa = new HashSet<Pessoa>();
         }
-    
+        [Display(Name ="Endereço")]
         public int Codigo_Endereco { get; set; }
         public Nullable<int> Codigo_Cidade { get; set; }
 

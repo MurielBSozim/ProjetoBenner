@@ -84,7 +84,21 @@ namespace ProjetoBenner.Controllers
             {
                 db.Entry(estado).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", "Paciente");
+                if(Session["Codigo_Acesso"] != null)
+               {
+                    if (Session["Tipo"].ToString() == "ADM")
+                    {
+                        return RedirectToAction( "ADM", "Dashboard");
+                    }
+                    if (Session["Tipo"].ToString() == "Paciente") 
+                    {
+                        return RedirectToAction( "Paciente", "Dashboard");
+                    }
+                    if (Session["Tipo"].ToString() == "Medico" || Session["Tipo"].ToString() == "Secretaria")
+                    {
+                        return RedirectToAction( "Funcionario", "Dashboard");
+                    }
+                }
             }
             return View(estado);
         }

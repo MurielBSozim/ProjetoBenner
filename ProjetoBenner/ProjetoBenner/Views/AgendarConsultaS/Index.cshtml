@@ -52,47 +52,61 @@
                 <div class="gaps">
                     <p>Especialidade</p>
                     @Html.DropDownList("EspecialidadeList", ViewBag.EspecialidadeList as SelectList, new { @class = "form-control" })
-                </div>
+                 </div>
                 <div class="gaps">
                     <p>Medico</p>
                     @Html.DropDownListFor(model => model.Codigo_Medico, new SelectList(" "), "--SELECIONE O MÉDICO--", new { @class = "form-control", id = "MedicoList" })
+                    @Html.ValidationMessageFor(model => model.Codigo_Medico ,"", new { @class = "text-danger" }))
                 </div>
 
 
                 <div class="gaps">
                     <p>Data da Consulta</p>
                     @Html.EditorFor(model => model.Data_Consulta, new { htmlAttributes = new { @class = "form-control", id = "datefield", type = "date" } })
+                    @Html.ValidationMessageFor(model => model.Data_Consulta, "", new { @class = "text-danger" }))
                 </div>
                 <div class="gaps">
                     <p>Hora da Consulta</p>
-                    @Html.EditorFor(model => model.Hora_Consulta, new { htmlAttributes = new { @class = "form-control", type = "time", placeholder = "hh:mm" } })
+                    @*@Html.EditorFor(model => model.Hora_Consulta, new { htmlAttributes = new { @class = "form-control", type = "time", placeholder = "hh:mm" } })*@
+                    @Html.DropDownListFor(model => model.Hora_Consulta, ViewBag.Horario as SelectList, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Hora_Consulta, "", new { @class = "text-danger" }))
                 </div>
                 <div class="gaps">
                     <p>Paciente</p>
                     @Html.DropDownListFor(model => model.Codigo_Pessoa, ViewBag.Pessoa as SelectList, "--SELECTIONE O PACIENTE--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Codigo_Pessoa, "", new { @class = "text-danger" }))
                 </div>
             </div>
             <div class="right-agileinfo same">
                 <div class="gaps">
                     <p>Sintomas</p>
-                    @Html.EditorFor(model => model.Pre_Consulta.Sintomas, "--Motivos da Consulta--", new { htmlAttributes = new { @class = "form-control", type = "text" } })
+                    <style>
+                        textarea {
+                            font-family: inherit;
+                            
+                            height: 65px;
+                    </style>
+                        @Html.TextAreaFor(model => model.Pre_Consulta.Sintomas, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+                        
                 </div>
                 <div class="gaps">
                     <p>Remedios que está tomando</p>
-                    @Html.EditorFor(model => model.Pre_Consulta.Remedios_Tomando, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+                    @Html.TextAreaFor(model => model.Pre_Consulta.Remedios_Tomando, new { htmlAttributes = new { @class = "form-control", type = "text" } })
                 </div>
                 <div class="gaps">
                     <p>Diagnósticos Anteriores</p>
-                    @Html.EditorFor(model => model.Pre_Consulta.Diagnostico_Anterior, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+                    @Html.TextAreaFor(model => model.Pre_Consulta.Diagnostico_Anterior, new { htmlAttributes = new { @class = "form-control", type = "text" } })
                 </div>
                 <div class="gaps">
                     <p>Observação</p>
-                    @Html.EditorFor(model => model.Pre_Consulta.Observacao, new { htmlAttributes = new { @class = "form-control", type = "text" } })
+                    @Html.TextAreaFor(model => model.Pre_Consulta.Observacao, new { htmlAttributes = new { @class = "form-control", type = "text" } })
                 </div>
             </div>
             <div class="clear"></div>
-            <input type="submit" value="Marcar Consulta">
-            <a style="color:white" href="@Url.Action("Paciente","Dashboard")">Voltar</a>
+            <input type="submit" value="Marcar Consulta" style="float:right">
+            <a href="@Url.Action("Funcionario","Dashboard")">
+                <input type="button" value="Voltar" @*class="btn btn-success btn-outline  mt-5"*@ style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900">
+            </a>
         }
     </div>
     </div>

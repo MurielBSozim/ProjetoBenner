@@ -21,7 +21,7 @@
         @Html.HiddenFor(model => model.Codigo_Endereco)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Codigo_Cidade, "Codigo_Cidade", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Codigo_Cidade, "Cidade", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Codigo_Cidade", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Codigo_Cidade, "", new { @class = "text-danger" })
@@ -67,7 +67,3 @@
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Voltar", "Index")
-</div>
