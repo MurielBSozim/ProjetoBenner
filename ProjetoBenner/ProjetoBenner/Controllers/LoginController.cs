@@ -87,12 +87,9 @@ namespace ProjetoBenner.Controllers
 
         public ActionResult LogOut()
         {
-
-            Session.Clear();
+            int userId = (int)Session["Codigo_Acesso"];
             Session.Abandon();
-            Response.ClearHeaders();
-            Session["Codigo_Acesso"] = null;
-
+            Session.Abandon();
             return RedirectToAction("Index", "Home");
         }
 

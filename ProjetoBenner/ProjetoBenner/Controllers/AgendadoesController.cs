@@ -131,6 +131,8 @@ namespace ProjetoBenner.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Agendado agendado = db.Agendado.Find(id);
+            Pre_Consulta pre = db.Pre_Consulta.Find(agendado.Codigo_Pre_Consulta);
+            db.Pre_Consulta.Remove(pre);
             db.Agendado.Remove(agendado);
             db.SaveChanges();
             return RedirectToAction("Index");

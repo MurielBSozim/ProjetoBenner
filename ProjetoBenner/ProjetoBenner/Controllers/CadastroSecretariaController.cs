@@ -30,7 +30,19 @@ namespace ProjetoBenner.Controllers
 
         public ActionResult CadastrarSecretaria(Pessoa pessoa)
         {
-            if (!ModelState.IsValid)
+            ViewBag.MensagemErro = db.Pessoa.Any(a => a.Email == pessoa.Email);
+            ViewBag.MensagemErroCPF = db.Pessoa.Any(a => a.CPF == pessoa.CPF);
+            if (pessoa.CPF != null)
+            {
+                if (!ValidaCPF.Validar(pessoa.CPF))
+                {
+                    pessoa.CPFErrorMessage = "Numero de cpf inválido";
+                    ViewBag.Pessoa = new SelectList(db.Pessoa, "Codigo_Pessoa", "Nome");
+                    ViewBag.EstadoCivil = new SelectList(estadocivil, "Sigla", "Nome");
+                    return View("Index", pessoa);
+                }
+            }
+            if (!ModelState.IsValid || ViewBag.MensagemErro || ViewBag.MensagemErroCPF)
             {
                 ViewBag.Pessoa = new SelectList(db.Pessoa, "Codigo_Pessoa", "Nome");
                 ViewBag.EstadoCivil = new SelectList(estadocivil, "Sigla", "Nome");

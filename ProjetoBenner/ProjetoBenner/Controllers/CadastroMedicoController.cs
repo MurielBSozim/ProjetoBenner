@@ -69,6 +69,9 @@ namespace ProjetoBenner.Controllers
 
         public ActionResult CadastrarMedico(Pessoa pessoa)
         {
+            ViewBag.MensagemErro = db.Pessoa.Any(a => a.Email == pessoa.Email);
+            ViewBag.MensagemErroCPF = db.Pessoa.Any(a => a.CPF == pessoa.CPF);
+
             if (pessoa.CPF != null)
             {
                 if (!ValidaCPF.Validar(pessoa.CPF))
@@ -78,10 +81,10 @@ namespace ProjetoBenner.Controllers
                     ViewBag.Pessoa = new SelectList(db.Pessoa, "Codigo_Pessoa", "Nome");
                     ViewBag.Estado = new SelectList(estado, "Sigla", "Nome");
                     ViewBag.EstadoCivil = new SelectList(estadocivil, "Sigla", "Nome");
-                    return View("Cadastro", pessoa);
+                    return View("Index", pessoa);
                 }
             }
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || ViewBag.MensagemErro || ViewBag.MensagemErroCPF)
             {
                 ViewBag.Especialidade = new SelectList(db.Descricao_Especialidade, "Codigo_Especialidade", "Nome");
                 ViewBag.Pessoa = new SelectList(db.Pessoa, "Codigo_Pessoa", "Nome");

@@ -31,6 +31,8 @@ namespace ProjetoBenner.Controllers
 
         public ActionResult CadastrarPaciente(Pessoa pessoa)
         {
+            ViewBag.MensagemErro = db.Pessoa.Any(a => a.Email == pessoa.Email);
+            ViewBag.MensagemErroCPF = db.Pessoa.Any(a => a.CPF == pessoa.CPF);
             if (pessoa.CPF != null)
             {
                 if (!ValidaCPF.Validar(pessoa.CPF))
@@ -41,7 +43,7 @@ namespace ProjetoBenner.Controllers
                 }
             }
             
-                if (!ModelState.IsValid)
+                if (!ModelState.IsValid || ViewBag.MensagemErro || ViewBag.MensagemErroCPF)
                 {
                     ViewBag.EstadoCivil = new SelectList(estadocivil, "Sigla", "Nome");
                     return View("Cadastro", pessoa);
@@ -54,12 +56,6 @@ namespace ProjetoBenner.Controllers
                 return View("Sucesso");
 
             
-        }
-
-        public JsonResult ValidarCPF(string cpf)
-        {
-            var pessoa = db.Pessoa.Find(cpf);
-            return Json(pessoa == null, JsonRequestBehavior.AllowGet);
         }
 
 
