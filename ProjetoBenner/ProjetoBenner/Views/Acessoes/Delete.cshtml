@@ -17,9 +17,9 @@
 }
 
 
-<h3>Tem certeza que deseja excluir?</h3>
+<h3 style="text-align:center">Tem certeza que deseja excluir?</h3>
 <div>
-    <h4>Acesso</h4>
+    <h4>Excluir Administrador</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -48,12 +48,20 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Excluir" class="btn btn-default" /> |
-            @Html.ActionLink("Voltar", "Index")
-        </div>
+
+        <p style="margin-left: 40%">
+
+
+            <input type="submit" value="Excluir" class="btn btn-primary" />
+
+            <a href="@Url.Action("Index","Acessoes") ">
+                <input type="button" value="Voltar" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+            </a>
+        </p>
+
     }
 </div>

@@ -1,0 +1,108 @@
+﻿@model ProjetoBenner.Models.Pre_Consulta
+
+@{
+    // ViewBag.Title = "Details";
+    Layout = null;
+}
+<html>
+<head>
+
+
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <link href="~/Content/menu.css" rel="stylesheet" />
+    <link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Pre_Consulta/css/style.css" rel="stylesheet" />
+    <link href="~/Content/menu.css" rel="stylesheet" />
+</head>
+<body>
+    <section class="wrapper fixed-top">
+        <div class="overlays"></div>
+
+        <div class="body-wrap" style=" margin-top: 2%;">
+            <div class="container">
+                <nav class="navbar navbar-inverse" role="navigation">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            @if (Session["Codigo_Acesso"] != null)
+                            {
+                                if (Session["Tipo"].ToString() == "ADM")
+                                {
+                                    @Html.ActionLink("AgendaON", "ADM", "Dashboard", new { area = "" }, new { @class = "navbar-brand" })
+                                }
+                                if (Session["Tipo"].ToString() == "Paciente")
+                                {
+                                    @Html.ActionLink("AgendaON", "Paciente", "Dashboard", new { area = "" }, new { @class = "navbar-brand" })
+                                }
+                                if (Session["Tipo"].ToString() == "Medico" || Session["Tipo"].ToString() == "Secretaria")
+                                {
+                                    @Html.ActionLink("AgendaON", "Funcionario", "Dashboard", new { area = "" }, new { @class = "navbar-brand" })
+                                }
+                            }
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav"></ul>
+                        </div>
+                    </div>
+                </nav>
+                <div class="col-lg-12">
+                    <div class="register-form-w3layouts" style="margin-top:3%">
+
+                        <div>
+                            <h2 style="text-align:center;">Pré-Consulta</h2>
+                            <hr />
+
+
+                            <div class="panel-body">
+                                <div class="details col-md-6" style="width: 550px">
+                                    <div class="panel panel-default text-center" style="color:black">
+                                        <h3><div class="panel-title"><span class="glyphicon glyphicon-list-alt"></span>@Html.DisplayNameFor(model => model.Sintomas)</div></h3>
+                                        <hr>
+                                        <h4>@Html.DisplayFor(model => model.Sintomas)</h4>
+                                    </div>
+
+                                    <div class="panel panel-default text-center" style="color:black">
+                                        <h3><div class="panel-title"><span class="glyphicon glyphicon-list-alt"></span>@Html.DisplayNameFor(model => model.Remedios_Tomando)</div></h3>
+                                        <hr>
+                                        <h4>@Html.DisplayFor(model => model.Remedios_Tomando)</h4>
+                                    </div>
+                                    <div class="panel panel-default text-center" style="color:black">
+                                        <h3><div class="panel-title"><span class="glyphicon glyphicon-list-alt"></span>@Html.DisplayNameFor(model => model.Diagnostico_Anterior)</div></h3>
+                                        <hr>
+                                        <h4>@Html.DisplayFor(model => model.Diagnostico_Anterior)</h4>
+                                    </div>
+                                    <div class="panel panel-default text-center" style="color:black">
+                                        <h3><div class="panel-title"><span class="glyphicon glyphicon-list-alt"></span>@Html.DisplayNameFor(model => model.Observacao)</div></h3>
+                                        <hr>
+                                        <h4>@Html.DisplayFor(model => model.Observacao)</h4>
+                                    </div>
+                                </div>
+                                <p style="margin-left: 40%">
+                                    
+                                    <a href="@Url.Action("Index", "Pre_Consulta", new { id = Model.Codigo_Pre_Consulta })">
+                                        <input type="button" value="Voltar" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+                                    </a>
+                                   
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+    </section>
+</body>
+</html>

@@ -16,14 +16,14 @@
 }
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 
-<h3>Você tem certeza que deseja excluir?</h3>
+<h3 style="text-align:center">Tem certeza que deseja excluir?</h3>
 <div>
-    <h4>Local</h4>
+    <h4>Excluir Local</h4>
     <hr />
     @if (ViewBag.MensagemErro ?? false)
     {
         <div class="row col-md-12">
-            <p class="alert alert-danger">Local com Horario de Medico Cadastrado</p>
+            <p class="alert alert-danger">Local com Medico Cadastrado</p>
         </div>
     }
     <dl class="dl-horizontal">
@@ -57,9 +57,20 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Deletar" class="btn btn-default" /> |
-            @Html.ActionLink("Voltar", "Index")
-        </div>
+        @*<div class="form-actions no-color">
+                <input type="submit" value="Deletar" class="btn btn-default" /> |
+                @Html.ActionLink("Voltar", "Index")
+            </div>*@
+
+        <p style="margin-left: 40%">
+
+
+            <input type="submit" value="Excluir" class="btn btn-primary" />
+
+            <a href="@Url.Action("Index","Locals") ">
+                <input type="button" value="Voltar" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+            </a>
+        </p>
+
     }
 </div>

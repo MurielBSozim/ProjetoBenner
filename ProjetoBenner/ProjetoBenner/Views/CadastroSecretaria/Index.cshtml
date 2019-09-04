@@ -1,6 +1,7 @@
 ﻿@model ProjetoBenner.Models.Pessoa
 @{
-    Layout = null;
+    ViewBag.Title = "Cadastrar Secretária";
+
      if(Session["Codigo_Acesso"] == null)
     {
         Response.Redirect("~/Login/Index");

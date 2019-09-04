@@ -25,6 +25,7 @@ namespace ProjetoBenner.Models
             this.Sala_Espera = new HashSet<Sala_Espera>();
         }
     
+        [Display(Name ="Médico")]
         public int Codigo_Medico { get; set; }
         public Nullable<int> Codigo_Pessoa { get; set; }
         public Nullable<int> Codigo_Estado { get; set; }

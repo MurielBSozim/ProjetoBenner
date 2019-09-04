@@ -1,6 +1,6 @@
 ﻿@model ProjetoBenner.Models.Medico
 @{
-    Layout = null;
+ViewBag.Title = "Cadastrar Médico";
     if(Session["Codigo_Acesso"] == null)
     {
         Response.Redirect("~/Login/Index");

@@ -14,6 +14,7 @@ namespace ProjetoBenner.Models
     
     public partial class Consulta
     {
+
         public int Codigo_Consulta { get; set; }
         public Nullable<int> Codigo_Pessoa { get; set; }
         public Nullable<int> Codigo_Medico { get; set; }

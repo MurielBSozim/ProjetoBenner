@@ -20,7 +20,7 @@ namespace ProjetoBenner.Models
         {
             this.Medico = new HashSet<Medico>();
         }
-    
+        [Display(Name = "Especialidade")]
         public int Codigo_Especialidade { get; set; }
 
         [Display(Name = "Especialidade")]

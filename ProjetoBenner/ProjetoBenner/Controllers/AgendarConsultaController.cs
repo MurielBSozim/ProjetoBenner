@@ -87,6 +87,7 @@ namespace ProjetoBenner.Controllers
            
             //ViewBag.Pessoa = new SelectList(db.Pessoa, "Codigo_Pessoa", "Nome");
             agendamento.Codigo_Pessoa = (int)Session["Codigo_Pessoa"];
+            agendamento.Consulta_Confirmada = false;
             db.Agendado.Add(agendamento);
             db.SaveChanges();
             return View("Sucesso");

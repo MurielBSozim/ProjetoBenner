@@ -16,9 +16,6 @@
 }
 
 
-<p>
-    <a href="@Url.Action("ADM", "Dashboard")">Voltar</a>
-</p>
 <table class="table">
     <tr>
         <th>
@@ -45,9 +42,21 @@
             @Html.DisplayFor(modelItem => item.Endereco.Endereco1)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Codigo_Local }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.Codigo_Local }) |
-            @Html.ActionLink("Excluir", "Delete", new { id=item.Codigo_Local })
+
+            <a href="@Url.Action("Edit","Locals" ,new { id = item.Codigo_Local }) ">
+                <input type="button" value="Editar" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+            </a>
+            <a href="@Url.Action("Details","Locals", new { id = item.Codigo_Local}) ">
+                <input type="button" value="Detalhes" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+            </a>
+            <a href="@Url.Action("Delete", "Locals", new { id = item.Codigo_Local }) ">
+                <input type="button" value="Excluir" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+            </a>
+
+
+            @*@Html.ActionLink("Editar", "Edit", new { id=item.Codigo_Local }) |
+        @Html.ActionLink("Detalhes", "Details", new { id=item.Codigo_Local }) |
+        @Html.ActionLink("Excluir", "Delete", new { id=item.Codigo_Local })*@
         </td>
     </tr>
 }

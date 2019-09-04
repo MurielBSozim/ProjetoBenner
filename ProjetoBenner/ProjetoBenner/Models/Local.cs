@@ -23,7 +23,10 @@ namespace ProjetoBenner.Models
             this.Horario_Medico = new HashSet<Horario_Medico>();
         }
     
+        
         public int Codigo_Local { get; set; }
+
+        [Display(Name = "Endereço")]
         public Nullable<int> Codigo_Endereco { get; set; }
 
         [Required(ErrorMessage = "Campo Necessário.")]

@@ -11,19 +11,13 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using System.Web.Routing;
+using System.Collections;
 
 namespace ProjetoBenner.Controllers
 {
     public class LoginController : Controller
     {
-        public ActionResult LogOut()
-        {
-
-            Session.Clear();
-            Session.Abandon();
-            Response.ClearHeaders();
-            return RedirectToAction("Index", "Home");
-        }
+      
 
         // GET: Login
         public ActionResult Index()
@@ -91,7 +85,16 @@ namespace ProjetoBenner.Controllers
                
         }
 
-       
+        public ActionResult LogOut()
+        {
+
+            Session.Clear();
+            Session.Abandon();
+            Response.ClearHeaders();
+            Session["Codigo_Acesso"] = null;
+
+            return RedirectToAction("Index", "Home");
+        }
 
     }
 }

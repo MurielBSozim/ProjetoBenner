@@ -1,6 +1,5 @@
-﻿
-@{ 
-    if(Session["Codigo_Acesso"] == null)
+﻿@{
+    if (Session["Codigo_Acesso"] == null)
     {
         Response.Redirect("~/Login/Index");
     }
@@ -10,55 +9,61 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @*<meta name="viewport" content="width=device-width, initial-scale=1.0">*@
     <title>@ViewBag.Title - AgendaON</title>
     @*<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />*@
+    <link href="~/Content/menu.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/StyleSheet2.css" rel="stylesheet" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-               @if (Session["Codigo_Acesso"] != null)
-               {
-                if (Session["Tipo"].ToString() == "ADM")
-                {
-                    @Html.ActionLink("AgendaON", "ADM", "Dashboard", new { area = "" }, new { @class = "navbar-brand" })
-                }
-                if (Session["Tipo"].ToString() == "Paciente")
-                {
-                    @Html.ActionLink("AgendaON", "Paciente", "Dashboard", new { area = "" }, new { @class = "navbar-brand" })
-                }
-                if (Session["Tipo"].ToString() == "Medico" || Session["Tipo"].ToString() == "Secretaria")
-                {
-                    @Html.ActionLink("AgendaON", "Funcionario", "Dashboard", new { area = "" }, new { @class = "navbar-brand" })
-                }
-               }
+
+        <div class="body-wrap" style=" margin-top: 2%;">
+            <div class="container">
+                <nav class="navbar navbar-inverse" role="navigation">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            @if (Session["Codigo_Acesso"] != null)
+                            {
+                                if (Session["Tipo"].ToString() == "ADM")
+                                {
+                                    @Html.ActionLink("AgendaON", "ADM", "Dashboard", new { area = "" }, new { @class = "navbar-brand" })
+                                }
+                                if (Session["Tipo"].ToString() == "Paciente")
+                                {
+                                    @Html.ActionLink("AgendaON", "Paciente", "Dashboard", new { area = "" }, new { @class = "navbar-brand" })
+                                }
+                                if (Session["Tipo"].ToString() == "Medico" || Session["Tipo"].ToString() == "Secretaria")
+                                {
+                                    @Html.ActionLink("AgendaON", "Funcionario", "Dashboard", new { area = "" }, new { @class = "navbar-brand" })
+                                }
+                            }
 
 
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav"></ul>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav"></ul>
+                        </div>
+                    </div>
+                </nav>
             </div>
         </div>
-    </div>
-    <div class="container body-content" style="margin-top: 5%">
-        @RenderBody()
+        <div class="container body-content" style="margin-top: 2%">
+            @RenderBody()
 
-        <hr />
-        <br />
-
-    </div>
-
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    @RenderSection("Scripts", false)
+            <hr />
+            <br />
+        </div>
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        @RenderSection("Scripts", false)
 </body>
 </html>

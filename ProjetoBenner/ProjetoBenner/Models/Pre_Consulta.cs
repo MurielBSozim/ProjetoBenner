@@ -11,7 +11,8 @@ namespace ProjetoBenner.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Pre_Consulta
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,8 +25,14 @@ namespace ProjetoBenner.Models
     
         public int Codigo_Pre_Consulta { get; set; }
         public string Sintomas { get; set; }
+
+        [Display(Name = "Tomando algum Medicamento")]
         public string Remedios_Tomando { get; set; }
+
+        [Display(Name = "Diagnósticos Anteriores")]
         public string Diagnostico_Anterior { get; set; }
+
+        [Display(Name = "Observações")]
         public string Observacao { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

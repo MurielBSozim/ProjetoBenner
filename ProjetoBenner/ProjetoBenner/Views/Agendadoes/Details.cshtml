@@ -2,91 +2,80 @@
 
 @{
     ViewBag.Title = "Detalhes";
-    if(Session["Codigo_Acesso"] == null)
+    if (Session["Codigo_Acesso"] == null)
     {
         Response.Redirect("~/Login/Index");
     }
-    if (Session["Codigo_Acesso"] != null)
-    {
-        if (Session["Tipo"].ToString() == "Paciente")
-        {
-            Response.Redirect("~/Login/Index");
-        }
-    }
+    
 }
 
 
-<div>
-    <h4>Agendado</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Data_Consulta)
-        </dt>
+<link href="~/Content/StyleSheet2.css" rel="stylesheet" />
+<link href="~/Content/Detalhes.css" rel="stylesheet" />
 
-        <dd>
-            @Html.DisplayFor(model => model.Data_Consulta)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Hora_Consulta)
-        </dt>
+<div class="col-lg-12">
+    <div class="register-form-w3layouts" style="margin-top:3%">
 
-        <dd>
-            @Html.DisplayFor(model => model.Hora_Consulta)
-        </dd>
+        <div>
+            <h2 style="text-align:center; color:white">Detalhes Consulta Agendado</h2>
+            <hr />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Consulta_Confirmada)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Consulta_Confirmada)
-        </dd>
+            <div class="panel-body">
+                <div class="details col-md-6" style="width: 550px">
+                    <div class="panel panel-default text-center" style="color:black">
+                        <h3><div class="panel-title"><span class="glyphicon glyphicon-list-alt"></span>@Html.DisplayNameFor(model => model.Data_Consulta)</div></h3>
+                        <hr>
+                        <h4>@Html.DisplayFor(model => model.Data_Consulta)</h4>
+                    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Agenda.Codigo_Agenda)
-        </dt>
+                    <div class="panel panel-default text-center" style="color:black">
+                        <h3><div class="panel-title"><span class="glyphicon glyphicon-list-alt"></span>@Html.DisplayNameFor(model => model.Hora_Consulta)</div></h3>
+                        <hr>
+                        <h4>@Html.DisplayFor(model => model.Hora_Consulta)</h4>
+                    </div>
+                    <div class="panel panel-default text-center" style="color:black">
+                        <h3><div class="panel-title"><span class="glyphicon glyphicon-list-alt"></span>@Html.DisplayNameFor(model => model.Consulta_Confirmada)</div></h3>
+                        <hr>
+                        <h4>@Html.DisplayFor(model => model.Consulta_Confirmada)</h4>
+                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Agenda.Codigo_Agenda)
-        </dd>
+                    <div class="panel panel-default text-center" style="color:black">
+                        <h3><div class="panel-title"><span class="glyphicon glyphicon-list-alt"></span>@Html.DisplayNameFor(model => model.Pessoa.Nome)</div></h3>
+                        <hr>
+                        <h4>@Html.DisplayFor(model => model.Pessoa.Nome)</h4>
+                    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Pessoa.Nome)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Pessoa.Nome)
-        </dd>
+                    <div class="panel panel-default text-center" style="color:black">
+                        <h3><div class="panel-title"><span class="glyphicon glyphicon-list-alt"></span>@Html.DisplayNameFor(model => model.Medico.Codigo_Medico)</div></h3>
+                        <hr>
+                        <h4>@Html.DisplayFor(model => model.Medico.Codigo_Medico)</h4>
+                    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Medico.Codigo_Medico)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Medico.Codigo_Medico)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Local.Nome)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Local.Nome)
-        </dd>
+                    <div class="panel panel-default text-center" style="color:black">
+                        <h3><div class="panel-title"><span class="glyphicon glyphicon-list-alt"></span>@Html.DisplayNameFor(model => model.Pre_Consulta.Sintomas)</div></h3>
+                        <hr>
+                        <h4>@Html.DisplayFor(model => model.Pre_Consulta.Sintomas)</h4>
+                    </div>
+                </div>
+                <p style="margin-left: 30%">
+                    <a href="@Url.Action("Edit","Agendadoes" ,new { id = Model.Codigo_Agendado }) ">
+                        <input type="button" value="Editar" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+                    </a>
+                    <a href="@Url.Action("Index","Agendadoes") ">
+                        <input type="button" value="Voltar" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+                    </a>
+                    <a href="@Url.Action("Details","Pre_Consulta", new { id = Model.Codigo_Pre_Consulta}) ">
+                        <input type="button" value="Pré-Consulta" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+                    </a>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Pre_Consulta.Sintomas)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Pre_Consulta.Sintomas)
-        </dd>
-
-    </dl>
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Codigo_Agendado }) |
-    @Html.ActionLink("Salvar", "Index")
-</p>

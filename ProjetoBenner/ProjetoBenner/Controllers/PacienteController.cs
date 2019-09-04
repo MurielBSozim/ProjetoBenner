@@ -89,6 +89,7 @@ namespace ProjetoBenner.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.MensagemErro = db.Agendado.Any(a => a.Codigo_Pessoa == id);
             return View(pessoa);
         }
 

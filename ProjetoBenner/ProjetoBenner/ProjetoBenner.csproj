@@ -105,12 +105,15 @@
     <Content Include="Content\agendar\css\style.css" />
     <Content Include="Content\agendar\css\StyleSheet1.css" />
     <Content Include="Content\agendar\css\wickedpicker.css" />
+    <Content Include="Content\backrgound-teste.css" />
+    <Content Include="Content\banner.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CadastroPessoa.css" />
     <Content Include="Content\calendario.css" />
+    <Content Include="Content\checkbox.css" />
     <Content Include="Content\core\LICENSE.txt" />
     <Content Include="Content\core\locales-all.js" />
     <Content Include="Content\core\locales-all.min.js" />
@@ -195,6 +198,7 @@
     <Content Include="Content\daygrid\main.js" />
     <Content Include="Content\daygrid\main.min.css" />
     <Content Include="Content\daygrid\main.min.js" />
+    <Content Include="Content\Detalhes.css" />
     <Content Include="Content\fullcalendar.css" />
     <Content Include="Content\fullcalendar.print.css" />
     <Content Include="Content\Inicio\Estilo_Conteudo.css" />
@@ -209,8 +213,14 @@
     <Content Include="Content\Login\ForgotPassword.css" />
     <Content Include="Content\Login\Login.css" />
     <Content Include="Content\menu.css" />
+    <Content Include="Content\Pre_Consulta\css\jquery-ui.css" />
+    <Content Include="Content\Pre_Consulta\css\style.css" />
+    <Content Include="Content\Pre_Consulta\images\banner.jpg" />
+    <Content Include="Content\Pre_Consulta\images\c-arrows.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\StyleSheet1.css" />
+    <Content Include="Content\StyleSheet2.css" />
+    <Content Include="Content\StyleSheet3.css" />
     <Content Include="Content\teste.css" />
     <Content Include="Content\timegrid\LICENSE.txt" />
     <Content Include="Content\timegrid\main.css" />
@@ -218,6 +228,9 @@
     <Content Include="Content\timegrid\main.js" />
     <Content Include="Content\timegrid\main.min.css" />
     <Content Include="Content\timegrid\main.min.js" />
+    <Content Include="Content\Untitled-2.jpg" />
+    <Content Include="Controllers\images\banner.jpg" />
+    <Content Include="Controllers\images\c-arrows.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -309,6 +322,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AcessoesController.cs" />
     <Compile Include="Controllers\AgendadoesController.cs" />
+    <Compile Include="Controllers\AgendadoesPacienteController.cs" />
     <Compile Include="Controllers\AgendarConsultaController.cs" />
     <Compile Include="Controllers\AgendarConsultaSController.cs" />
     <Compile Include="Controllers\CadastroLocalController.cs" />
@@ -326,6 +340,7 @@
     <Compile Include="Controllers\MedicosController.cs" />
     <Compile Include="Controllers\PacienteController.cs" />
     <Compile Include="Controllers\PlantaoMedicoController.cs" />
+    <Compile Include="Controllers\Pre_ConsultaController.cs" />
     <Compile Include="Controllers\SecretariasController.cs" />
     <Compile Include="Controllers\ValidaCPF.cs" />
     <Compile Include="dto\MedicoDto.cs" />
@@ -412,7 +427,6 @@
     <Content Include="Views\Paciente\Details.cshtml" />
     <Content Include="Views\Paciente\Edit.cshtml" />
     <Content Include="Views\Paciente\Index.cshtml" />
-    <Content Include="Views\Enderecoes\Delete.cshtml" />
     <Content Include="Views\Enderecoes\Edit.cshtml" />
     <Content Include="Views\CadastroMedico\Index.cshtml" />
     <Content Include="Views\CadastroMedico\Medico.cshtml" />
@@ -421,9 +435,7 @@
     <Content Include="Views\CadastroMedico\Sucesso.cshtml" />
     <Content Include="Views\CadastroSecretaria\Index.cshtml" />
     <Content Include="Views\CadastroSecretaria\Secretaria.cshtml" />
-    <Content Include="Views\Cidades\Delete.cshtml" />
     <Content Include="Views\Cidades\Edit.cshtml" />
-    <Content Include="Views\Estadoes\Delete.cshtml" />
     <Content Include="Views\Estadoes\Edit.cshtml" />
     <Content Include="Views\CadastroLocal\Index.cshtml" />
     <Content Include="Views\CadastroLocal\Sucesso.cshtml" />
@@ -460,6 +472,10 @@
     <Content Include="Views\Secretarias\Details.cshtml" />
     <Content Include="Views\Secretarias\Edit.cshtml" />
     <Content Include="Views\Secretarias\Index.cshtml" />
+    <Content Include="Views\Pre_Consulta\Details.cshtml" />
+    <Content Include="Views\Pre_Consulta\Edit.cshtml" />
+    <Content Include="Views\Pre_Consulta\Index.cshtml" />
+    <Content Include="Views\AgendadoesPaciente\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

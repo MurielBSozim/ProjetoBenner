@@ -2,20 +2,26 @@
 
 @{
     ViewBag.Title = "Editar";
-    if(Session["Codigo_Acesso"] == null)
+    if (Session["Codigo_Acesso"] == null)
     {
         Response.Redirect("~/Login/Index");
     }
- 
+    if (Session["Codigo_Acesso"] != null)
+    {
+        if (Session["Tipo"].ToString() != "ADM")
+        {
+            Response.Redirect("~/Login/Index");
+        }
+    }
 }
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Endereco</h4>
+        <h4>Editar Endereço</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Codigo_Endereco)
@@ -60,10 +66,18 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Salvar" class="btn btn-default" />
             </div>
-        </div>
+        </div>*@
+
+        <p style="margin-left: 40%">
+
+
+            <input type="submit" value="Salvar" class="btn btn-primary" />
+
+
+        </p>
     </div>
 }

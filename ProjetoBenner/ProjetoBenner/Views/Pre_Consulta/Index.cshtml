@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ProjetoBenner.Models.Pre_Consulta>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Sintomas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remedios_Tomando)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Diagnostico_Anterior)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Observacao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sintomas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Remedios_Tomando)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Diagnostico_Anterior)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Observacao)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit","Pre_Consulta" ,new { id = item.Codigo_Pre_Consulta}) ">
+                <input type="button" value="Editar" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+            </a>
+            <a href="@Url.Action("Details","Pre_Consulta", new { id = item.Codigo_Pre_Consulta }) ">
+                <input type="button" value="Detalhes" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+            </a>
+            
+
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.Codigo_Pre_Consulta }) |
+        @Html.ActionLink("Details", "Details", new { id=item.Codigo_Pre_Consulta }) |
+        @Html.ActionLink("Delete", "Delete", new { id=item.Codigo_Pre_Consulta })*@
+        </td>
+    </tr>
+}
+
+</table>

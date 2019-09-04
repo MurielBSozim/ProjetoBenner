@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Especialidade";
-    if(Session["Codigo_Acesso"] == null)
+    if (Session["Codigo_Acesso"] == null)
     {
         Response.Redirect("~/Login/Index");
     }
@@ -15,10 +15,15 @@
     }
 }
 
-    <p>
-        @Html.ActionLink("Nova Especialidade", "Create")
-        @Html.ActionLink("Voltar", "ADM", "Dashboard")
-    </p>
+<p>
+    <a href="@Url.Action("Create", "Descricao_Especialidade")">
+        <input type="button" value="Cadastrar Nova Especialidade" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+    </a>
+
+</p>
+@*<p>
+    @Html.ActionLink("Nova Especialidade", "Create")
+</p>*@
 <table class="table">
     <tr>
         <th>
@@ -27,17 +32,31 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Codigo_Especialidade }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.Codigo_Especialidade }) |
-            @Html.ActionLink("Deletar", "Delete", new { id=item.Codigo_Especialidade })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+
+
+                <a href="@Url.Action("Edit","Descricao_Especialidade" ,new { id = item.Codigo_Especialidade }) ">
+                    <input type="button" value="Editar" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+                </a>
+                <a href="@Url.Action("Details","Descricao_Especialidade", new { id = item.Codigo_Especialidade }) ">
+                    <input type="button" value="Detalhes" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+                </a>
+                <a href="@Url.Action("Delete", "Descricao_Especialidade", new { id = item.Codigo_Especialidade }) ">
+                    <input type="button" value="Excluir" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+                </a>
+
+
+                @*@Html.ActionLink("Editar", "Edit", new { id = item.Codigo_Especialidade }) |
+        @Html.ActionLink("Detalhes", "Details", new { id = item.Codigo_Especialidade }) |
+        @Html.ActionLink("Deletar", "Delete", new { id = item.Codigo_Especialidade })*@
+            </td>
+        </tr>
+    }
 
 </table>

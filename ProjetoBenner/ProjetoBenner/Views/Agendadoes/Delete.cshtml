@@ -6,93 +6,98 @@
     {
         Response.Redirect("~/Login/Index");
     }
-    if (Session["Codigo_Acesso"] != null)
-    {
-        if (Session["Tipo"].ToString() == "Paciente")
-        {
-            Response.Redirect("~/Login/Index");
-        }
-    }
+    
 }
 
 
-<h3>Tem certeza que deseja excluir?</h3>
-<div>
-    <h4>Agendado</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Data_Consulta)
-        </dt>
+    <h3 style="text-align:center">Tem certeza que deseja excluir?</h3>
+    <div>
+        <h4>Excluir Consulta Agendado</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Data_Consulta)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Data_Consulta)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Data_Consulta)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Hora_Consulta)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Hora_Consulta)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Hora_Consulta)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Hora_Consulta)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Consulta_Confirmada)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Consulta_Confirmada)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Consulta_Confirmada)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Consulta_Confirmada)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Agenda.Codigo_Agenda)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Agenda.Codigo_Agenda)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Agenda.Codigo_Agenda)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Agenda.Codigo_Agenda)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Pessoa.Nome)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Pessoa.Nome)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Pessoa.Nome)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Pessoa.Nome)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Medico.Codigo_Medico)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Medico.Codigo_Medico)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Medico.Codigo_Medico)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Medico.Codigo_Medico)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Local.Nome)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Local.Nome)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Local.Nome)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Local.Nome)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Pre_Consulta.Sintomas)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Pre_Consulta.Sintomas)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Pre_Consulta.Sintomas)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Pre_Consulta.Sintomas)
+            </dd>
 
-    </dl>
+        </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Deletar" class="btn btn-default" /> |
-            @Html.ActionLink("Voltar", "Index")
-        </div>
-    }
-</div>
+            @*<div class="form-actions no-color">
+                <input type="submit" value="Deletar" class="btn btn-default" /> |
+                @Html.ActionLink("Voltar", "Index")
+            </div>*@
+
+            <p style="margin-left: 40%">
+
+
+                <input type="submit" value="Excluir" class="btn btn-primary" />
+
+                <a href="@Url.Action("Index","Agendadoes") ">
+                    <input type="button" value="Voltar" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+                </a>
+            </p>
+        }
+    </div>

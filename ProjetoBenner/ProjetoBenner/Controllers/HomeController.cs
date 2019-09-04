@@ -11,6 +11,7 @@ namespace ProjetoBenner.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            Session["Codigo_Acesso"] = null;
             return View();
         }
 

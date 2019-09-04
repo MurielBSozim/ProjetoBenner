@@ -15,127 +15,149 @@
     }
 
 }
-@if (ViewBag.MensagemErro ?? false)
-{
-    <div class="row col-md-12">
-        <p class="alert alert-danger">Paciente com Consultada Agendada</p>
-    </div>
-}
-<h3>Tem certeza que deseja excluir?</h3>
-<div>
-    <h4>Pessoa</h4>
-    <hr />
 
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CPF)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CPF)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RG)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RG)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Data_Nascimento)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Data_Nascimento)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Estado_Civil)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Estado_Civil)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Telefone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Celular)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Celular)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Sexo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Sexo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Acesso.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Acesso.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Endereco.Endereco1)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Endereco.Endereco1)
-        </dd>
-
-    </dl>
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
 
 
-
-    @using (Html.BeginForm())
+    @if (ViewBag.MensagemErro ?? false)
     {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Deletar" id="delet" onclick="addClick" class="btn btn-default" /> |
-            @Html.ActionLink("Voltar", "Index")
+        <div class="row col-md-12">
+            <p class="alert alert-danger">Pessoa com Consultada Agendada</p>
         </div>
     }
-</div>
-<script>
-    function addClick() {
-        begin
-        try ADOQuery.Delete;
-        except
+    <h3 style="text-align:center">Tem certeza que deseja excluir?</h3>
+    <div>
+        <h4>Excluir Pessoa</h4>
+        <hr />
 
-        end;
-        end;
-    }
-</script>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CPF)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CPF)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RG)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RG)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Data_Nascimento)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Data_Nascimento)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Estado_Civil)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Estado_Civil)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Telefone)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Celular)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Celular)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Sexo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Sexo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Acesso.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Acesso.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Endereco.Endereco1)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Endereco.Endereco1)
+            </dd>
+
+        </dl>
+
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            @*<div class="form-actions no-color">
+                <input type="submit" value="Deletar" id="delet" onclick="addClick" class="btn btn-default" /> |
+                @Html.ActionLink("Voltar", "Index")
+            </div>*@
+
+            <p style="margin-left: 40%">
+
+
+                <input type="submit" value="Excluir" class="btn btn-primary" />
+
+                <a href="@Url.Action("Index","Paciente") ">
+                    <input type="button" value="Voltar" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+                </a>
+            </p>
+
+        }
+    </div>
+    <script>
+        function addClick() {
+            begin
+            try ADOQuery.Delete;
+            except
+
+            end;
+            end;
+        }
+    </script>
+</body>
+</html>

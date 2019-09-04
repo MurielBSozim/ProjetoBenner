@@ -15,11 +15,11 @@
     }
 }
 
-<p>
-    @Html.ActionLink("Voltar", "ADM", "Dashboard")
-</p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Pessoa.Nome)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Data_Admissao)
         </th>
@@ -29,32 +29,43 @@
         <th>
             @Html.DisplayNameFor(model => model.Hora_Saida)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Pessoa.Nome)
-        </th>
+
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Data_Admissao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hora_Entrada)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hora_Saida)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pessoa.Nome)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Codigo_Secretaria }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.Codigo_Secretaria }) |
-            @Html.ActionLink("Deletar", "Delete", new { id=item.Codigo_Secretaria })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Pessoa.Nome)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Data_Admissao)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Hora_Entrada)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Hora_Saida)
+    </td>
+
+    <td>
+        @*@Html.ActionLink("Editar", "Edit", new { id = item.Codigo_Secretaria }) |
+        @Html.ActionLink("Detalhes", "Details", new { id = item.Codigo_Secretaria }) |
+        @Html.ActionLink("Deletar", "Delete", new { id = item.Codigo_Secretaria })*@
+
+        <a href="@Url.Action("Edit","Secretarias" ,new { id = item.Codigo_Secretaria }) ">
+            <input type="button" value="Editar" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+        </a>
+        <a href="@Url.Action("Details","Secretarias", new { id = item.Codigo_Secretaria }) ">
+            <input type="button" value="Detalhes" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+        </a>
+        <a href="@Url.Action("Delete", "Secretarias", new { id = item.Codigo_Secretaria }) ">
+            <input type="button" value="Excluir" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+        </a>
+
+
+    </td>
+</tr>
 }
 
 </table>

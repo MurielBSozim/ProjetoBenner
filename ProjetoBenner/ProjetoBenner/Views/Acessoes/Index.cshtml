@@ -17,9 +17,12 @@
 }
 
 
-<p>
-    @Html.ActionLink("Cadastrar Novo Administrador", "Create")
-</p>
+    <p>
+        <a href="@Url.Action("Create", "Acessoes")">
+            <input type="button" value="Cadastrar Novo Administrador" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+        </a>
+        
+    </p>
 <table class="table">
     <tr>
         <th>
@@ -46,9 +49,22 @@
             @Html.DisplayFor(modelItem => item.Tipo)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Codigo_Acesso }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.Codigo_Acesso }) |
-            @Html.ActionLink("Excluir", "Delete", new { id=item.Codigo_Acesso })
+
+            <a href="@Url.Action("Edit","Acessoes" ,new { id = item.Codigo_Acesso }) ">
+                <input type="button" value="Editar" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+            </a>
+            <a href="@Url.Action("Details","Acessoes", new { id = item.Codigo_Acesso }) ">
+                <input type="button" value="Detalhes" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+            </a>
+            <a href="@Url.Action("Delete", "Acessoes", new { id = item.Codigo_Acesso }) ">
+                <input type="button" value="Excluir"  class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+            </a>
+
+
+
+            @*@Html.ActionLink("Editar", "Edit", new { id = item.Codigo_Acesso }) |
+            @Html.ActionLink("Detalhes", "Details", new { id = item.Codigo_Acesso }) |
+            @Html.ActionLink("Excluir", "Delete", new { id = item.Codigo_Acesso })*@
         </td>
     </tr>
 }

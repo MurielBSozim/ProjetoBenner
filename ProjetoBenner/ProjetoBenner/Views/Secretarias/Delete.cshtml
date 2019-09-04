@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Deletar";
-    if(Session["Codigo_Acesso"] == null)
+    if (Session["Codigo_Acesso"] == null)
     {
         Response.Redirect("~/Login/Index");
     }
@@ -15,9 +15,9 @@
     }
 }
 
-<h3>Tem certeza que deseja excluir?</h3>
+<h3 style="text-align:center">Tem certeza que deseja excluir?</h3>
 <div>
-    <h4>Secretaria</h4>
+    <h4>Excluir Secretária</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -54,12 +54,24 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Deletar" class="btn btn-default" /> |
-            @Html.ActionLink("Voltar", "Index")
-        </div>
+        @*<div class="form-actions no-color">
+                <input type="submit" value="Deletar" class="btn btn-default" /> |
+                @Html.ActionLink("Voltar", "Index")
+            </div>*@
+
+        <p style="margin-left: 40%">
+
+
+            <input type="submit" value="Excluir" class="btn btn-primary" />
+
+            <a href="@Url.Action("Index","Secretarias") ">
+                <input type="button" value="Voltar" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+            </a>
+        </p>
+
     }
 </div>

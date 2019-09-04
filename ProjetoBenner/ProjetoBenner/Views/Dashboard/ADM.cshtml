@@ -68,17 +68,18 @@
                                     <li><a href="@Url.Action("Index","CadastroSecretaria")">Cadastrar Secretária</a></li>
                                     <li><a href="@Url.Action("Create","Acessoes")">Cadastrar Administrador</a></li>
                                     <li><a href="@Url.Action("Index","CadastroLocal")">Cadastrar Local</a></li>
-                                    <li><a href="@Url.Action("Index","Descricao_Especialidade")">Cadastrar Nova Especialidade</a></li>
+                                    <li><a href="@Url.Action("Create","Descricao_Especialidade")">Cadastrar Nova Especialidade</a></li>
                                     @*<li><a href="#">Cadastrar Plantão Médico</a></li>*@
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configurações <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="@Url.Action("Index", "Paciente")">Pessoas Cadastradas</a></li>
                                     <li><a href="@Url.Action("Edit","Acessoes", new { id = (int)Session["Codigo_Acesso"]})">Alterar Dados conta atual</a></li>
+                                    <li><a href="@Url.Action("Index", "Paciente")">Pessoas Cadastradas</a></li>
                                     <li><a href="@Url.Action("Index","Medicos")">Alterar Medico</a></li>
                                     <li><a href="@Url.Action("Index","Secretarias")">Alterar Secretária</a></li>
+                                    <li><a href="@Url.Action("Index","Acessoes")">Alterar Administrador</a></li>
                                     <li><a href="@Url.Action("Index","Locals")">Alterar Local</a></li>
                                     <li><a href="@Url.Action("Index","Descricao_Especialidade")">Alterar Especialidade</a></li>
                                     @*<li><a href="#">Cadastrar Plantão Médico</a></li>*@
@@ -97,7 +98,7 @@
         </div>
     </div>
     <div class="main">
-        <div class="container" style="background-color: black; opacity:0.5; margin-top: 7%; width: 650px;">
+        <div class="container" style="background-color: black; opacity:0.5; margin-top: 9%; width: 650px;">
             <div class="header-intro">
                 <div class="header-left">
                     <h2 class="header2" style="color:white; text-align:center; font-size:42px"> Bem Vindo ao AgendaON!</h2>

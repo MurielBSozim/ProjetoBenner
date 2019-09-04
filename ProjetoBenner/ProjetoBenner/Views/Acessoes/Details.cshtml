@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Detalhes";
-      if(Session["Codigo_Acesso"] == null)
+    if (Session["Codigo_Acesso"] == null)
     {
         Response.Redirect("~/Login/Index");
     }
@@ -15,38 +15,47 @@
     }
 
 }
+<link href="~/Content/StyleSheet2.css" rel="stylesheet" />
+<link href="~/Content/Detalhes.css" rel="stylesheet" />
 
-<div>
-    <h4>Acesso</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+<div class="col-lg-12">
+    <div class="register-form-w3layouts" style="margin-top:3%">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
+        <div>
+            <h2 style="text-align:center; color:white">Detalhes Administrador</h2>
+            <hr />
 
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Tipo)
-        </dt>
+            <div class="panel-body">
+                <div class="details col-md-6" style="width: 550px">
+                    <div class="panel panel-default text-center" style="color:black">
+                        <h3><div class="panel-title"><span class="glyphicon glyphicon-list-alt"></span>@Html.DisplayNameFor(model => model.Email)</div></h3>
+                        <hr>
+                        <h4>@Html.DisplayFor(model => model.Email)</h4>
+                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Tipo)
-        </dd>
-
-    </dl>
+                    <div class="panel panel-default text-center" style="color:black">
+                        <h3><div class="panel-title"><span class="glyphicon glyphicon-list-alt"></span>@Html.DisplayNameFor(model => model.Password)</div></h3>
+                        <hr>
+                        <h4> @Html.DisplayFor(model => model.Password)</h4>
+                    </div>
+                    <div class="panel panel-default text-center" style="color:black">
+                        <h3><div class="panel-title"><span class="glyphicon glyphicon-list-alt"></span> @Html.DisplayNameFor(model => model.Tipo)</div></h3>
+                        <hr>
+                        <h4>@Html.DisplayFor(model => model.Tipo)</h4>
+                    </div>
+                </div>
+                <p style="margin-left: 40%">
+                    <a href="@Url.Action("Edit","Acessoes" ,new { id = Model.Codigo_Acesso }) ">
+                        <input type="button" value="Editar" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+                    </a>
+                    <a href="@Url.Action("Index","Acessoes") ">
+                        <input type="button" value="Voltar" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Codigo_Acesso }) |
-    @Html.ActionLink("Voltar", "Index")
-</p>
+

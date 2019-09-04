@@ -2,40 +2,34 @@
 
 @{
     ViewBag.Title = "Editar";
-    if(Session["Codigo_Acesso"] == null)
+    if (Session["Codigo_Acesso"] == null)
     {
         Response.Redirect("~/Login/Index");
     }
-    if (Session["Codigo_Acesso"] != null)
-    {
-        if (Session["Tipo"].ToString() == "Paciente")
-        {
-            Response.Redirect("~/Login/Index");
-        }
-    }
-}
 
+}
+<link href="~/Content/checkbox.css" rel="stylesheet" />
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Agendado</h4>
+        <h4>Editar Consulta Agendada</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Codigo_Agendado)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Codigo_Agenda, "Codigo_Agenda", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Codigo_Agenda", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Codigo_Agenda, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.Codigo_Agenda, "Codigo_Agenda", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Codigo_Agenda", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Codigo_Agenda, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Codigo_Pessoa, "Codigo_Pessoa", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Codigo_Pessoa, "Paciente", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Codigo_Pessoa", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Codigo_Pessoa, "", new { @class = "text-danger" })
@@ -43,7 +37,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Codigo_Medico, "Codigo_Medico", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Codigo_Medico, "Medico", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Codigo_Medico", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Codigo_Medico, "", new { @class = "text-danger" })
@@ -51,7 +45,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Codigo_Local, "Codigo_Local", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Codigo_Local, "Local", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Codigo_Local", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Codigo_Local, "", new { @class = "text-danger" })
@@ -83,23 +77,65 @@
         </div>
 
         <div class="form-group">
+
             @Html.LabelFor(model => model.Consulta_Confirmada, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Consulta_Confirmada)
-                    @Html.ValidationMessageFor(model => model.Consulta_Confirmada, "", new { @class = "text-danger" })
-                </div>
+                @*<div class="checkbox">
+                        @Html.CheckBoxFor(model => model.Consulta_Confirmada)
+                        <input data-val="true"
+                               data-val-required="The isNewlyEnrolled field is required."
+                               id="Consulta_Confirmada"
+                               name="Consulta_Confirmada"
+                               type="checkbox"
+                               value="true"
+                               checked="checked"/>
+
+                        <input name="Consulta_Confirmada" type="hidden" value="false"  />
+                        <span class="checkmark"></span>
+                    </div>*@
+                <label class="checkbox">
+                    <input data-val="true" data-val-required="Confirmar Consulta é necessário" id="Consulta_Confirmada" name="Consulta_Confirmada" type="checkbox" value="true">
+                    <span class="checkmark">
+                        <input name="Consulta_Confirmada" value="false" />
+                    </span>
+                </label>
+
+                @Html.ValidationMessageFor(model => model.Consulta_Confirmada, "", new { @class = "text-danger" })
+
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Salvar" class="btn btn-default" />
-            </div>
-        </div>
+        @*<div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Salvar" class="btn btn-default" />
+                </div>
+            </div>*@
+
+        <p style="margin-left: 40%">
+            @if (Session["Tipo"].ToString() == "Paciente")
+            {
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+
+                <a href="@Url.Action("Index", "AgendadoesPaciente") ">
+                    <input type="button" value="Voltar" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+                </a>
+
+            }
+            @if (Session["Tipo"].ToString() != "Paciente")
+            {
+                < input type = "submit" value = "Salvar" class="btn btn-primary" />
+
+                <a href="@Url.Action("Index","Agendadoes") ">
+                    <input type="button" value="Voltar" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+                </a>
+            }
+
+            
+        </p>
+
     </div>
 }
 
-<div>
-    @Html.ActionLink("Salvar", "Index")
-</div>
+@*<div>
+        @Html.ActionLink("Salvar", "Index")
+    </div>*@

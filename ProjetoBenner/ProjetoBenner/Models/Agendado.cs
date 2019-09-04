@@ -16,19 +16,23 @@ namespace ProjetoBenner.Models
 
     public partial class Agendado
     {
+        [Display(Name = "Agendamento")]
         public int Codigo_Agendado { get; set; }
         public Nullable<int> Codigo_Agenda { get; set; }
         //[Required(ErrorMessage = "Campo Necessário.")]
         public Nullable<int> Codigo_Pessoa { get; set; }
         [Required(ErrorMessage = "Campo Necessário.")]
+        [Display(Name = "Médico")]
         public Nullable<int> Codigo_Medico { get; set; }
         public Nullable<int> Codigo_Local { get; set; }
         public Nullable<int> Codigo_Pre_Consulta { get; set; }
         [Required(ErrorMessage = "Campo Necessário.")]
-       
+        [Display(Name = "Data da Consulta")]
         public Nullable<System.DateTime> Data_Consulta { get; set; }
         [Required(ErrorMessage = "Campo Necessário.")]
+        [Display(Name = "Hora da Consulta")]
         public Nullable<System.TimeSpan> Hora_Consulta { get; set; }
+        [Display(Name = "Confirmação")]
         public Nullable<bool> Consulta_Confirmada { get; set; }
     
         public virtual Agenda Agenda { get; set; }

@@ -1,6 +1,6 @@
 ﻿@model ProjetoBenner.Models.Local
 @{
-    Layout = null;
+ViewBag.Title = "Cadastrar Local";
     if(Session["Codigo_Acesso"] == null)
     {
         Response.Redirect("~/Login/Index");
