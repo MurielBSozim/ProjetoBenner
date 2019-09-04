@@ -477,7 +477,6 @@
     <Content Include="Views\Pre_Consulta\Index.cshtml" />
     <Content Include="Views\AgendadoesPaciente\Index.cshtml" />
     <Content Include="Views\AgendadoesPaciente\Details.cshtml" />
-    <Content Include="Views\AgendadoesPaciente\Edit.cshtml" />
     <Content Include="Views\AgendadoesPaciente\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

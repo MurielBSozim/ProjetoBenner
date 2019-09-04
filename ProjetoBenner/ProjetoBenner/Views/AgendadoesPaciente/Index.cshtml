@@ -54,16 +54,12 @@
                 @Html.DisplayFor(modelItem => item.Pessoa.Nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Medico.Codigo_Medico)
+                @Html.DisplayFor(modelItem => item.NomeMedico)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Pre_Consulta.Sintomas)
             </td>
             <td>
-
-                <a href="@Url.Action("Edit", "AgendadoesPaciente", new { id = item.Codigo_Agendado }) ">
-                    <input type="button" value="Editar" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
-                </a>
                 <a href="@Url.Action("Details","AgendadoesPaciente", new { id = item.Codigo_Agendado }) ">
                     <input type="button" value="Detalhes" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
                 </a>

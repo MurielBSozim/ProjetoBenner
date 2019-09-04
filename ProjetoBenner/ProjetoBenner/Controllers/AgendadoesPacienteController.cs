@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using ProjetoBenner.dto;
 using ProjetoBenner.Models;
 
 namespace ProjetoBenner.Controllers
@@ -18,7 +19,16 @@ namespace ProjetoBenner.Controllers
         public ActionResult Index()
         {
             var agendado = db.Agendado.Include(a => a.Agenda).Include(a => a.Pessoa).Include(a => a.Medico).Include(a => a.Local).Include(a => a.Pre_Consulta);
-            return View(agendado.ToList().Where(a => a.Codigo_Pessoa == (int)Session["Codigo_Pessoa"] ));
+            var agendamentos = agendado.ToList().Where(a => a.Codigo_Pessoa == (int)Session["Codigo_Pessoa"]);
+            var retorno = new List<Agendado>();
+            foreach (var agendamento in agendamentos)
+            {
+                var medico = db.Medico.Where(m => m.Codigo_Medico == agendamento.Codigo_Medico).FirstOrDefault();
+                var pessoa = db.Pessoa.Where(p => p.Codigo_Pessoa == medico.Codigo_Pessoa).FirstOrDefault();
+                agendamento.NomeMedico = pessoa.Nome;
+                retorno.Add(agendamento);
+            }
+            return View(retorno);
         }
 
         // GET: AgendadoesPaciente/Details/5

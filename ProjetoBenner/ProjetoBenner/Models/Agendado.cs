@@ -34,7 +34,8 @@ namespace ProjetoBenner.Models
         public Nullable<System.TimeSpan> Hora_Consulta { get; set; }
         [Display(Name = "Confirmação")]
         public Nullable<bool> Consulta_Confirmada { get; set; }
-    
+        public string NomeMedico { get; set; }
+
         public virtual Agenda Agenda { get; set; }
         public virtual Pessoa Pessoa { get; set; }
         public virtual Medico Medico { get; set; }
