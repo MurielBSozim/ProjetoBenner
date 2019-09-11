@@ -478,6 +478,7 @@
     <Content Include="Views\AgendadoesPaciente\Index.cshtml" />
     <Content Include="Views\AgendadoesPaciente\Details.cshtml" />
     <Content Include="Views\AgendadoesPaciente\Delete.cshtml" />
+    <Content Include="Views\AgendadoesPaciente\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

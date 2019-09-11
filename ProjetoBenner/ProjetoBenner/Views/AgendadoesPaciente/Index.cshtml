@@ -60,6 +60,12 @@
                 @Html.DisplayFor(modelItem => item.Pre_Consulta.Sintomas)
             </td>
             <td>
+
+
+                <a href="@Url.Action("Edit","AgendadoesPaciente" ,new { id = item.Codigo_Agendado }) ">
+                    <input type="button" value="Editar" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+                </a>
+
                 <a href="@Url.Action("Details","AgendadoesPaciente", new { id = item.Codigo_Agendado }) ">
                     <input type="button" value="Detalhes" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
                 </a>
@@ -69,8 +75,8 @@
 
 
                 @*@Html.ActionLink("Editar", "Edit", new { id = item.Codigo_Agendado }) |
-                    @Html.ActionLink("Detalhes", "Details", new { id = item.Codigo_Agendado }) |
-                    @Html.ActionLink("Deletar", "Delete", new { id = item.Codigo_Agendado })*@
+        @Html.ActionLink("Detalhes", "Details", new { id = item.Codigo_Agendado }) |
+        @Html.ActionLink("Deletar", "Delete", new { id = item.Codigo_Agendado })*@
             </td>
         </tr>
     }

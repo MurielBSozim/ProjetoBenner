@@ -112,15 +112,25 @@
             </div>*@
 
         <p style="margin-left: 40%">
-           
-                <input type = "submit" value = "Salvar" class="btn btn-primary" />
+            @if (Session["Tipo"].ToString() == "Paciente")
+            {
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+
+                <a href="@Url.Action("Index", "AgendadoesPaciente") ">
+                    <input type="button" value="Voltar" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
+                </a>
+
+            }
+            @if (Session["Tipo"].ToString() != "Paciente")
+            {
+                < input type = "submit" value = "Salvar" class="btn btn-primary" />
 
                 <a href="@Url.Action("Index","Agendadoes") ">
                     <input type="button" value="Voltar" class="btn btn-primary" @*style="margin-top:3%;  width: 80px; height: 40px; color: #fff; background-color: #ff9900; border-color: #ff9900"*@>
                 </a>
-            
+            }
 
-            
+
         </p>
 
     </div>
